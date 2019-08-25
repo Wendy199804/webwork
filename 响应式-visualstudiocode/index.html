@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="./img/favicon.ico" type="image/x-icon"/> 
+    <link rel="stylesheet" href="styles/demo1.css">
+    <link rel="stylesheet" href="styles/demo2.css">
+    <link rel="stylesheet" href="styles/demo3.css">
+    <link rel="stylesheet" href="styles/demo4.css">
+    <title>Visual Studio Code - Code Editing. Redefined</title>
+</head>
+
+<body>
+    <div class="header" id="header">
+        <div class="contain">
+            <nav>
+                <div class="navheader">
+
+                    <a href="https://code.visualstudio.com/">
+                        <img src="./img/navheader.png" alt="">
+                        <span>Visual Studio Code</span>
+                    </a>
+                    <button onclick="menu()">
+                        <span class="button_icon"></span>
+                        <span class="button_icon"></span>
+                        <span class="button_icon"></span>
+                    </button>
+                </div>
+
+                <div class="navmain" id="navmainn">
+                    <ul class="navmain_l">
+                        <li><a href="">Docs</a></li>
+                        <li><a href="">Updates</a></li>
+                        <li><a href="">Blog</a></li>
+                        <li><a href="">API</a></li>
+                        <li><a href="">Extensions</a></li>
+                        <li><a href="">FAQ</a></li>
+                        <li class="navmain_l_search"><a href="">Search</a></li>
+                    </ul>
+                    <ul class="navmain_r">
+                        <li>
+                            <a href="">
+                                <!-- <div> -->
+                                <img class="search" src="./img/search.svg" alt="">
+                                <input type="text" placeholder="Search Docs" class="navmain_r_input">
+                                <!-- </div> -->
+                                <img class="down" src="./img/download.svg" alt="">
+                                <span> Download</span>
+                            </a>
+                        </li>
+                    </ul>
+
+
+                </div>
+
+            </nav>
+        </div>
+    </div>
+    <div class="topad">
+        <div class="topad_contain">
+            <a href="">Version 1.36</a> is now available! Read about the new features and fixes from June.
+        </div>
+
+    </div>
+    <!-- <div style="height: 1500px;"></div> -->
+    <div class="top">
+        <div class="top_up">
+            <div class="top_up_contain">
+                <h1>
+                    Code editing.<span>Redefined.</span>
+                </h1>
+                <div class="topup_contain_words1">
+                    Free. Built on open source. Runs everywhere.
+                </div>
+                <div class="top_up_contain_btn">
+
+                    <button class="top_up_contain_btn1">
+                        <a href="">
+                            <p>Download for Windoes</p>
+                            <p>Stable Build</p>
+                        </a>
+                    </button>
+
+                    <button class="top_up_contain_btn2">
+                        <a href="">
+                            <img src="./img/箭头 下.png" alt="">
+                        </a>
+                        <div class="sanjiaox"></div>
+
+                    </button>
+                </div>
+
+                <P class="topup_contain_words2">
+                    <a href="">Other platforms</a> and <a href="">Insiders Edition</a>
+                </P>
+                <p class="topup_contain_words3">
+                    By using VS Code, you agree to its
+
+                    <a>license and privacy statement.</a>
+
+                </p>
+
+            </div>
+
+        </div>
+        <div class="top_ub">
+            <div class="top_ub_pic">
+                <img src="./img/topimg.png" alt="">
+            </div>
+        </div>
+
+    </div>
+    <div class="second">
+        <div class="second_container">
+            <div class="second_container_intel">
+                <div style="width:auto;">
+                    <span></span>
+                    <p>IntelliSense</p>
+                </div>
+
+            </div>
+            <div class="second_container_debug">
+                <div style="width:auto;">
+                        <span></span>
+                    <p>Debugging</p>
+                </div>
+            </div>
+            <div class="second_container_built">
+                <div style="width:auto;">
+                        <span></span>
+                    <p>Built-in Git</p>
+                </div>
+            </div>
+            <div class="second_container_exten">
+                <div style="width:auto;">
+                        <span></span>
+                    <p>Extensions</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="third">
+        <div class="third_btn">
+            <div class="third_contain">
+                <div class="third_contain1">
+                    <div class="third_contain1_pic">
+                        <img src="./img/Una.jpg">
+                    </div>
+                    <div class="third_contain1_words">
+                        <p><a href="">Una Kravets</a></p>
+                        <p><a href="">@Una</a></p>
+                        <p>VS @code does so many things right. I’m constantly impressed by the UX, and customizing
+                            workspace / user preferences is no exception. 🙌🏼💯 It just keeps getting better ❤️</p>
+                    </div>
+                </div>
+                <div class="third_contain2">
+                    <div class="third_contain2_pic">
+                        <img src="./img/jadbox.jpg">
+                    </div>
+                    <div class="third_contain2_words">
+                        <p><a href="">Jonathan Dunlap</a></p>
+                        <p><a href="">@jadbox</a></p>
+                        <p>Awesome - VS <a href="">Code</a> will have deep remote development: you can connect to a
+                            container running a
+                            different OS and be able to use any VS Code plugins/linting/debugging for that environment.
+                            🔥🔥🔥</p>
+                    </div>
+                </div>
+                <div class="third_contain3">
+                    <div class="third_contain2_pic">
+                        <img src="./img/PKodmad.jpg">
+                    </div>
+                    <div class="third_contain2_words">
+                        <p><a href="">Pavithra Kodmad</a></p>
+                        <p><a href="">@PKodmad</a></p>
+                        <p>VS Code is my most used and favorite editor. I love being able to customize the editor -
+                            changing the layout, the icons, fonts and color scheme is so easy!</p>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="forth">
+        <div class="forth_container">
+            <div class="forth_container_pic">
+                <img src="./img/home-intellisense.svg" alt="">
+            </div>
+            <div class="forth_container_words">
+                <h2>
+                    Meet IntelliSense.
+                </h2>
+                <p>
+                    Go beyond syntax highlighting and autocomplete with IntelliSense, which provides smart completions
+                    based on variable types, function definitions, and imported modules.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="fifth">
+        <div class="fifth_container">
+            <div class="fifth_container_pic">
+                <img src="./img/home-debug.svg" alt="">
+            </div>
+            <div class="fifth_container_words">
+                <h2>
+                    Print statement debugging is a thing of the past.
+                </h2>
+                <p>
+                    Debug code right from the editor. Launch or attach to your running apps and debug with break points,
+                    call stacks, and an interactive console.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="sixth">
+        <div class="sixth_container">
+            <div class="sixth_container_pic">
+                <img src="./img/home-git.svg" alt="">
+            </div>
+            <div class="sixth_container_words">
+                <h2>
+                    Git commands built-in.
+                </h2>
+                <p>
+                    Working with Git and other SCM providers has never been easier. Review diffs, stage files, and make
+                    commits right from the editor. Push and pull from any hosted SCM service.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="seventh">
+        <div class="seventh_container">
+            <div class="seventh_container_pic">
+                <img src="./img/Hundreds-of-Extensions.png" alt="">
+            </div>
+            <div class="seventh_container_words">
+                <h2>
+                    Extensible and customizable.
+                </h2>
+                <p>
+                    Want even more features? Install extensions to add new languages, themes, debuggers, and to connect
+                    to additional services. Extensions run in separate processes, ensuring they won't slow down your
+                    editor. <a href="">Learn more about extensions.</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="gundong">
+        <div class="gundong_container">
+            <div class="donghua_container_main">
+                <div class="donghua_container_main_word">
+                    <h2>
+                        VS Code for
+                    </h2>
+                </div>
+                <div class="donghua_container_main_DH">
+                    <ul>
+                        <li>Markdown</li>
+                        <li>F#</li>
+                        <li>Handlebars</li>
+                        <li>C++</li>
+                        <li>Lua</li>
+                        <li>Perl</li>
+                        <li>Razor</li>
+                        <li>JavaScript</li>
+                        <li>CSS</li>
+                        <li>XML</li>
+                        <li>TypeScript</li>
+                        <li>Ini</li>
+                        <li>PowerShell</li>
+                    </ul>
+                    <div class="donghua_container_main_DH2"></div>
+                </div>
+            </div>
+
+            <div class="gundong_container_btn">
+                <button>Get Started Now</button>
+            </div>
+        </div>
+    </div>
+    <div class="download">
+        <div class="download_container">
+            <div class="download1">
+                <div class="download1_logo">
+                    <img src="./img/windows-logo.png" alt="">
+                </div>
+                <div class="download1_button">
+                    <img src="./img/download.svg" alt="">
+                    <span>Windoes</span>
+                    <P>Windows 7,8,10</P>
+                </div>
+                <div class="download1_type">
+                    <pre>   User Installer 	         <a href="">64 bit  32 bit</a> 
+System Installer      	<a href="">64 bit  32 bit</a>
+        .zip	                        <a href="">64 bit  32 bit</a></pre>
+                </div>
+            </div>
+            <div class="download2">
+                <div class="download1_logo">
+                    <img src="./img/linux-logo.png" alt="">
+                </div>
+                <div class="download2_button">
+                    <div class="button1">
+                        <img src="./img/download.svg" alt="">
+                        <span>.deb</span>
+                        <P>Debian, Ubuntu</P>
+                    </div>
+                    <div class="button2">
+                        <img src="./img/download.svg" alt="">
+                        <span>.rpm</span>
+                        <P>Red Hat,Fedora, SUSE</P>
+                    </div>
+                </div>
+                <pre>.deb            	<a href="">64 bit</a>
+.rpm	        <a  href="">64 bit</a>
+.tar.gz	         <a  href="">64 bit</a>
+   <a  href="">Snap Store</a></pre>
+
+            </div>
+            <div class="download3">
+                <div class="download1_logo">
+                    <img src="./img/apple-logo.svg" alt="">
+                </div>
+                <div class="download1_button">
+                    <img src="./img/download.svg" alt="">
+                    <span>Mac</span>
+                    <P>macOS 10.10+</P>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="bottom">
+        <div class="bottom_container">
+            <div class="bottom_main">
+                <div class="bottom_main_text1">
+                    <h2>Want new features sooner?</h2>
+                    <p> Get the <a href="">Insiders build</a> instead.</p>
+                </div>
+                <div class="bottom_main_text2">
+                    <h3>LICENSE AND PRIVACY TERMS</h3>
+                    <p>
+                        By downloading and using Visual Studio Code, you agree to the <a href="">license terms</a> and
+                        <a href="">privacy
+                            statement</a>. VS Code automatically sends telemetry data and crash dumps to help us improve
+                        the
+                        product. If you would prefer not to have this data sent please go see <a href="">How to Disable
+                            Crash
+                            Reporting</a> to learn how to disable it.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer_container">
+            <div class="footer_main">
+                <div class="footer_main_ulL">
+                    <ul>
+                        <li><a>Hello from Seattle.</a></li>
+                        <li><a href="">Follow @code</a></li>
+                        <li class="btn">
+                            <a href="">Star</a>
+                            <a href="">80,383</a>
+
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer_main_ulR">
+                    <ul>
+                        <li><a href="">Support</a></li>
+                        <li><a href="">Privacy</a></li>
+                        <li><a href="">Terms of Use</a></li>
+                        <li><a href="">License</a></li>
+                        <li><a href=""><img src="./img/microsoft-logo.png" alt=""></a></li>
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        function menu() {
+            if (navmainn.style.display == 'none') {
+                document.getElementById('navmainn').style.display = 'block';
+
+            } else {
+                document.getElementById('navmainn').style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+
+</html>

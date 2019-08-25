@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>纯css立方形3D反转加载动画特效</title>
+	<style>
+		body{
+			background: #333333;
+		}
+		.box1{
+			width: 200px;
+			height: 200px;
+			transform-style: preserve-3d;
+			position: relative;
+			left: 0;
+			top: 0;
+			margin: 300px auto;
+			transform: rotateY(30deg) rotateX(-30deg);
+			animation: fan 2s linear;
+			animation-iteration-count: infinite;
+		}
+		.box1>div{
+			width: 160px;
+			height: 160px;
+			position: absolute;
+			border: 20px solid #ffffff;
+			box-shadow: #ffffff 0 0 20px;
+			opacity: 0.9;
+		}
+		.left{
+			background: #86D916;
+			transform: translateX(-100px) rotateY(90deg);
+			animation: left 2s;
+			animation-iteration-count: infinite;
+		}
+		.centre{
+			background: #86D916;
+			transform: translateZ(100px);
+			animation: centre 2s;
+			animation-iteration-count: infinite;
+
+		}
+		.right{
+			background: #86D916;
+			transform: translateX(100px) rotateY(90deg) ;
+			animation: right 2s;
+			animation-iteration-count: infinite;
+		}
+		.top{
+			background: #86D916;
+			transform: translateY(-100px) rotateX(90deg);
+			animation: top 2s;
+			animation-iteration-count: infinite;
+		}
+		.bottom{
+			background: #86D916;
+			transform: translateY(100px) rotateX(90deg);
+			animation: bottom 2s;
+			animation-iteration-count: infinite;
+		}
+		.queen{
+			background: #86D916;
+			transform: translateZ(-100px);
+			animation: queen 2s;
+			animation-iteration-count: infinite;
+		}
+		@keyframes left{
+			0%{transform: translateX(-100px) rotateY(90deg);}
+			30%{transform: translateX(-200px) rotateY(90deg);}
+			60%{transform: translateX(-100px) rotateY(90deg);}
+			100%{transform: translateX(-200px) rotateY(90deg) ;}
+		}
+		@keyframes centre{
+			0%{transform: translateZ(100px);}
+			30%{transform: translateZ(200px);}
+			60%{transform: translateZ(100px);}
+			100%{transform: translateZ(200px);}
+		}
+		@keyframes right{
+			0%{transform: translateX(100px) rotateY(90deg);}
+			30%{transform: translateX(200px) rotateY(90deg);}
+			60%{transform: translateX(100px) rotateY(90deg);}
+			100%{transform: translateX(200px) rotateY(90deg);}
+		}
+		@keyframes top{
+			0%{transform: translateY(-100px) rotateX(90deg);}
+			30%{transform: translateY(-200px) rotateX(90deg);}
+			60%{transform: translateY(-100px) rotateX(90deg);}
+			100%{transform: translateY(-200px) rotateX(90deg);}
+		}
+		@keyframes bottom{
+			0%{transform: translateY(100px) rotateX(90deg);}
+			30%{transform: translateY(200px) rotateX(90deg);}
+			60%{transform: translateY(100px) rotateX(90deg);}
+			100%{transform: translateY(200px) rotateX(90deg);}
+		}
+		@keyframes queen{
+			0%{transform: translateZ(-100px)}
+			30%{transform: translateZ(-200px)}
+			60%{transform: translateZ(-100px)}
+			100%{transform: translateZ(-200px)}
+		}
+		@keyframes fan{
+			0%{transform: rotateY(30deg) rotateX(-30deg);}
+			30%{transform: rotateY(180deg) rotateX(-30deg);}
+			60%{transform: rotateY(390deg) rotateX(-30deg);}
+			100%{transform: rotateY(390deg) rotateX(-30deg);}
+		}
+	</style>
+</head>
+<body>
+	<div class="box1">
+		<div class="left"></div>
+		<div class="centre"></div>
+		<div class="right"></div>
+		<div class="top"></div>
+		<div class="bottom"></div>
+		<div class="queen"></div>
+	</div>
+</body>
+</html>

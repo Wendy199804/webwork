@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="text" name="1">
+        <button type="text" name="2">~</button>
+    </form>
+    <script>
+    
+    window.onkeydown = function(){
+        if (event.keyCode===13){  //回车键的键值为13
+            document.getElementByName("2").click();//模拟按下submit确认按钮
+        }
+    }
+    </script>
+</body>
+</html>

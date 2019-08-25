@@ -1,0 +1,34 @@
+<script>
+// var a=0;
+//     function add(){
+//         for(var i=1;i<=100;i++){
+//             a+=i;
+//         }
+//     }
+//     add();
+// document.write(a);
+//for循环求1-100的和
+
+
+// function add(num){
+//     if(num===1){
+//         return 1;
+//     }else{
+//         return num+add(num-1);
+//     }
+// }
+// document.write(add(100));
+//递归求1-100的和
+//递归：函数内部调用自身函数
+
+function multipil(num){
+    if(num===1){
+        return 1;
+    }else{
+        return num * arguments.callee(num-1);//推荐写法
+    }
+}
+document.write(multipil(3));
+//递归求阶乘
+
+</script>

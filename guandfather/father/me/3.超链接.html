@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body style="display: block;">
+    <div id="container" style="width: 100%;height:1200px;"> 
+            <div id="top" style="width: 100%;height:100px;text-align: center;display: flex">
+                  
+                        <div id="word" style=" align-self: center;margin: 0 auto;font-size: 30px">
+                                <span>超链接</span>
+                        </div>
+                        <!-- display:table;      display:table-cell;vertical-align:middle; -->
+                        <!--display: inline-block;vertical-align: middle;-->
+                 
+            </div>
+        
+        <div id="left1" style="width: 33%;height: 500px;float: left;background-color: beige;border:1px dashed black;">
+             <a href="../文本元素.html"> 文本元素 </a>
+             <span>相对路径跳转到某个文件</span><br>
+             <a href="../父.html">???</a>
+             <span>打开父目录里的文件</span><br>
+             <a href="../../grandfather.html">???</a>
+             <span>打开grandpa目录里的文件（）</span><br>
+             <a href="file:///C:/Users/love_/Desktop/新建文件夹.html">文本元素</a>
+             <span>绝对路径跳转到某个文件</span><br>
+             <a href="文本元素.html">文本元素</a>
+             <a href="./文本元素.html">文本元素</a>
+             <span>打开同一目录下的文件</span><br>
+             <a href="本目录/子目录.html">子</a>
+             <a href="./本目录/子目录.html">子</a>
+             <span>打开子目录的文件</span>
+             <a href="/">根目录</a>
+             <a href="file:///C:/Users/love_/Desktop/div布局样式/div居中.html"> 绝对路径</a>
+             <!-- 注意三道杠 -->
+
+        </div>
+
+        <div id="left2" style="width: 33%;height: 500px;float: left;background-color: beige;border:1px dashed black;" >
+             <a href="http://www.baidu.com" title="跳转到外部网站">baidu</a>
+             <span>跳转到外部网站</span><br>
+             <a href="http://www.baidu.com" target="_blank" title="在新窗口打开网页">baidu</a>
+             <span>在新窗口打开网页</span><br>
+             <a href="http://www.baidu.com" target="_self">baidu</a>
+             <span>在当前窗口打开网页（默认就是这一项 不写也是这个效果）</span><br>
+             <a href="http://www.baidu.com" target="_top">baidu</a>
+             <span>基于框架页面 在顶层窗口打开网页</span><br>
+             <a href="http://www.baidu.com" target="_parent">baidu</a>
+             <span>基于框架页面 在父窗口打开网页</span><br>
+        </div>
+
+        <div id="left3" style="width: 33%;height: 500px;float: left;background-color: beige;border:1px dashed black;" >
+                11
+        </div>
+
+    </div>
+    
+
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/demo.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="wrap">
+        <form>
+            <h2>SIGN IN NOW</h2>
+            <div class="login-wrap">
+                <input type="text" placeholder="User ID">
+                <input type="text" placeholder="Password">
+                <label>
+                    <input type="checkbox">
+                    <span class="remember">Remember me</span>
+                    <span class="forgot" onclick="block()" ><a href="#"  >Forgot Password?</a></span>
+                </label>
+                <button type="button" class="sign-in"><a href="./home.html" style="color: white">SIGN IN</a></button>
+                <p class="tips-p">or you can sign in via social network</p>
+                <div class="btn-two">
+                    <a href="">
+                        <i class="facebook-icon"></i>
+                        <span>Facebook</span>
+                    </a>
+                    <a href="">
+                        <i class="twitter-icon"></i>
+                        <span>Twitter</span>
+                    </a>
+                </div>
+                <p class="sign-up">Don't have an account yet? <a href="">Create an account</a></p>
+            </div>
+        </form>
+    </div>
+    <div class="mask" id="mask"></div>
+    <div class="model">
+        <div class="forgotpw" id="forgotpw">
+            <h3>Forgot Password?</h3>
+            <button onclick="none()">✖</button>
+            <p>Enter your e-mail address below to reset your password.</p>
+            <input type="text" placeholder="Email">
+            <div class="bottom">
+                <a href="#" onclick="none()">Cancel</a>
+                <a href="#">Submit</a>
+            </div>
+        </div>
+    </div>
+<script>
+    function block(){
+        document.getElementById('forgotpw').style.top="35px";
+        document.getElementById('forgotpw').style.opacity=1;
+        document.getElementById('mask').style.display="block";
+    }
+    function none(){
+        document.getElementById('forgotpw').style.opacity=0;
+        document.getElementById('forgotpw').style.top="-300px";
+        document.getElementById('mask').style.display="none";
+    }
+</script>
+</body>
+
+</html>

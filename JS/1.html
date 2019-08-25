@@ -1,0 +1,23 @@
+<script>
+    var a = [
+        { "name": "张三", "age": 34 },
+        { "name": "李四", "age": 28 },
+        { "name": "王五", "age": 45 },
+        { "":""}
+    ];
+    a.sort(function (n) {
+        return function (o, p) {
+            var v, b;
+            if (typeof o == "object" && typeof p == "object") {
+                v = o[n];
+                b = p[n];
+                if (v === b) return 0;
+                if (typeof v === typeof b) return v < b ? -1 : 1;
+                return typeof v < typeof b ? -1 : 1;
+            } else {
+                throw "error";
+            }
+        }
+    }("age")); 
+    console.log(a);//排序结果此略     
+</script>

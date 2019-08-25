@@ -1,0 +1,65 @@
+@media screen and (max-width:1320px) {
+    .change-num {
+        height: 240px;
+        /* justify-content: center; */
+        flex-wrap: wrap;
+    }
+    
+    .change-num>div {
+        width: 47%;
+    }
+
+    .change-num>div:first-child,
+    .change-num>div:nth-child(3) {
+        margin-right: 30px;
+    }
+    .change-num>div:nth-child(2){
+        margin-right: 0;
+    }
+    .tables{
+        width: 100;
+        flex-wrap: wrap;
+    }
+    .table-left,.table-mid,.table-right{
+        width: 100%;
+        margin-right: 0;
+    }
+    .table-right{
+        margin-top: 20px;
+    }
+    .face-b{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .second-section{
+        flex-wrap: wrap;
+    }
+    .second-section-left,.second-section-right{
+        width: 100%;
+        margin-right: 0;
+    }
+    .second-section-right{
+        margin-top: 20px;
+    }
+    .third-section{
+        flex-flow: wrap;
+    }
+    .third-section-left,.third-section-right{
+        width: 100%;
+    }
+    .third-section-right{
+        margin-left: 0;
+        margin-top: 20px;
+    }
+    .forth-section{
+        flex-flow: wrap;
+    }
+    .project,.circle{
+        width: 100%;
+        margin-right: 0;
+    }
+    .circle{
+        margin-top:20px;
+    }
+
+}

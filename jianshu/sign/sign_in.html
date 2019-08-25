@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/sign_in.css">
+    <link rel="icon" href="./img/logo.png" type="image/x-icon"/>
+
+    <title>登录 - 简书</title>
+</head>
+<body >
+
+    <div class="top">
+        <img src="./img/jianshu.png">
+    </div>
+    
+
+    <div class="main">
+        <div class="main_title">
+             <div class="login">
+                 <a>登录</a>
+            </div>
+            <div class="dot">
+                <sapn>·</sapn>
+            </div>
+            <div class="creat">
+                <a href="./sign_up.html">注册</a>
+             </div>
+        </div>
+       
+        
+    <form class="form">
+        <div class="input_usename">
+            <input type="text" placeholder="手机号或邮箱">
+            <img class="img_user" src="./img/img_user.png">
+
+        </div>
+        <div class="input_password">
+            <input type="text" placeholder="密码">
+            <img class="img_secret" src="./img/img_secret.png">
+
+        </div>
+        
+        <div class="rem_me">
+            <input type="checkbox" checked="checked" value="true">
+            <span>记住我</span>
+        </div>
+        <div class="question">
+            <a onclick="question()" class="ques-a">登陆遇到问题？</a>
+            <ul class="dropdown_menu" id="menu">
+                <li class="li1"> <a href="#">用手机号重置密码</a></li>
+                <li> <a href="#">用邮箱重置密码</a></li>
+                <li> <a href="#">无法用海外手机号登录</a></li>
+                <li> <a href="#">无法用Goolgle帐号登录</a></li>
+            </ul>
+            
+
+        </div>
+        <div class="btn" >
+            <button>
+            登录
+            </button>
+        </div>
+        
+    </form>
+
+
+    <div class="sjzh">
+        <span>社交账号登陆</span>
+    </div>
+
+
+    
+
+    <div class="bottom" >
+    <ul>
+        <li class="img1">
+            <a href="#">
+                <img  src="./img/img_weibo.png">
+            </a>
+        </li>
+        <li class="img2">
+            <a href="#">
+                <img  src="./img/img_weixin.png">
+            </a>
+        </li>
+        <li class="img3">
+            <a href="#">
+                 <img  src="./img/img_qq.png">
+            </a>
+        </li>
+        <li class="img4" >
+            <img class="other" id="imgother" onclick="on()" src="./img/img_other.png">
+            <a href="https://www.douban.com/service/auth2/auth?client_id=07b4f47aa74e2448171edd6ff5ea6cd8&redirect_uri=https%3A%2F%2Fwww.jianshu.com%2Fusers%2Fauth%2Fdouban%2Fcallback&response_type=code&state=%257B%257D" target="_blank">
+            <img class="douban" id="imgdb" src="./img/img_douban.png">
+            </a>
+        </li>
+    </ul>
+    </div>
+    
+
+
+    </div>
+    <script>
+        function on(){
+            document.getElementById('imgother').style.display='none';
+            document.getElementById('imgdb').style.display='block';
+        }
+        function question(){
+        if(menu.style.display=='none'){
+            document.getElementById('menu').style.display='block';
+        
+        }else{
+            document.getElementById('menu').style.display='none'; 
+        }
+        
+    }
+    function  ques(){
+            if(menu.style.display=='block'){
+            document.getElementById('menu').style.display='none';
+        }
+        }
+        
+    </script>
+
+</body>
+</html>

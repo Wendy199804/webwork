@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        p+b{
+            color:aquamarine;
+            /* 使这种组合的<b> 变色*/
+        }
+        
+
+         .grandpa .son{
+            
+            font-size: 30px;
+            /* 可以指定任意一个后代 */
+        }
+        .grandpa>.father{
+            color: brown;
+            /* 好像只能选择子代 */
+        }
+        .grandpa-.neighbor{
+            color: chartreuse;
+            /* ？？？ */
+        }
+       
+        div ~ p{
+            width: 500px;
+            background-color: brown;
+            /* display: none; */
+            /* 一次选中下面的所有元素，一起配置 */
+        }
+
+        .neighbor ~ p::first-line{
+            color: white;
+            /* 定义这个div后面所有的p元素的第一行为白色 */
+            /* 伪元素选择器 */
+        }
+        .neighbor ~ p::first-letter{
+            /* 块级首字符 */
+            font-size: 30px;
+            /* 定义这个div后面所有p元素的一个字的大小 */
+            text-shadow: 3px 3px 3px #444;
+        }
+
+        .wei>p::first-line{
+            /* 块级首行 */
+            color: chocolate;
+            /* 伪元素选择器 */
+        }
+        /* 伪类选择器一个冒号 */
+        ol{
+           
+            display: flex;
+            /* 同一行显示 */
+            margin:0;
+            padding: 0;
+            /* 去掉内外边距 */
+            list-style: none;
+            width: 500px;
+            justify-content: space-between;
+            /* ？？？ */
+
+        }
+        /* ol li{ */
+            /* background-color:yellow; */
+        /* } */
+        ol li a {
+            display: block;
+            color: black;
+            text-decoration: none;
+
+        }
+        ol li a::before{
+            /* content:"|"; */
+            /* 在a前面加| */
+            padding:0 15px;
+
+        }
+        ol li a::after{
+            content:" |";
+            /* 在a后面加| */
+            padding:0 38px ;
+            /* background-color: blue; */
+        }
+        [type="text"]{
+            background-color: brown;
+        }
+
+        [type="password"]{
+            color: red;
+        }
+
+        [href="ftp:127.0.0.1"]{
+            color: darkturquoise;
+            /* 单独设置链接为ftp:127.0.0.1的字体颜色 */
+        }
+        
+        [href^="http"]{
+            color: crimson;
+            /* 设置所有链接是http的字体颜色 */
+        }
+        
+        [href$=".net"]{
+            color: deeppink;
+            /* 设置所有以.net结尾的链接的字体颜色 */
+        }
+
+        [href*="163"]{
+            background-color: yellow;
+            /* 不管在链接的哪个位置出现163，只要出现的，链接背景颜色就是黄色 */
+        }
+    </style>
+
+</head>
+<body>
+    <b>我是B</b><p>我是P</p><b>我会变色</b>
+    <div class="grandpa">
+        <p>grandpa</p>
+        <div class="father">
+            <p>father</p>
+            <div class="son">
+                <p>son</p>
+            </div>
+        </div>
+    </div>
+
+  
+
+
+    <div class="neighbor">
+        我想让后面的元素消失我想让后面的元素消失我想让后面的元素消失我想让后面的元素消失
+    </div>
+    <p>hello</p>
+    <p>我们马上就要消失了我们马上就要消失了我们马上就要消失了我们马上就要消失了我们马上就要消失了我们马上就要消失了我们马上就要消失了我们马上就要消失了我们马上就要消失了我们马上就要消失了</p>
+    <p>no</p>
+    <p>yes</p>
+    <p>
+            中国日报网7月12日电 党的十九大报告指出：“构建国土空间开发保护制度，完善主体功能区配套政策，建立以国家公园为主体的自然保护地体系。”这意味着，我国的自然保护地体系正在经历一场深刻的历史性变革，将从目前的以自然保护区为主体转变为今后的以国家公园为主体。自然保护地为人类社会生存和发展提供了天然绿色屏障，是全人类生态安全的底线。作为人口大国和领土大国，中国的国家公园体制建设进程引起了全球关注。外媒认为，国家公园将有力促进中国的生态文明建设，并有望助力中国实现经济发展和生态环境的平衡。
+    </p>
+    <div class="wei">
+        <p>
+                近日，中国科学院生态环境研究中心主任、教授欧阳志云等人撰写的《中国实施自然保护地管理改革》一文在国际著名期刊《生态学与进化趋势》（Trends in Ecology and Evolution）上发表。文章称，中国正通过简化机构职责、减少职能交叉重叠等努力来加强保护区管理并取得了成效。国家林业和草原局（国家公园管理局）的成立就是这种努力中的一环。
+        </p>
+    </div>
+
+    <ol>
+        <li><a href="#">hello</a></li>
+        <li><a href="#">hhh</a></li>
+        <li><a href="#">hh</a></li>
+        <li><a href="#">hhhhhh</a></li>
+        <li><a href="#">hhhhh</a></li>
+    </ol>
+    <form>
+        <input type="text">
+        <input type="password">
+        <input type="checkbox">
+        <input type="text">
+    </form>
+    <a href="ftp:127.0.0.1">ftp</a>
+    <a href="http:www.baidu.com">http:baidu</a>
+    <a href="http:www.163.com">http:163</a>
+    <a href="http:www.163.net">net:163</a>
+    <a href="http:www.163.net">net:163</a>
+    
+
+
+</body>
+</html>

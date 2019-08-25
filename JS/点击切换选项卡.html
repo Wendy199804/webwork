@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+
+
+        #tab {
+            margin-top: 10%;
+        }
+
+        .tab-control ul {
+            width: 100%;
+            height: 40px;
+            background: #4CA7C1;
+            padding-top: 10px;
+            padding-left: 10px;
+            box-sizing: border-box;
+            
+            border-radius: 5px 5px 0 0;
+        }
+
+        .tab-control ul li:nth-child(1) {
+            border-radius: 4px 0 0 0;
+        }
+
+        .tab-control ul li {
+            float: left;
+            transition: 0.3s;
+            margin-right: 3px;
+            /* background-color: #4CA7C1; */
+        }
+
+        .tab-control ul li:hover {
+            background-color: #fff;
+        }
+
+        .tab-control ul li a:hover {
+            color: #47596F;
+        }
+
+        .tab-control ul li a {
+            display: block;
+            width: 66px;
+            height: 30px;
+            line-height: 39px;
+            text-decoration: none;
+            text-align: center;
+            color: #fff;
+            font-size: 15px;
+        }
+
+        .tab-two {
+            clear: left;
+        }
+
+        .tab-two ul {
+            width: 100%;
+            height:50px;
+        }
+
+        .tab-two ul li {
+            position: absolute;
+            padding: 25px;
+            line-height: 10px;
+            box-sizing: border-box;
+            font-size: 15px;
+            width: 825px;
+            height: 10px;
+        }
+
+        .show {
+            opacity: 3;
+        }
+
+        .hide {
+            opacity: 0;
+        }
+
+        .bj {
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="width: 825px;height:45px;">
+        <div id="tab">
+            <div class="tab-control">
+                <ul>
+                    <li><a href="javascript:void(0)">主页</a></li>
+                    <li><a href="javascript:void(0)">关于</a></li>
+                    <li><a href="javascript:void(0)">简介</a></li>
+                    <li><a href="javascript:void(0)">联系</a></li>
+                </ul>
+            </div>
+            <div class="tab-two">
+                <ul>
+                    <li class="show">主页-主页</li>
+                    <li class="hide">关于-关于</li>
+                    <li class="hide">简介-简介</li>
+                    <li class="hide">联系-联系</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div style="width: 825px;height:45px;">
+            <div id="tab">
+                <div class="tab-control2 tab-control">
+                    <ul>
+                        <li><a href="javascript:void(0)">主页</a></li>
+                        <li><a href="javascript:void(0)">关于</a></li>
+                        <li><a href="javascript:void(0)">简介</a></li>
+                    </ul>
+                </div>
+                <div class="tab-two2 tab-two">
+                    <ul>
+                        <li class="show">主页-主页</li>
+                        <li class="hide">关于-关于</li>
+                        <li class="hide">简介-简介</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+    <script type="text/javascript">
+        window.onload = function () {
+            var OneLi = document.getElementsByClassName('tab-control')[0].getElementsByTagName('li');
+            var TwoLi = document.getElementsByClassName('tab-two')[0].getElementsByTagName('li');
+            var a = document.getElementsByClassName('tab-control')[0].getElementsByTagName('a')
+
+            var OneLi2 = document.getElementsByClassName('tab-control2')[0].getElementsByTagName('li');
+            var TwoLi2 = document.getElementsByClassName('tab-two2')[0].getElementsByTagName('li');
+            var a2 = document.getElementsByClassName('tab-control2')[0].getElementsByTagName('a')
+
+            OneLi[0].className = 'bj'
+            a[0].style.color = '#47596F'
+            for (var i = 0; i < OneLi.length; i++) {
+                OneLi[i].index = i
+                OneLi[i].onclick = function () {
+                    var num = parseInt(this.index)
+                    for (var j = 0; j < OneLi.length; j++) {
+                        OneLi[j].className = ''
+                        TwoLi[j].className = 'hide'
+                        a[j].style.color = ''
+                    }
+                    OneLi[num].className = 'bj'
+                    TwoLi[num].className = 'show'
+                    a[num].style.color = '#47596F'
+                }
+            }
+
+            for (var i = 0; i < OneLi2.length; i++) {
+                OneLi2[i].index = i
+                OneLi2[i].onclick = function () {
+                    var num = parseInt(this.index)
+                    for (var j = 0; j < OneLi2.length; j++) {
+                        OneLi2[j].className = ''
+                        TwoLi2[j].className = 'hide'
+                        a2[j].style.color = ''
+                    }
+                    OneLi2[num].className = 'bj'
+                    TwoLi2[num].className = 'show'
+                    a2[num].style.color = '#47596F'
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

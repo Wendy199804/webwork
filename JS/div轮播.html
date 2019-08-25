@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>京东轮播图</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		a{
+			text-decoration: none;
+		}
+		li{
+			list-style: none;
+		}
+		.banner{
+			width: 520px;
+			height: 280px;
+			border: 1px solid red;
+			margin: 50px auto;
+			position: relative; top: 0; left: 0;
+		}
+
+
+		.wrap{
+			width: 2600px;
+			height: 280px;
+			position: relative; top: 0; left: 0;
+            display: flex
+		}
+
+		.wrap li{
+			width: 520px;
+			height: 280px;
+		}
+		.wrap li:first-child{
+			opacity: 1;
+			z-index: 3;
+		}
+
+		.btn{
+			position: absolute; top: 0; bottom: 0;
+			margin: auto;
+			width: 20px; height: 30px;
+			line-height: 30px; text-align: center;
+			background: rgba(1,1,1,.5); color: #fff;
+			display: none;
+			z-index: 4;
+		}
+
+		.left-btn{
+			left: 0;
+		}
+		.right-btn{
+			right: 0;
+		}
+
+		.banner:hover .btn{
+			display: block;
+		}
+		.yuan{
+			position: absolute;
+			left: 0; right: 0;
+			bottom: 20px;
+			margin: auto;
+			width: 200px; height: 20px;
+			border-radius: 10px;
+			background: rgba(255,255,255,.4);
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			z-index:4;
+		}
+		.yuan li{
+			width: 14px;
+			height: 14px;
+			border: 1px solid rgb(122, 56, 56);
+			border-radius: 50%;
+			cursor: pointer;
+		}
+
+		.active{
+			background: #fff;
+		}
+	</style>
+</head>
+<body>
+	
+
+	<div class="banner">
+		<ul class="wrap">
+			<li><img src="./images/1.jpg" alt="图片1"></li>
+			<li><img src="./images/2.jpg" alt="图片2"></li>
+			<li><img src="./images/3.jpg" alt="图片3"></li>
+			<li><img src="./images/4.jpg" alt="图片4"></li>
+			<li><img src="./images/5.jpg" alt="图片5"></li>
+		</ul>
+
+		<a href="javascript:;" class="btn left-btn">&lt;</a>
+		<a href="javascript:;" class="btn right-btn">&gt;</a>
+
+
+		<ol class="yuan">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ol>
+
+
+	</div>
+
+
+	<script>
+
+
+		var index = 0;
+
+		// 获取所有图片li的集合
+		var liDoms = document.querySelectorAll(".wrap li");
+			liDoms = Array.prototype.slice.call(liDoms,0);
+
+		// 获取所有的圆点
+		var yuanDoms = document.querySelectorAll(".yuan li");
+			yuanDoms = Array.prototype.slice.call(yuanDoms,0);
+
+		// 给左按钮添加点击事件
+		var leftBtn = document.querySelector(".left-btn");
+		leftBtn.onclick = function(){
+
+			bannerTo(index,index - 1)
+
+		}
+
+		// 给右按钮添加点击事件
+		var rightBtn = document.querySelector(".right-btn");
+		rightBtn.onclick = function(){
+
+			bannerTo(index,index + 1)
+
+		}
+
+		// 给所有的圆点添加点击事件
+		yuanDoms.forEach(function(item,yIndex){
+			item.onclick = function(){
+				bannerTo(index,yIndex);
+			}
+		});
+
+
+
+		// 轮播图切换的方法
+		function bannerTo(prevIndex,currIndex){
+			if(currIndex > 4){
+				index = 0;
+			}else if(currIndex < 0){
+				index = 4;
+			}else{
+				index = currIndex;
+			}
+			// 控制上一个图片淡出
+			liDoms[prevIndex].style.transform = "translateX(-520px)";
+			// liDoms[prevIndex].style.zIndex = 1;
+			// 控制下一个图片淡入
+		liDoms[index].style.transform = "translateX(0px)";
+			// liDoms[index].style.zIndex = 3;
+
+			yuanDoms.forEach(function(item,yIndex){
+				if(yIndex == index){
+					item.classList.add("active");
+				}else{
+					item.classList.remove("active");
+				}
+			});
+
+		}
+
+
+	
+	</script>
+</body>
+</html>

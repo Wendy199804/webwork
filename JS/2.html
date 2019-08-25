@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <img src="1.png" name="imgs" width="202" height="371" id="hour">
+    <span>时</span>
+    <img src="1.png" name="imgs" width="202" height="371" id="minute1">
+    <img src="1.png" name="imgs" width="202" height="371" id="minute2">
+    <span>分</span>
+    <img src="1.png" name="imgs" width="202" height="371" id="second1">
+    <img src="1.png" name="imgs" width="202" height="371" id="second2">
+    <span>秒</span>
+    <script Language="JavaScript">
+        var imge = ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.png", "0.png"];
+
+        var count = 0;
+        function change_hour() {
+            if (count == imge.length){
+                 count = 0;
+            }else{
+                 document.getElementById('hour').src = imge[count];
+                count++;
+            } 
+        }
+        function change_minute1() {
+            if (count == imge.length){
+                 count = 0;
+            }else{
+                 document.getElementById('minute1').src = imge[count];
+                count++;
+            } 
+        }
+        function change_minute2() {
+            if (count == imge.length){
+                 count = 0;
+            }else{
+                 document.getElementById('minute2').src = imge[count];
+                count++;
+            } 
+        }
+        function change_second1() {
+            if (count == imge.length){
+                 count = 0;
+            }else{
+                 document.getElementById('second1').src = imge[count];
+                count++;
+            } 
+        }
+        function change_second2() {
+            if (count == imge.length){
+                 count = 0;
+            }else{
+                 document.getElementById('second2').src = imge[count];
+                count++;
+            } 
+        }
+        change_hour();
+        change_minute1();
+        change_minute2();
+        change_second1();
+        change_second2();
+        setInterval("change_hour()", 3600000);//时
+        setInterval("change_minute1()", 600000);//分的十位数
+        setInterval("change_minute2()", 60000);//分的个位数
+        setInterval("change_second1()", 10000);//秒的十位数
+        setInterval("change_second2()", 1000);//秒的个位数
+    </script>
+</body>
+
+</html>

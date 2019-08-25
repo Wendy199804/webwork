@@ -1,0 +1,20 @@
+
+.all{
+    width: 600px;
+    height:300px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.all > div{
+    width:20%;
+    height: 300px;
+    float: left;
+}
+.all:hover  div{
+    width: 10%;
+    transition: all 0.8s;
+}
+.all > div:hover{
+    width:60%;
+    transition: all 1s;
+}

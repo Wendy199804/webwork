@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    :root{
+        background:burlywood;
+        /* 根元素 */
+    }
+    .div1{
+        width: 500px;
+
+    }
+    .p1::first-letter{
+        
+        color: blueviolet;
+        font-size: 55px;
+        text-shadow: 3px 3px 2px #555;
+        /* 文字阴影 : 阴影右偏移度   下偏移度   模糊距离（越大颜色越淡）   阴影颜色*/
+
+    }
+    a::before{
+        content: "|";
+        padding: 10px;
+    }
+    a{
+        text-decoration: none;
+    }
+    .div2{
+        width: 800px;
+        height: 800px;
+        background: #666;
+    }
+    .div3{
+        width: 600px;
+        height: 100px;
+        border:3px solid white;
+    }
+    .div2 > .div3:first-child{
+        background: red;
+        /* 第一个子元素div3 */
+
+    }
+    .div2 > .div3:last-child{
+        background: darkgoldenrod;
+    }
+    .div2 > .div3:only-child{
+        background: black;
+        /* 设置只有一个div3子元素的div2背景颜色为黑色 */
+        /* 这里不显示效果，因为我的div2里有大于1个的div3 */
+    }
+    .div2 > .div3:only-of-type(3){
+        background-color: coral;
+        /* 选择特定子元素的第二个 */
+
+    }
+    p:only-of-type{
+        background-color: red;
+        /* 指定属于父元素的特定类型的唯一子元素的每个 p 元素 */
+    }
+    .div2 >.div3:nth-child(2){
+        background-color: aqua;
+        /* 第二个子元素 */
+    }
+    .div2 > .div3:nth-last-child(3){
+        background-color:blueviolet;
+        /* 倒数第三个元素 */
+    }
+    :disabled{
+        background-color: #555;
+        /* 表示选择禁用状态的元素 */
+    }
+
+    :checked{
+        display: block;
+        width: 100px;
+        height:100px;
+        
+    }
+
+    :default{
+        /* display: none; */
+        /* 表示一组相关元素中的默认表单元素 */
+        
+    }
+    </style>
+</head>
+<body>
+    <!-- 两个冒号  伪元素 -->
+    <!-- 一个冒号  伪类 -->
+    <!-- 用法上相同 -->
+    <div class="div1">
+        <p class="p1">
+             CSS font-family字体样式设置属性知识教程篇，CSS font-family-CSS字体样式知识教程。在网页中我们常常对网页中文字设置字体，我们即可使用font-family实现字体样式设置。此文关于使用CSS设置对象字体样式篇。从html的字体到css字体使用CSS教程。
+        </p>
+    </div>
+    <a class="href" href="#">主页</a>
+    <a class="href" href="#">日志</a>
+    <a class="href" href="#">相册</a>
+    <a class="href" href="#">个人档</a>
+    <a class="href" href="#">更多</a>
+
+    <div class="div2">
+
+        <div class="div3">
+
+        </div>
+        <div class="div3">
+
+        </div>
+        <div class="div3">
+
+        </div>
+        <div class="div3">
+
+        </div>
+        <div class="div3">
+
+        </div>
+    </div>
+
+    <form>
+        <input type="text" disabled>
+        <input type="text">
+        <input type="text" checked>
+    </form>
+
+</body>
+</html>

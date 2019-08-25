@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    header{
+        height: 60px;
+        background-color: dodgerblue;
+    }
+    nav{
+        height: 30px;
+        background-color: aquamarine;
+        
+    }
+    
+    nav li{
+        float: left;
+    }
+    article{
+        background-color: antiquewhite;
+    }
+    article header{
+        background-color:beige;
+        height: 20px;
+    }
+
+
+    </style>
+</head>
+<body>
+    <!-- 文档元素，没有实际的作用效果，主要的目的就是用来布局，分区域 -->
+    <!-- 文档元素包裹文本元素 -->
+    <header>
+        <!-- 表示 首部,某个主题首部，不是整个页面的首部 -->
+        <h1>h1 : ----<!-- h1~h6 --></h1>
+        <!-- h1里可以放logo -->
+        <!-- h1~6 适用于各类文档标题 -->
+      <nav> <!-- 导航元素 -->
+          <ul>
+              <li>
+                  home
+              </li>
+          </ul>
+          <ul>
+              <li>
+                  home
+              </li>
+          </ul>
+          <ul>
+              <li>
+                  home
+              </li>
+          </ul>
+          <ul>
+              <li>
+                  home
+              </li>
+          </ul>
+          <ul>
+              <li>
+                  home
+              </li>
+          </ul>
+      </nav>  
+      
+      
+    </header>
+
+    <section class="sec1"> 
+        <hgroup> 
+            <!--  -->
+        <h2> h2: - -</h2>
+        <h3> h3-------</h3>
+        <h4> h4-------</h4>
+        <h5> h5:------</h5>
+        <h6> h6:------</h6>
+        </hgroup>
+    </section>  
+
+    <article><!-- 表示一段独立文章，里面包含头尾、主题等内容，在比较大的页面中会用到，比如一篇新闻  -->
+        <header>
+            <h2> 小标题</h2>
+        </header>    
+        <section> 
+            <div>
+                <p>
+                    一段内容
+                </p>
+            </div>
+        </section>
+        <footer>
+                日期/作者
+        </footer>
+    </article>
+
+
+    <address> 表示文档或者article的联系信息</address>
+    <aside > 表示与周边内容稍有牵涉的内容
+        <!-- 注释内容 -->
+    </aside>
+
+    <section class="sec2">  
+            <h2> h2: - -</h2>
+            <h3> h3-------</h3>
+            <h4> h4-------</h4>
+            <h5> h5:------</h5>
+            <h6> h6:------</h6>
+        </section>
+    <footer>
+        <!-- 表示尾部（主题尾部） -->
+        <a href="https://blog.csdn.net/ZeZe88818/article/details/78364744"> 更多内容</a>
+        <address>
+            联系我们
+            <!-- 联系信息 -->
+        </address>
+        <!-- 页面底部，比如评论 -->
+    </footer>
+    <details>
+        生成详情区域（详细信息）
+    </details>
+
+</body>
+</html>

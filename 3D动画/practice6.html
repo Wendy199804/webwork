@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .box{
+        width:200px;
+        height: 200px;
+        margin-top:300px;
+        margin-left:300px;
+        position: relative;
+        border:3px solid black;
+    }
+    .left{
+        width:150px;
+        height:2px;
+        background-image: linear-gradient(to right, white 15%,black 60%,white );
+        border:none;
+        position: absolute;
+        transform: translateX(-400px) translateY(-4px);
+        opacity: 0;
+    }
+    .box:hover>.left{
+        animation-name: left ;
+        animation-duration: 0.8s;
+        animation-timing-function:linear;
+    }
+    .top{
+        width:2px;
+        height:150px;
+        background-image: linear-gradient(to top, white 15%,black 60%,white );
+        border:none;
+        position: absolute;
+        transform: translateY(-400px) translateX(-4px);
+        opacity: 0;
+    }
+    .box:hover>.top{
+        animation-name: top ;
+        animation-duration: 0.8s;
+        animation-timing-function:linear;
+    }
+    .right{
+        width:150px;
+        height:2px;
+        background-image: linear-gradient(to right, white 15%,black 60%,white );
+        border:none;
+        position: absolute;
+        transform: translateX(400px) translateY(200px);
+        opacity: 0;
+    }
+    .box:hover>.right{
+        animation-name: right ;
+        animation-duration: 0.8s;
+        animation-timing-function:linear;
+    }
+    .bottom{
+        width:2px;
+        height:150px;
+        background-image: linear-gradient(to top, white 15%,black 60%,white );
+        border:none;
+        position: absolute;
+        transform: translateY(400px) translateX(200px);
+        opacity: 0;
+    }
+    .box:hover>.bottom{
+        animation-name: bottom ;
+        animation-duration: 0.8s;
+        animation-timing-function:linear;
+    }
+    @keyframes left{
+        0%{ transform: translateX(-400px);opacity: 0;}
+        50%{ transform: translateX(-100px);opacity: 1;}
+        100%{ transform: translateX(100px);opacity: 0;}
+    }
+    @keyframes top{
+        0%{ transform: translateY(-400px);opacity: 0;}
+        50%{ transform: translateY(-100px);opacity: 1;}
+        100%{ transform: translateY(100px);opacity: 0;}
+    }
+    @keyframes right{
+        0%{ transform: translateX(400px) translateY(200px);opacity: 0;}
+        50%{ transform: translateX(100px) translateY(200px);opacity: 1;}
+        100%{ transform: translateX(-100px) translateY(200px);opacity: 0;}
+    }
+    @keyframes bottom{
+        0%{ transform: translateY(400px) translateX(200px);opacity: 0;}
+        50%{ transform: translateY(100px) translateX(200px);opacity: 1;}
+        100%{ transform: translateY(-100px) translateX(200px);opacity: 0;}
+    }
+    </style>
+</head>
+<body>
+    
+    <div class="box">
+         <div class="left"></div>
+         <div class="top"></div>
+         <dov class="right"></dov>
+         <div class="bottom"></div>
+    </div>
+</body>
+</html>

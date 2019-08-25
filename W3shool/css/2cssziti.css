@@ -1,0 +1,130 @@
+.second_section{
+    width: 810px;
+    height: 163px;
+    margin: 0 auto;
+    padding-top: 1px;
+    font-size: 24px;
+}
+.second_section p:nth-child(1){
+    margin-top:50px;
+}
+.second_section::after{
+    content: "";
+    display: block;
+    width: 810px;
+    height: 1px;
+    background-color: #AAAAAA;
+    margin-top:35px;
+}
+.third_section{
+    width: 810px;
+    height: 390px;
+    margin: 0 auto;
+    padding-top: 1px;
+}
+.third_section::after{
+    content: "";
+    display: block;
+    width: 810px;
+    height: 1px;
+    background-color: #AAAAAA;
+    margin-top:35px;
+}
+.forth_section{
+    width: 810px;
+    height: 1795px;
+    margin: 0 auto;
+    padding-top: 1px;
+}
+.forth_section::after{
+    content: "";
+    display: block;
+    width: 810px;
+    height: 1px;
+    background-color: #AAAAAA;
+    margin-top:35px;
+}
+.fifth_section{
+    width: 810px;
+    height: 720px;
+    margin: 0 auto;
+    padding-top: 1px;
+}
+.fifth_section::after{
+    content: "";
+    display: block;
+    width: 810px;
+    height: 1px;
+    background-color: #AAAAAA;
+    margin-top:35px;
+}
+.sixth_section{
+    width: 810px;
+    height: 380px;
+    margin: 0 auto;
+    padding-top: 1px;
+}
+.sixth_section::after{
+    content: "";
+    display: block;
+    width: 810px;
+    height: 1px;
+    background-color: #AAAAAA;
+    margin-top:35px;
+}
+.seventh_section{
+    width: 810px;
+    height: 585px;
+    margin: 0 auto;
+    padding-top: 1px;
+}
+.seventh_section::after{
+    content: "";
+    display: block;
+    width: 810px;
+    height: 1px;
+    background-color: #AAAAAA;
+    margin-top:35px;
+}
+.eighth_section{
+    width: 810px;
+    height: 2053px;
+    margin: 0 auto;
+    padding-top: 1px;
+}
+.eighth_section::after{
+    content: "";
+    display: block;
+    width: 810px;
+    height: 1px;
+    background-color: #AAAAAA;
+    margin-top:35px;
+}
+.ninth_section{
+    width: 810px;
+    height: 515px;
+    margin: 0 auto;
+    padding-top: 1px;
+}
+.ninth_section::after{
+    content: "";
+    display: block;
+    width: 810px;
+    height: 1px;
+    background-color: #AAAAAA;
+    margin-top:35px;
+}
+.tenth_section{
+    width: 810px;
+    height: 485px;
+    margin: 0 auto;
+    padding-top: 1px;
+}
+.tenth_section::after{
+    content: "";
+    display: block;
+    width: 810px;
+    height: 1px;
+    background-color: #AAAAAA;
+    margin-top:35px;
+}

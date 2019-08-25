@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvasId" width="113" height="113" ></canvas>
+    <canvas id="canvasId2" width="113" height="113" ></canvas>
+
+    <script type="text/javascript">
+    {
+       var canvas = document.getElementById("canvasId");
+        var ctx = canvas.getContext("2d");
+        var ox = 56;
+        var oy = 56;
+        var or = 50;
+        var br = 5;
+        var moveFlag = false;
+    
+        function offset(r,d) {//根据弧度与距离计算偏移坐标
+            return {x: -Math.sin(r)*d, y: Math.cos(r)*d};
+        };
+    
+        function draw(n) {
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            ctx.strokeStyle = "#99a";
+            ctx.lineWidth = 10;
+            ctx.beginPath();
+            //ctx.arc(ox,oy,or,0,Math.PI,true);//半圆
+            ctx.arc(ox,oy,or,0,2*Math.PI,true);//整圆
+            ctx.stroke();
+            ctx.strokeStyle = "#F9A3A3";
+            ctx.lineWidth =10;
+            ctx.beginPath();
+          //  ctx.arc(ox,oy,or,Math.PI,(n*2+0.5)*Math.PI,false);
+            ctx.arc(ox,oy,or,0.5*Math.PI,(n*2+0.5)*Math.PI,false);
+            ctx.stroke();
+            ctx.fillStyle = "#F9A3A3";
+            ctx.font = "20px Arial";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText(Math.round(n*100)+"%",ox,oy);
+            ctx.fillStyle = "#F9A3A3";
+            ctx.beginPath();
+            var d =  offset(n*2*Math.PI,or);
+            ctx.arc(ox+d.x,oy+d.y,br,0,2*Math.PI,true);
+            ctx.fill();
+        }
+    
+        var on = ("ontouchstart" in document)? {
+            start: "touchstart", move: "touchmove", end: "touchend"
+        } : {
+            start: "mousedown", move: "mousemove", end: "mouseup"
+        };
+    
+        function getXY(e,obj) {
+            var et = e.touches? e.touches[0] : e;
+            var x = et.clientX;
+            var y = et.clientY;
+            return {
+                x : x - obj.offsetLeft + (document.body.scrollLeft || document.documentElement.scrollLeft),
+                y : y - obj.offsetTop  + (document.body.scrollTop || document.documentElement.scrollTop)
+            }
+        }
+    
+        canvas.addEventListener(on.start, function(e) {
+            moveFlag = true;
+        }, false);
+    
+        canvas.addEventListener(on.move, function(e) {
+            if (moveFlag) {
+                var k = getXY(e,canvas);
+                var r = Math.atan2(k.x-ox, oy-k.y);
+                var hd = (Math.PI+r)/(2*Math.PI);
+    
+                // 圆的滑动范围判断
+                if (hd <= 1 && hd >= 0) {
+                    draw(hd);
+                }
+            }
+        }, false);
+    
+        canvas.addEventListener(on.end, function(e) {
+            moveFlag = false;
+        }, false);
+    
+        draw(0.35);
+ 
+    }
+    
+
+
+
+
+       
+    </script>
+    
+    </body>
+</html>

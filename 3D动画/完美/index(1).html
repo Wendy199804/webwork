@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.wrap{
+			width: 200px;
+			height: 200px;
+			/*border: 1px solid blue;*/
+			position: relative;
+			margin: 200px auto;
+			transform-style: preserve-3d;
+			transform: rotateX(45deg) rotateY(45deg);	
+		    animation:mofang 20s linear ;
+	        animation-iteration-count:infinite;
+            transition: all 1s;
+    
+
+		}
+	.wrap>.box{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			opacity: 0.5;
+			transition: 1s;
+			border-radius: 15px;
+			animation-iteration-count:infinite;
+			    animation-fill-mode: forwards;
+		}
+		body{
+			background: black;
+		}
+ 
+    .box img{
+    	transition: all 0.2s;
+    	display: none;
+    }
+ 
+  .wrap:hover .box img{
+
+  	display: block;
+  }
+		.wrap>.box:nth-child(1){
+	       animation: one 3s linear;
+			background: black;
+			box-shadow: 0px 0px 20vh deeppink;
+			transform: rotateX(90deg) translateZ(100px);
+		
+			   /* transition-delay: 1s;*/
+		}
+			
+
+		.wrap>.box:nth-child(2){
+	        animation: two 3s linear;
+			background:black;
+			box-shadow: 0px 0px 20vh seagreen;
+			transform: rotateX(90deg) translateZ(-100px);
+					/*transition-delay: 2s;*/
+		}
+		.wrap>.box:nth-child(3){
+	        animation: three 3s linear;
+			background: black;
+			box-shadow: 0px 0px 20vh skyblue;
+			transform: rotateY(90deg) translateZ(-100px);
+		
+			 /*   transition-delay: 3s;*/
+		}
+		.wrap>.box:nth-child(4){
+	 animation: four 3s linear;
+			background: black;
+			box-shadow: 0px 0px 20vh lightcoral;
+			transform: rotateY(90deg) translateZ(100px);
+
+		    /*    transition-delay: 4s;*/
+		}
+		.wrap>.box:nth-child(5){
+	 animation: five 3s linear;
+			background:black;
+			box-shadow: 0px 0px 20vh mediumseagreen;
+			transform: translateZ(100px);
+		
+			  /*  transition-delay: 5s;*/
+		
+		}
+			/*@keyframes five{
+			0% {
+				transform: translateZ(100px);
+			}
+			50% {
+				transform: rotateX(90deg) translateZ(200px);
+			}
+			100%{
+			transform: translateZ(100px);
+			}
+			
+		
+		}*/
+		.wrap>.box:nth-child(6){
+	        animation: six 3s linear;
+			background:black;
+			box-shadow: 0px 0px 20vh dodgerblue;
+			transform: translateZ(-100px);
+		
+		}
+		.wrap:hover .box:nth-child(1) {
+	         background: deeppink;
+			transform: rotateY(0deg) translateZ(200px);
+		}
+
+		.wrap:hover .box:nth-child(2) {
+	          background:seagreen;
+			transform: translateZ(-200px) rotateY(180deg);
+		}
+
+		.wrap:hover .box:nth-child(3) {
+	        background: skyblue;
+			transform: rotateY(-90deg) translateZ(200px);
+		}
+
+		.wrap:hover .box:nth-child(4){
+	        background: lightcoral;
+			transform: rotateY(90deg) translateZ(200px);
+		}
+
+		.wrap:hover .box:nth-child(5) {
+	         background:mediumseagreen;
+			transform: rotateX(90deg) translateZ(200px);
+		}
+
+		.wrap:hover .box:nth-child(6) {
+	        background:dodgerblue;
+			transform: rotateX(-90deg) translateZ(200px);
+		}
+		@keyframes mofang{
+			from {
+				transform: rotateX(0deg) rotateY(0deg);
+			}
+			to {
+				transform: rotateX(360deg) rotateY(360deg);
+			}
+			
+		
+		}
+		img{
+			border-radius: 50%;
+			width: 100%;
+			height: 100%;
+		}
+		.wrap:hover .heart{
+			opacity: 1;
+		}
+		.heart {
+			transition: all 3s;
+			opacity: 0;
+		margin: 120px auto;
+		width: 80px;
+		height: 80px;
+		position: relative;
+		animation-name: shake;
+		animation-duration: 1s;
+		animation-iteration-count: infinite;
+}
+
+.heart div {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		background: pink;
+		animation-name: shadow;
+		animation-duration: 1s;
+		animation-iteration-count: infinite;
+}
+
+.topLeft,
+.topRight {
+		border-radius: 100px 100px 0 0;
+}
+
+.topLeft {
+		transform: translate(-50px, 0) rotate(-45deg);
+}
+
+.topRight {
+		transform: translate(50px, 0) rotate(45deg);
+}
+
+.bottom {
+		transform: translate(0, 56px) rotate(45deg) scale(.9, .9);
+}
+
+@keyframes shake {
+		from {
+				  transform: scale(.9, .9);
+		}
+		to {
+				  transform: scale(1.1, 1.1);
+		}
+}
+
+@keyframes shadow {
+		from {}
+		to {
+				  box-shadow: 0px 0px 50px pink;
+		}
+}
+ 
+	</style>
+</head>
+<body>
+	<div class="wrap">
+
+		<div class="box">
+			<img src="./1.jpg" alt="毛文女">
+		</div>
+		<div class="box">
+			<img src="./2.jpg" alt="毛文女">
+		</div>
+		<div class="box">
+			<img src="./3.jpg" alt="毛文女">
+		</div>
+		<div class="box">
+			<img src="./4.jpg" alt="毛文女">
+		</div>
+		<div class="box">
+			<img src="./5.jpg" alt="毛文女">
+		</div>
+		<div class="box">
+			<img src="./6.jpg" alt="毛文女">
+		</div>
+		<div class="heart">
+			
+	 <div class='topLeft'></div> 
+	<div class='topRight'></div>
+	<div class='bottom'></div>
+</div>
+	</div>	
+	
+</body>
+</html>

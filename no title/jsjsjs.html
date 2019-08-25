@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .btn1 {
+        width: 100px;
+        height: 30px;
+        outline: none;
+        border: none;
+        background-color: blue;
+    }
+
+    .p1 {
+        width: 300px;
+        height: 30px;
+        background-color: black;
+        color: white;
+    }
+</style>
+
+<body>
+    <script>
+        // alert("我的第一个 JavaScript");
+        function block() {
+            document.getElementById("demo").innerHTML = "我的第一个 JavaScript 函数";
+        }
+        function myfunction() {
+            document.write("使用函数来执行doucment.write，即在文档加载后再执行这个操作，会实现文档覆盖");
+        }
+        document.write("<h1>这是一个标题</h1>");
+        document.write("<p>这是一个段落。</p>");
+    </script>
+    <!-- 弹出框，内容：我的第一个 JavaScript" -->
+    <p id="demo" class="p1"></p>
+    <button class="btn1" type="button" onclick="block()">click me</button>
+    <!--  -->
+    <p class="p2">您只能在 HTML 输出流中使用 <strong>document.write</strong>。</p>
+    <button class="btn2" type="button" onclick="myfunction()">点击这里</button>
+</body>
+
+</html>

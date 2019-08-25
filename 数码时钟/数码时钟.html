@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        
+        img{
+            width: 100px;
+            height:200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="showTime" >
+        
+    </div>
+
+
+    <script>
+    
+    function zero(n){
+        // return n<10?'0'+n:n
+        if(n<10){
+            return '0'+n
+        }else{
+            return n
+        }
+    }
+
+    function change(a){
+        var imgs='';
+        aa=a.toString();
+        var len = aa.length;
+        for(var i=0;i<len;i++){
+            var aaa = aa.substr(i,1);
+            imgs+='<img src="'+aaa+'.png">'
+        }
+        return imgs;
+    }
+
+
+
+    function tickText(){
+        var oShowTime = document.getElementById('showTime');
+        // 创建一个时间对象
+        var oDate = new Date();
+        var oGetHours = zero(oDate.getHours()) //时;
+        var oGetMinutes = zero(oDate.getMinutes()) //分;
+        var oGetSeconds = zero(oDate.getSeconds()) //秒
+        oShowTime.innerHTML = '<span>'+ change(oGetHours) +'</span>:<span>'+ change(oGetMinutes) +'</span>:<span>'+ change(oGetSeconds) +'</span>'
+    }
+
+    setInterval(tickText,1)
+    tickText()
+    </script>
+</body>
+</html>

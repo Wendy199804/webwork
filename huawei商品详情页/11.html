@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+      <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #left {
+            width: 400px;
+            height: 400px;
+            border: 1px solid black;
+            margin: 20px;
+            background-image: url(../img/big.png);
+            background-size: 100% 100%;
+            position: relative;
+            float: left;
+        }
+
+        #box {
+            width: 220px;
+            height: 200px;
+            background: white;
+            /*透明度*/
+            opacity: 0.4;
+            /*方块要动所以给他一个定位*/
+            position: absolute;
+        }
+
+        #right {
+            width: 440px;
+            height: 400px;
+            border: 1px solid black;
+            position: relative;
+            float: left;
+            margin: 20px;
+            overflow: hidden;
+        }
+
+        #bbox {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #new {
+            width: 400px;
+            height: 400px;
+            background: blue;
+            position: absolute;
+            top: 0;
+            left: 0;
+            /*背景设置成透明*/
+            opacity: 0;
+            /*鼠标变成十字*/
+            cursor: crosshair;
+        }
+
+        #box,
+        #right {
+            display: none;
+        }
+    </style>       
+        
+</head>
+    
+
+<body>
+           <div id="left">
+        <div id="box"></div>
+        <div id="new"></div>
+    </div>
+
+    <div id="right">
+        <img id="bbox" src="./img/big.png"></img>
+    </div>
+
+    <script>
+
+        var left = document.getElementById("left");
+        var box = document.getElementById("box");
+        var right = document.getElementById("right");
+        var bbox = document.getElementById("bbox");
+        var newleft = document.getElementById("new");
+
+        //	    	给左侧小图加鼠标移动事件
+        newleft.onmousemove = function (e) {
+            //          	鼠标移动函数
+            var move = window.event || e;
+            //              获得兼容的事件对象
+            var move_left = move.offsetX || e.offsetX;
+            //              获得鼠标距离事件源的位置
+            var move_top = move.offsetY || e.offsetY;
+
+            //              为了让鼠标在色块中心时色块开始正式移动,所以鼠标位置减去色块的一边才是色块距离边框的真实距离
+            var box_left = move_left - 110;
+            var box_top = move_top - 100;
+
+            当计算好的距离小于0时, 不再让色块在移动而是等于0
+            if (box_left < 0) {
+                box_left = 0;
+            }
+            if (box_top < 0) {
+                box_top = 0;
+            }
+            if (box_left > 180) {
+                box_left = 180;
+            }
+            if (box_top > 200) {
+                box_top = 200;
+            }
+
+            //              将计算好的位置赋值给色块
+            box.style.left = box_left + "px";
+            box.style.top = box_top + "px";
+
+            var bbox_left = box_left * -2;
+            var bbox_top = box_top * -2;
+            //           将计算的值赋值
+            bbox.style.left = bbox_left + "px";
+            bbox.style.top = bbox_top + "px";
+
+        }
+        //          鼠标移入事件
+        newleft.onmouseover = function () {
+            box.style.display = "block";
+            right.style.display = "block";
+        }
+        //          鼠标移出事件
+        newleft.onmouseout = function () {
+            box.style.display = "none";
+            right.style.display = "none";
+        }
+    </script>
+
+        
+</body>
+
+</html>

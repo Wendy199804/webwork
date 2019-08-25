@@ -1,0 +1,45 @@
+@media screen and (max-width:845px){
+    .nav-left,.behind{
+        display: none;
+    }
+    .change-num {
+        height: 500px;
+    }
+    .change-num>div {
+        width: 100%;
+        
+    }
+    .change-num>div:nth-child(1){
+        margin-right: 0;
+    }
+    .change-num>div:nth-child(2),
+    .change-num>div:nth-child(3),
+    .change-num>div:nth-child(4){
+        margin-top:20px;
+        margin-right: 0;
+    }
+    .header-tips,.search{
+        display: none;
+    }
+    /* 左侧导航 */
+    .nav-left {
+        height:760px;
+        width: 100%;
+        z-index: 100;
+    }
+    .nav-left li {
+        width: 100%;
+    }
+    .sub{
+        width: 110%;
+        margin-right: -130px;
+    }
+    .sub li {
+        width: 100%;
+    }
+    /* 在导航后面负责占位 */
+    .behind {
+        width: 0;
+        min-width: 0;
+    }
+}

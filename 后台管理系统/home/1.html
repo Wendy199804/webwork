@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>CSS+JavaScript三级折叠菜单</title>
+    <style>
+        *,
+        body,
+        ul,
+        li,
+        h1,
+        h2 {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        body {
+            padding-top: 20px;
+        }
+
+        #menu {
+            width: 200px;
+            margin: auto;
+        }
+
+        #menu h1 {
+            cursor: pointer;
+            color: #FFF;
+            font-size: 12px;
+            padding: 5px 0 3px 10px;
+            border: #C60 1px solid;
+            margin-top: 1px;
+            background-color: #F93;
+        }
+
+        #menu h2 {
+            cursor: pointer;
+            color: #777;
+            font-size: 12px;
+            padding: 5px 0 3px 10px;
+            border: #E7E7E7 1px solid;
+            border-top-color: #FFF;
+            background-color: #F4F4F4;
+        }
+
+        #menu ul {
+            padding-left: 15px;
+            height: 100px;
+            border: #E7E7E7 1px solid;
+            border-top: none;
+            overflow: auto;
+        }
+
+        #menu ul li {
+            padding: 5px 0 3px 10px;
+        }
+
+        .sub {
+            display: none;
+        }
+    </style>
+    <script language="JavaScript">
+
+        function ShowMenu(obj, noid) {
+            var block = document.getElementById(noid);
+            var n = noid.substr(noid.length - 1);
+            if (noid.length == 4) {
+            } else {
+                var span = document.getElementById("menu").getElementsByTagName("span");
+                
+                for (var i = 0; i < span.length; i++) {
+                    if (i != n) {
+                        span[i].className = "sub";
+                    }
+                }
+            }
+            if (block.className == "sub") {
+                block.className = "";
+              
+            } else {
+                block.className = "sub";
+                obj.style.color = "";
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id="menu">
+        <h1 onClick="javascript:ShowMenu(this,'NO0')"> - 一级菜单A</h1>
+        <span id="NO0" class="sub">
+            <h2> - 一级菜单A_1</h2>
+            
+            <h2 > - 一级菜单A_2</h2>
+            
+            <h2 > - 一级菜单A_3</h2>
+            
+            <h2> - 一级菜单A_4</h2>
+            
+        </span>
+        <h1 onClick="javascript:ShowMenu(this,'NO1')"> - 二级菜单B</h1>
+        <span id="NO1" class="sub">
+            <h2 onClick="javascript:ShowMenu(this,'NO10')"> - 二级菜单B_1</h2>
+            
+            <h2 onClick="javascript:ShowMenu(this,'NO11')"> - 二级菜单B_2</h2>
+           
+        </span>
+        <h1 onClick="javascript:ShowMenu(this,'NO2')"> - 三级菜单C</h1>
+        <span id="NO2" class="sub">
+            <h2 onClick="javascript:ShowMenu(this,'NO20')"> - 三级菜单C_1</h2>
+            
+            <h2 onClick="javascript:ShowMenu(this,'NO21')"> - 三级菜单C_2</h2>
+           
+        </span>
+        <h1 onClick="javascript:ShowMenu(this,'NO3')"> - 四级菜单D</h1>
+        <span id="NO3" class="sub">
+            <h2 onClick="javascript:ShowMenu(this,'NO30')"> - 四级菜单D_1</h2>
+            
+            <h2 onClick="javascript:ShowMenu(this,'NO31')"> - 四级菜单D_2</h2>
+            
+        </span>
+        <h1 onClick="javascript:ShowMenu(this,'NO4')"> - 四级菜单D</h1>
+        <span id="NO4" class="sub">
+            <h2> - 四级菜单D_1</h2>
+            
+            <h2 > - 四级菜单D_2</h2>
+            
+        </span>
+    </div>
+</body>
+
+</html>

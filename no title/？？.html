@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    input:valid{
+        border:10px solid blue;
+        /* 输入验证合法时显示 */
+    }
+    input:invalid{
+        border:10px solid red;
+        /* 输入验证不合法时显示 */
+    }
+    input:required{
+        border:10px solid #555;
+        /* 未输入时显示（根据是否具有required属性） */
+     
+    }/* 这两个存在一个就行 */
+    input:optional{
+        border:10px solid orangered;
+        /* 根据是否具有optional属性 */
+    }
+    .input:not([title="111"]){
+        border:10px solid red;
+        /* 选择除了title="111"以外的input */
+    }
+    p:empty{
+        display: none;
+        /* 选择没有任何内容的元素 */
+    }
+    ::selection{
+        color:red;
+        /* 当选择文字时  触发选择 */
+    }
+    p{
+        border:5px solid green;
+    }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>a</li>
+        <li>a</li>
+        <li>a</li>
+        <li>a</li>
+        <li>a</li>
+        <li>a</li>
+        <li>a</li>
+    </ul>
+    <input type="text" pattern="^[0-9]{0,10}$" required optional>
+    <input type="text">
+    <input type="text" title="111">
+
+    <input type="text">
+
+    <input type="text">
+
+    <input type="text">
+    <p></p>
+    <p>22</p>
+
+
+
+
+
+</body>
+</html>

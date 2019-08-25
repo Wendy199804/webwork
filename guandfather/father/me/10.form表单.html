@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .button1,.in1,.in2{
+            display: block;
+            border-radius: 5px;
+            margin: 5px 0;
+            line-height: 35px;
+            height: 35px;
+            width: 300px;
+            padding: 0 15px;
+            border:1px solid #ddd;
+            outline: none;
+         
+
+        }
+        .in1:focus{
+            outline: 1px solid red;
+        }
+        .in2:focus{
+            outline: 1px solid yellow;
+        }
+        .checkbox:focus{
+            outline: none;
+        }
+        .checkbox{
+            width: auto;
+            height: auto;    
+        }
+        .btn{
+            background:url('0.jpg') no-repeat center;
+            height: 60px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    
+    <form action="http://www.baidu.com" >
+        <button type="submit">submit</button>
+<!-- 405 资源请求错误 ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+    </form>
+    <form name="baidu" method="POST" action="http://www.baidu.com"  target="_blank">
+        <!-- method表示表单的请求方式，有两种：post/get，默认是get  
+                    get方式提交数据的时候，最多16KB，最少4KB（通过浏览器地址栏提交）。相对于用户端是不安全的，但是相对于服务器端是安全的
+                    post没有大小限制/黑客攻击点。相对于客户端是安全的，但是相对于服务器端是不安全的
+             action纯后端技术必填；如果结合了ajax技术可以不填
+             name设置表单名称
+             enctype 表示浏览器对发送给服务器的数据采用的编辑格式
+             target 设置提交时的目标位置：_blank  _self  _parent  _top 
+             
+             enctype="application/x-www-form-urlencoded" 默认编码，只能上传文本信息，不能上传工具
+                      mulitipart/form-data 用于上传文件到服务器
+                      text/plain 没有规范，每个浏览器对它的解释不一样
+            -->
+            <label for="username"> please input here:</label>
+             <input type="text" autocomplete="off" name="username" id="username" value="234" autofocus>
+         <button> 提交 </button> 
+            
+    </form>
+    <!-- inout type属性默认是text （但是也要写上去type="text" ）
+         autofocus      在当前页面中聚焦光标，一个页面中只有一个（表现为：整个页面唯一有光标闪烁的地方，可以直接输入）
+         disabled       禁用input
+         autocomplete   设置浏览器记住用户输入的数据，实现自动完成表单。默认为on，如果不想 可以设置为off   但是不是所有浏览器都支持
+         lable          lable包裹input的时候，点击lable也可以选中input，实现输入。或者在lable内加入for="XXX" XXX为input的id，这样不把input包裹进去也可以实现上述功能。
+         legend         一般不用，这样的样式一般在CSS中实现
+    --> 
+    <form name="163" method="POST" action="http://www.163.com" target="_blank">
+            <input type="text" autocomplete="on"  name="none" id="none"  >
+            <!-- disabled禁用元素( 变灰 不能按) --> 
+            <button disabled >提交</button>
+    </form>
+    <form>
+        <textarea name="" id="" wrap="soft" cols="30" rows="10">可以输入几万字
+            
+        </textarea>
+        <select>
+            <option value="1"> 1</option>
+            <option value="2"> 2</option>
+            <option value="3"> 3</option>
+
+        </select>
+
+        <select >
+             <optgroup label="optgroup 10+">
+             <option>12</option>
+             <option>13</option>
+             </optgroup>
+              <optgroup label="optgroup 20+">
+             <option>22</option>
+             <option>23</option>
+             </optgroup>
+         </select>
+         <!-- 通过 <optgroup> 标签把相关的选项组合在一起： -->
+    </form>
+    <form>
+            <fieldset>
+                    <legend>
+                        注册
+                    </legend>
+                    <input type="text" value="???" >
+                    <button>注册</button>
+            </fieldset>
+            <!-- 一般不用 ？？ -->
+    </form>
+
+    
+
+    <form>
+
+       <input class="in1" type="text" placeholder="请输入……" >
+       <!-- value和placeholder同时出现的时 ，优先执行value -->
+       <!-- placeholder只有在文本框里有用 -->
+       <input class="in2" type="password" placeholder="请输入……">
+       <button class="button1" type="button">提交</button>
+       <input class="in1" type="search" value="search">
+       <!-- 尾部会出现X 但是不是所有浏览器都有 -->
+       <input class="in1" type="range" value="range">
+       <input class="in1" type="hidden" value="hidden">
+       <input class="in1" type="month" value="month">
+       <input class="in1" type="url" value="url" placeholder="请输入网址……">
+       <!-- 有格式要求 -->
+       <input class="in1" type="time" value="time">
+       <input class="in1" type="radio" value="radio">
+       <!-- 单选按钮 -->
+       <input class="CheckBox" type="checkbox" name=""> 1
+       <input class="CheckBox" type="checkbox" name=""> 2
+       <input class="CheckBox" type="checkbox" name=""> 3
+       <input class="CheckBox" type="checkbox" name=""> 4
+       <input class="CheckBox" type="checkbox" name=""> 5<br>
+       <!-- 表示复选 -->
+
+       
+       <label for="a">singing</label> <input class="CheckBox" type="radio" name="hobby" id="a" > 
+       <label for="b">dancing</label> <input class="CheckBox" type="radio" name="hobby" id="b" > 
+       <label for="c">reading</label> <input class="CheckBox" type="radio" name="hobby" id="c" > 
+       <label for="d">watching TV</label> <input class="CheckBox" type="radio" name="hobby" id="d" > 
+       <label for="e">playing football</label> <input class="CheckBox" type="radio" name="hobby" id="e" > 
+       <!-- 同一组选项的name值必须一样 以保证单选效果-->
+       <!-- 学会使用lable标签 -->
+       <input class="in1" type="color" value="color">
+       <input class="in1" type="file" value="file" accept="image/*">
+       <!-- 默认查找图片文件 -->
+
+       <input class="in1" type="tel"  placeholder="请输入电话……">
+       <!-- 电话号码没有固定格式 -->
+       <input class="btn" type="button" value="button">
+       <!-- submit和reset只有在form表单里才起作用 -->
+       <input type="image" url="" value="picture">
+       <!-- 现在不用这个 背景图片可以添加到按钮里去 -->
+       <input class="in1" type="email" placeholder="请输入邮箱" name="" >
+       <!-- 一个检测邮箱的文本框 -->
+       <input class="in1" type="datetime">
+      
+
+
+    </form>
+    <form>
+            <button class="in1" type="reset" value="reset">reset</button> <!-- 重置（清空）当前表单内容 -->     
+            <button class="in1" type="submit" value="submit">submit</button>  <!-- 用于表单提交 -->
+            <button class="in1" type="button" value="button" >button</button><!-- 没有任何作用的按钮。未来使用的更多，因为可以用JS赋予更多功能 -->
+         </form>
+
+    
+</body>
+</html>

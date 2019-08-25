@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   
+   <form action="">
+       <input type="text" maxlength="8" size="50" name="" value="" placeholder="" required>  
+       <!-- required 指必填 -->
+        <input list="word">
+            <datalist id="word">
+                <option value="number">123</option>
+                <option value="english">abc</option>
+                <option value="chinese">啊啊啊</option>
+            </datalist>
+            <button type="submit">submit</button>
+
+
+
+            <span id="show"></span>
+            <input type="range" min="1" max="100" onchange="" id="range">
+            <!-- step 步值   value 默认值 -->
+            <script>
+                var range = document.getElementById('range');
+                range.onchange= function(){
+                    var show =document.getElementById('show')
+                    console.log(range.value)
+                    show.innerText=this.value
+                }
+            </script>
+
+
+
+
+   </form>
+   <button>??</button>
+  
+</body>
+</html>

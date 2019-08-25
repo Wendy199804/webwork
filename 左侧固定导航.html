@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        ul{list-style-type: none;}
+        a{text-decoration: none;}
+        /*文章内容区*/
+        #content{
+          width:400px;
+          height:3000px;
+          margin:0 auto;
+          font-size:2em;
+        }
+        #content p{
+          height:400px;
+          text-align:center;
+          line-height:400px;
+          background:#CCC;
+        }
+        /*悬浮菜单*/
+        .menu{
+          position:fixed;
+          top:20%;
+          right:0;
+          width:200px;
+          border:1px solid gray;
+          border-radius:5px;
+        }
+        .menu li{
+          height:2em;
+          line-height:2em;
+        }
+        .red{color:red;}
+        .hide{display:none;}
+        /*隐藏悬浮菜单*/
+        .slideIn{
+          transform:translate3d(202px, 0, 0);
+          transition-duration:.5s;
+        }
+        /*显示悬浮菜单*/
+        .slideOut{
+          transform:translate3d(0, 0, 0);
+          transition-duration:.5s;
+        }
+        .static{
+          color:#007aff;
+          text-align:center;
+        }
+        /*显示悬浮球*/
+        .toShow{
+          display:block;
+          width:4.8em;
+          height:2em;
+          line-height:2em;
+          border-radius:.5em;
+          border:1px solid gray;
+          transform:translate3d(-5em, 0, 0);
+          transition-duration:1s;
+        }
+        </style>
+        <script>
+        function done(doc){
+          var pos = [],
+             links = doc.getElementsByTagName('a'),
+             titles = doc.getElementsByTagName('h1'),
+             menu = doc.getElementById('menubar'),
+             currentItem=null;
+                   
+           var addClass = function (element){
+             currentItem && currentItem.removeAttribute('class');
+             element.setAttribute('class','red');
+             currentItem = element;
+           },
+             
+           getScrollTop = function (){
+             return Math.ceil(document.documentElement.scrollTop||document.body.scrollTop)+1;
+           },
+             
+           startScroll = function (){
+             var scrollTop = getScrollTop(),
+                 len = titles.length,
+                 index = 0;
+                           
+             if(scrollTop>=0 && scrollTop<pos[0]){
+               addClass(links[0]);
+               return;
+             }
+                   
+             if(scrollTop>=pos[len-1]){
+               addClass(links[len-1]);
+               return;
+             }
+                   
+             for(;index<len;index++){
+               if(scrollTop > pos[index] && scrollTop < pos[index+1]){
+                 addClass(links[index]);
+                 break;
+               }
+             }
+           };
+             
+           menu.onclick=function(e){
+             var e=window.event||e
+             var target = e.target || e.srcElement;
+             if(target.nodeName.toLowerCase() === 'a'){
+               addClass(target);
+               return;
+             }
+             if(target.nodeName.toLowerCase() === 'p'){
+               if(target.className == 'static'){
+                 this.className = 'menu slideIn';
+                 setTimeout(function(){
+                   target.className = 'static toShow';
+                   target.innerHTML = '显示';
+                 },1000);
+               }else{
+                 target.className = 'static';
+                 target.innerHTML = '隐藏';
+                 this.className = 'menu slideOut';
+               }
+             }
+           }
+             
+           var ln = titles.length;
+           while(--ln>-1){
+             pos.unshift(titles[ln].offsetTop);
+           }
+           startScroll();
+           window.onscroll = function(){
+             startScroll()
+          }
+        }
+        window.onload=function(){
+          done(document)
+        }
+        </script>
+        </head>
+        <body>
+        <div id="show"></div>
+        <div id="content">
+          <h1 id="div">div教程</h1>
+          <p>div教程</p>
+          <h1 id="css">css教程</h1>
+          <p>css教程</p>
+          <h1 id="antzone">蚂蚁部落</h1>
+          <p>蚂蚁部落</p>
+          <h1 id="json">json教程</h1>
+          <p>json教程</p>
+        </div>
+        <div class="menu" id="menubar">
+          <p class="static">隐藏</p>
+          <ul>
+            <li><a href="#div">div教程</a></li>
+            <li><a href="#css">css教程</a></li>
+            <li><a href="#antzone">蚂蚁部落</a></li>
+            <li><a href="#json">json教程</a></li>
+          </ul>
+        </div>
+        </body>
+        </html>

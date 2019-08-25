@@ -1,0 +1,254 @@
+body,
+ul,
+ol,
+li,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+fieldset,
+table,
+td,
+img,
+div {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    background: #fff;
+    color: #333;
+    font-size: 12px;
+    font-family: "微软雅黑", "SimSun", "Arial Narrow";
+}
+
+ul,
+ol {
+    list-style-type: none;
+}
+
+select,
+input,
+img,
+select,
+button {
+    vertical-align: middle;
+    outline: none
+}
+
+a {
+    text-decoration: none;
+}
+
+a:link {
+    color: #009;
+}
+
+a:visited {
+    color: #800080;
+}
+
+a:hover,
+a:active,
+a:focus {
+    color: #c00;
+}
+
+.wrap {
+    padding-top: 0.1px;
+}
+
+.header {
+    width: 100%;
+    height: 3.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    border-bottom: 1px solid #E8E9EB;
+    background-color: white;
+    position: fixed;
+    z-index: 3;
+}
+
+.header_left,
+.header_right {
+    width: 1.8rem;
+    height: 1.8rem;
+    /* background-color: chartreuse; */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.header_mid {
+    width: auto;
+    height: 1.8rem;
+    /* background-color: chartreuse; */
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.header_right img {
+    width: 85%;
+    /* height: 90%; */
+}
+
+.contain {
+    width: 100%;
+    height: auto;
+    padding-top: 3.25rem;
+    padding-bottom: 3.3125rem;
+}
+
+.search {
+    width: 100%;
+    height: 2.375rem;
+    /* margin-top: 3.25rem; */
+    position: relative;
+}
+
+.search input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background-color: #FAFBFD;
+    padding-left: 1rem;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    box-sizing: border-box;
+}
+
+.search img {
+    width: 1.2rem;
+    height: 1.2rem;
+    /* position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    left: 25%; */
+}
+
+/* .search input::-webkit-input-placeholder{
+    color: #8BB5F6;
+    font-size: 
+    padding-left: 35%;
+}
+.search input:focus::-webkit-input-placeholder{
+    color:transparent;
+} */
+.search_plachholder {
+    width: auto;
+    height: 2.375rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.search_plachholder span {
+    font-size: .7rem;
+    color: #8BB5F6;
+    margin-left: 4px;
+}
+
+.search input:focus+.search_plachholder {
+    display: none;
+}
+
+.contain_list {
+    width: 100%;
+    height: 5.5rem;
+    /* background-color: aqua; */
+    padding: 1rem;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+}
+
+.list_user {
+    width: 18%;
+    height: 100%;
+}
+
+.list_words {
+    width: 79%;
+    height: 100%;
+    /* display: flex;
+    align-items: flex-end */
+}
+
+.list_words1 {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.list_words2 {
+    width: 100%;
+    height: 70%;
+}
+
+.list_words1_div1 {
+    font-size: 0.5rem;
+    color: #8AB5F6;
+}
+
+.list_words1_div2 span {
+    color: #1F1A24;
+    font-weight: 600;
+}
+
+.list_words1_div2 img {
+    width: 1.2rem;
+}
+
+.list_words2 p {
+    overflow: hidden;
+    /* white-space: nowrap; */
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+    /* word-break:break-all; */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    font-size: 0.7rem;
+    padding-top: 5px;
+    
+}
+.list_user_img img{
+ width: 100%;
+ border-radius: 50%;
+}
+.footer{
+    width: 100%;
+    height: 3.3125rem;
+    background-color: white;
+    border-top:1px solid #F8F8F8;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3rem;
+    box-sizing: border-box;
+}
+.footer_left,.footer_mid,.footer_right{
+    width: 1.8rem;
+    height: 1.8rem;
+}
+.footer_left img,.footer_mid img,.footer_right img{
+    width: 100%;
+    
+}

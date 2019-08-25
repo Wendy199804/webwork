@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css3立方体动画_立方体3D翻转动画特效</title>
+</head>
+    <style>
+    	.box{
+    			transform-style: preserve-3d; 
+    			perspective: 500px;
+    			width: 1000px;
+    			height: 300px;
+    			margin: 100px auto;
+    	}
+	    .cuboid{
+	    	 perspective: 3000px;
+	    	width: 50px;
+	    	height: 300px;
+	    	 left: 0;
+	    	 top: 0;
+	    	 position: absolute;
+	    	transform: rotateY(0deg) rotateX(0deg) rotateZ(0);
+	    	position: relative;
+	    	transform-style: preserve-3d; 
+	    	animation: hah 3s infinite alternate;
+	    }
+	    /*.box:hover .cuboid{
+	    	transform: translateZ(-3000px)  rotateX(90deg) rotateZ(0deg);
+	    }*/
+
+	    .cuboid>div{
+	    	position: absolute;
+	    	left: 0;
+	    	top: 0;
+	    	opacity: 0.2;
+	    	/*border: 1px  solid red;*/
+	    }
+	    .cuboid1{
+	    	width: 50px;
+	    	height: 300px;
+	    	background: red;
+	    	position: absolute;
+	    	transform: translateX(25px) translateY(-125px) rotateY(90deg) rotateZ(90deg);
+	    }
+	    .cuboid2{
+	    	width: 50px;
+	    	height: 50px;
+	    	background: pink;
+	    	position: absolute;
+	    	transform: translateZ(150px);
+	    }
+	    .cuboid3{
+	    	width: 50px;
+	    	height: 300px;
+	    	background: blue;
+	    	position: absolute;
+	    	transform: translateY(-100px) rotateX(90deg)
+	    	;
+	    }
+	    .cuboid4{
+	    	width: 50px;
+	    	height: 300px;
+	    	background: #149C5A;
+	    	transform: translateY(-125px) translateX(-25px) rotateZ(90deg)
+	    	rotateX(90deg);
+	    }
+	    .cuboid5{
+	    	width: 50px;
+	    	height: 300px;
+	    	background: purple;
+	    	position: absolute;
+	    	transform: translateY(-150px) rotateX(90deg);
+	    }
+	     .cuboid6{
+	    	width: 50px;
+	    	height: 50px;
+	    	background: green;
+	    	transform: translateZ(-150px);
+	    }
+	    @keyframes hah{
+	    	 0% {
+    transform: translateZ(-300px) rotateX(90deg);
+  }
+  25% {
+    transform: translateZ(-300px) rotateX(90deg);
+  }
+  75% {
+    transform: rotateX(-90deg);
+  }
+  100% {
+    transform: rotateX(-90deg);
+  }
+
+
+	    }
+    </style>
+<body>
+	<div class="box">
+		<div class="cuboid">
+			<div class="cuboid1"></div>
+			<div class="cuboid2"></div>
+			<div class="cuboid3"></div>
+			<div class="cuboid4"></div>
+			<div class="cuboid5"></div>
+			<div class="cuboid6"></div>
+		</div>
+	</div>
+</body>
+</html>

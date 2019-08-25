@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="text " id="ip" placeholder="请输入ip地址" >
+        <button type="button" id="btn" name="submit">提交</button>
+        <p class="tip"></p>
+    </form>
+    <script>
+    var ip = document.getElementById('ip');
+    var btn = document.getElementById('btn');
+    var tip = document.getElementsByClassName('tip');
+    btn.onclick = function(){
+        var regexp = /^(\b((25[0-5])|(2[0-4]\d)|(1\d{1,2})|(\d{2})|([1-9]{1}))\.)(\b((25[0-5])|(2[0-4]\d)|(1\d{1,2})|(\d{2})|([0-9]{1}))\.){2}(\b((25[0-5])|(2[0-4]\d)|(1\d{1,2})|(\d{2})|([0-9]{1})))$/;
+        var str = ip.value;
+        console.log(regexp.test(str));
+
+        if(regexp.test(str)){
+            ip.style.border="2px solid green";
+            alert('correct IP !!!');
+            tip.innerHTML='correct IP !!!';
+
+        }else{
+            ip.style.border="2px solid red";
+            alert('wrong IP !!!');
+             tip.innerHTML='wrong IP !!!';
+        }
+       
+    }
+   
+   
+        // var reg = /^(\b((25[0-5])|(2[0-4]\d)|(1\d{1,2})|(\d{2})|([1-9]{1}))\.){3}(\b((25[0-5])|(2[0-4]\d)|(1\d{1,2})|(\d{2})|([1-9]{1})))$/;
+        // var s = '234.2.3.2';
+        // var a = reg.test(s);
+        // document.write(a);
+        // document.write('<br>');
+
+      
+    </script>
+</body>
+</html>

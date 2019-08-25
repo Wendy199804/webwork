@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .pull-down-menu {
+            position: relative;
+        }
+        .menu-list {
+            width: 100%;
+            height: 400px;
+            padding-right: 500px;
+            overflow: hidden;
+        }
+        .pull-down-menu .menu-list .menu-li {
+            display: inline-block;
+        }
+        .pull-down-menu .menu-list a {
+            margin-right: 30px;
+            display: block;
+            min-width: 40px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            font-size: 18px;
+            color: #333;
+        }
+        .menu-list a.active,
+        .menu-list a:hover,
+        .menu-list a:active,
+        .menu-list a:visited {
+            font-weight: bolder;
+            color: #000;
+        }
+        .unfold-btn {
+            position: absolute;
+            right: 0;
+            top: 10px;
+            display: block;
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 22px;
+            color: #333;
+            background: #e2e2e2;
+            border-radius: 8px;
+        }
+        .flag-up:before {
+            content: '';
+            position: absolute;
+            right: 7px;
+            top: 15px;
+            width: 19px;
+            height: 11px;
+        }
+        .flag-down:before {
+            content: '';
+            position: absolute;
+            right: 7px;
+            top: 15px;
+            width: 19px;
+            height: 11px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pull-down-menu w1080">
+        <div class="menu-list" id="menu">
+            <div class="menu-li">
+                <a href="#" class="active">推荐</a>
+                <p>5465463</p>
+                <p>5989663</p>
+                <div style="width: 100px;height:200px;background-color:red;"></div>
+            </div>
+        </div>
+        <a href="#" class="unfold-btn flag-up" id="unfold">收起</a>
+    </div>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            let mainMenu = document.getElementById("menu");
+            let menuH = mainMenu.clientHeight;
+            let unfoldBtn = document.getElementById("unfold");
+            let classVal = unfoldBtn.getAttribute("class");
+            let hflag = 0; // 标记是否隐藏
+            unfoldBtn.onclick = function () {
+                if (hflag==0) {  
+                    if (menuH == 400) {
+                        let setInt = setInterval(function () {
+                            menuH -= 50;
+                            mainMenu.style.height = menuH + "px";
+                            if (menuH == 50) {
+                                if (!hasClass(unfoldBtn)) {
+                                    unfoldBtn.setAttribute("class", classVal);
+                                }
+                                hflag = 1;
+                                clearInterval(setInt);
+                            }
+                        }, 50);
+                    }
+                } else  {   
+                    if (menuH == 50) {
+                        let setInt1 = setInterval(function () {
+                            menuH += 50;
+                            mainMenu.style.height = menuH + "px";
+                            if (menuH == 400) {
+                                if (!hasClass(unfoldBtn)) {
+                                    unfoldBtn.setAttribute("class", classVal);
+                                }
+                                hflag = 0;
+                                clearInterval(setInt1);
+                            }
+                        }, 50);
+                    }
+                    
+                }
+            };
+            function hasClass(element, cls) {
+                return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

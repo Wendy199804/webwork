@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 1000px;
+            height: 500px;
+            transform-style: preserve-3d;
+            margin: 20px auto;
+        }
+
+        .class {
+            width: 300px;
+            height: 300px;
+            position: relative;
+            left: 0;
+            top: 0;
+            transform-style: preserve-3d;
+            /* background: red; */
+            margin: 200px auto;
+            transform: rotateX(30deg) rotateY(30deg) rotateZ(30deg);
+        }
+
+        .class>div {
+            width: 300px;
+            height: 300px;
+            /* background: black; */
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+            /* flex-direction: column; */
+        }
+
+        .class>div:nth-child(1) {
+            transform: translateX(-150px) rotateY(90deg);
+            /* transform: ; */
+            background: yellow;
+        }
+
+        .class>div:nth-child(2) {
+            transform: translateX(150px) rotateY(90deg);
+            /* transform:  */
+            background: green;
+        }
+
+        .class>div:nth-child(3) {
+            transform: translateY(-150px) rotateX(90deg);
+            /* transform: ; */
+            background: pink;
+        }
+
+        .class>div:nth-child(4) {
+            transform: translateY(150px) rotateX(90deg);
+           
+            background: blue;
+        }
+
+        .class>div:nth-child(5) {
+            transform: translateZ(150px);
+
+            background: orange;
+        }
+
+        .class>div:nth-child(6) {
+            transform: translateZ(-150px);
+
+            background: purple;
+        }
+        .class>div>div{
+            background: black;
+            width: 80px;
+            height: 80px;
+            margin: 10px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="class">
+            <div>
+                <div></div>
+
+            </div>
+            <div>
+                <div></div>
+                <div></div>
+            </div>
+            <div>
+                <div></div>
+                <div></div>
+                <div></div>
+
+            </div>
+            <div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+ 
+</script>
+</html>

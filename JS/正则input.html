@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="text " id="qq" placeholder="请输入你的QQ号码">
+        <button type="button" id="btn">提交</button>
+        <p class="tip"></p>
+    </form>
+    <script>
+    var qq = document.getElementById('qq');
+    var btn = document.getElementById('btn');
+    var tip = document.getElementsByClassName('tip');
+    btn.onclick = function(){
+        var regexp = /^[0-9]{5,11}$/;
+        var str = qq.value;
+        console.log(regexp.test(str));
+
+        if(regexp.test(str)){
+            qq.style.border="2px solid green";
+
+        }else{
+            qq.style.border="2px solid red";
+             tip.innerHTML="wrong";
+        }
+        console.log(tip);
+    }
+    
+    </script>
+</body>
+</html>

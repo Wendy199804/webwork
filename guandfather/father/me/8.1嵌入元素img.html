@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #img_sky{
+        width: 500px;
+        height: 335px;
+        border: 1px solid black;
+        position: relative;
+    }
+    #img_sky img{
+        width: 100%;
+        position: absolute;
+    }
+    #img_sky a{
+        display: inline-block;
+        position: absolute;
+        width: 50%;
+        height: 100%;
+    }
+    a.left{
+        left: 0;
+        top:0;
+    }
+    a.right{
+        right: 0;
+        top: 0;
+    }
+    #div_father{
+        background-color: antiquewhite;
+        position: relative;
+        width: 600px;
+        height:600px;
+           /* position用法：http://www.divcss5.com/rumen/r403.shtml */
+    }
+    #div_son{
+        background-color: black;
+        color: blanchedalmond;
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-left:250px;
+        /* 要使div水平居中：margin-left的值是（父级宽度的一半-子级宽度的一半）   ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲*/
+    }
+    </style>
+</head>
+<body>
+    <!-- 嵌入元素 ： 把外部的一些资源插入到HTML中 -->
+    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562755744373&di=03fe4c1df029388b97726dc28fe7dbf8&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fphotoblog%2F1708%2F17%2Fc9%2F55922879_1502975816731.jpg" alt="天空" width="500px">
+    <!-- 图片设置大小的时候，width和height中只设置一个就可以，否则图片会变形 -->
+    <!-- 注意： 图片绝对不允许变形 -->
+    <img src="0.jpg" alt="海" >
+        <!-- alt：当图片加载不出来的时候显示的备用内容，以提示用户这曾经是张什么图片 -->
+    <div id="img_sky">
+        <img src="0.jpg" alt="海">
+        <a href="http://www.baidu.com" class="left"></a>
+        <a href="http://www.youku.com" class="right"></a>
+    </div>
+    <div id="div_father">
+
+        <div id="div_son" >
+            这是一个居中的div
+        </div>
+        <a href="http://www.divcss5.com/rumen/r403.shtml">position用法</a>
+    </div>
+</body>
+</html>

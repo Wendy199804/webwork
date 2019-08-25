@@ -1,0 +1,183 @@
+@media screen and (min-width:1401px) {
+
+
+    .header {
+
+        min-width: 1160px;
+
+    }
+
+    .header_nav1main {
+        width: 1160px;
+
+
+    }
+
+    .header_nav1main_left {
+
+        min-width: 1160px;
+    }
+
+    .header_banner {
+
+        min-width: 1160px;
+
+
+    }
+
+    .header_banner_main {
+        width: 1160px;
+
+    }
+
+    .header_nav2 {
+        width: 1160px;
+
+    }
+
+    .nav2_menu {
+
+        width: 1160px;
+    }
+
+    .bili-wrapper {
+        width: 1160px;
+
+    }
+
+    .gg-floor-module {
+        width: 1160px;
+
+    }
+
+    .footer-wrp {
+
+        width: 1160px;
+
+    }
+
+    .footer-contain {
+        width: 1160px;
+    }
+
+    .recommend-module {
+        width: 720px;
+
+    }
+
+    .nav2_menu_ul>li {
+        margin-right: 8px;
+        width: 48px;
+
+    }
+
+    .l-con {
+        width: 900px;
+        height: auto;
+        float: left;
+    }
+
+    .zone-title {
+        width: 900px;
+
+    }
+
+    .story-box {
+        width: 900px;
+
+    }
+
+    .fanju-up-left {
+        width: 900px;
+    }
+
+    .fanju-new {
+        width: 900px;
+    }
+
+    .zhuanlan-left {
+        width: 900px;
+    }
+
+    .zhuanlan-story-box {
+        width: 900px;
+    }
+
+    .special-story-box {
+        width: 900px;
+
+    }
+
+    .fanju-box-card {
+        width: 214px;
+
+    }
+
+    .card-padding {
+        margin-top: 0px;
+    }
+
+    .card-padding2 {
+        margin-top: 36px;
+    }
+
+    .footer-contain-ul>li:nth-child(1) {
+
+        width: 380px;
+
+    }
+
+    .footer-contain-ul>li:nth-child(2) {
+
+        width: 410px;
+
+    }
+
+    .footer-contain-ul>li:nth-child(3) {
+        width: 320px;
+
+    }
+    .fanju-box-card{
+        width: 214px;
+        padding-right: 34px;
+    }
+    .fanju-up-left .bili-tab{
+        width: 650px;
+    }
+    .fanju-up-left .bili-tab-item{
+        width: 70px;
+    }
+    .c-clink{
+        position: absolute;
+    right: 20px;
+    top: -7px;
+    border: 1px solid #f25d8e;
+    width: 104px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    color: #f25d8e;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: .1s;
+    }
+    .headline {
+        width: 880px;
+    }
+    .bili-download-contain{
+       
+        width: 980px;
+    }
+    .footer-word {
+      
+        width: 1000px;
+       
+    }
+    .article-card {
+        width: 420px;
+    }
+    .article-words {
+        width: 304px;
+    }
+ 
+}

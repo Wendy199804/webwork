@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <img src="0.png" alt="" id="img" width="130px" height="200px">
+    <div id="divv"></div>
+    <button>next</button>
+    <script>
+        var count = 0;
+var contain;
+        var img = document.getElementById('img');
+        function change() {
+            for (count = 0; count < 10; count++) {
+                //    contain+=count;
+                //    return contain;
+                //    document.getElementById('img').src=count+".png";
+                contain = "";
+                contain += '<img src="' + count + '.png">'
+
+                // count ++;
+                // document.getElementById("img").src=count+".png";
+                // if(count == 9){
+                // 	count = 0;
+
+            }
+
+            return contain;
+        }
+        // document.write(img.src);
+        // }
+        // document.getElementById('img').innerHTML=change();
+
+        // change();
+        function show() {
+            document.getElementById('divv').innerHTML = change();
+        }
+        show();
+        setInterval("show()", 1000);
+        // console.log(change());
+
+
+    </script>
+</body>
+
+</html>

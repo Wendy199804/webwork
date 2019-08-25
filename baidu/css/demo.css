@@ -1,0 +1,221 @@
+@charset "utf-8";
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+._top{
+    width: 100%;
+    text-align: right;
+    padding-top: 22px;
+    font-size: 15px;  
+}
+._top a{
+    margin-right: 16px;
+    font-size: 13px;  
+}
+._top a:link{
+    color: rgb(51, 51, 51);
+}
+._top a:visited{
+    color:  rgb(51, 51, 51);
+}
+._top a:hover{
+    color: blue;
+}
+
+._top a:active{
+    color: blue;
+}
+.nav2{
+    display: inline-block;
+    
+}
+.nav2_con{
+    display: none;
+    position: fixed;
+    color:rgb(51, 51, 51);
+    width:70px;
+    height:100px;
+    right:78px;
+    box-shadow: 1px 1px 5px #726f6f;
+    margin-top: 6px;
+}
+.nav2_con>li{
+    padding: 3px 3px 3px 3px ;
+}
+.nav2:hover .nav2_con{
+    display: block;
+}
+.nav2_con li{
+    list-style: none;
+}
+.nav2_con p{
+    text-align: center;
+}
+.nav3{
+    width: 66px;
+    background-color: rgb(51, 136, 255);
+    display:inline-block;
+    color: white;
+    text-align: center;
+    height:25px;
+    line-height: 25px;
+    position: relative;
+}
+.nav3_con{
+    display: none;
+    background: rgb(249, 249, 249);
+    position: fixed;
+    padding: 0 15px;
+    display: none;
+    bottom: 0;
+    top:0;
+    right:0;
+}
+
+.nav3_con li{
+    list-style: none;
+    padding-top: 22px;
+    color:gray;
+}
+.nav3:hover .nav3_con{
+    display: block;
+}
+._top .nav1{
+    font-weight: bold;
+}
+
+
+._main{
+    width: 270px;
+    margin:  120px  auto 20px auto;
+    
+}
+.main_img{
+    width: 100%;
+
+}
+.search_main{
+    width: 632px;
+    height: 35px;
+    margin:0 auto;
+    position: relative;
+}
+._search{
+    margin:0 auto;
+    float: left;
+    width:520px;
+    height: 35px;
+    border:1px solid #A3A3A3;
+    padding-left: 10px;
+    
+}
+._search:focus{
+    border-color: rgb(51, 133, 255);
+}
+.search img{
+    position: absolute;
+    left: 502px;
+    top: 8px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.search .img2{
+    display: none;
+    z-index: 2;
+
+}
+
+
+.search:hover .img2{
+    display:block;
+}
+
+._button{
+    background-color: rgb(51, 133, 255);
+    color: white;
+    width: 100px;
+    height: 37px;
+    border:none;
+    font-size: 16px;
+    cursor: pointer;
+}
+.button:hover ._button{
+    background-color: rgb(49, 126, 243);
+    box-shadow:  1px 1px 5px #d1d1d1;
+}
+._foot_1{
+    width: 300px;
+    margin:0 auto;
+    margin:  300px  auto 30px auto;
+    text-align: center;
+}
+.foot_1_p1{
+    letter-spacing :3px;
+    margin-top: 7px;
+}
+.foot_1_p2{
+    font-size: 14px;
+    color: #A3A3A3;
+    margin-top:4px;
+}
+
+
+._foot_2{
+    width: 1000px;
+    margin:0 auto;
+    text-align: center;
+    color: #A3A3A3;
+    font-size: 12px;
+    
+}
+._foot_2 a:link{
+    color: #A3A3A3;
+}
+._foot_2 a:active{
+    color: #A3A3A3;
+}
+._foot_2 a:hover{
+    color: #A3A3A3;
+}
+._foot_2 a:visited{
+    color: #A3A3A3;
+}
+.foot_2_p1 a{
+    margin-right: 20px;
+  
+}
+.foot_2_p1{
+    margin-bottom: 5px;
+}
+
+
+.nav3:hover .nav3{
+    display: block;
+}
+
+.foot_2_left{
+    display: inline-block;
+    margin-right: 20px;
+    height:25px;
+    line-height: 25px;
+ 
+}
+.foot_2_right{
+    display: inline-block;
+    height:25px;
+    line-height: 25px;
+   
+}
+.foot_2_left>img{
+ 
+   vertical-align: middle;
+    
+}
+.foot_2_right>img{
+ 
+   vertical-align: middle;
+    
+}

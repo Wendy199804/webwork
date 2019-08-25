@@ -1,0 +1,34 @@
+<script>
+//     var x = 1;
+// var bar = function(){
+
+//     console.log(this.x);
+// }
+// var foo = {
+//     x:3
+// }
+// bar(); 
+// var func = bar.bind(foo); //此时this已经指向了foo，但是用bind（）方法并不会立即执行，而是创建一个新函数，如果要直接调用的话 可以 bar.bind(foo)（）
+
+
+// func(); // 3
+
+function Person(name,height){
+this.name=name;
+this.height=height;
+}
+Person.prototype.hobby=function(){
+return 'watching movies';
+}
+var boy=new Person('keith',180);
+var girl=new Person('rascal',153);
+console.log(boy.name); //'keith'
+console.log(girl.name); //'rascal'
+console.log(boy.hobby===girl.hobby); //true
+
+boy.hobby=function(){
+ return 'play basketball';
+ }
+ console.log(boy.hobby()); //'play basketball'
+ console.log(girl.hobby()); //'watching movies'  boy对象实例的hobby方法修改时，就不会在继承原型对象上的hobby方法了。不过girl仍然会继承原型对象的方法
+</script>

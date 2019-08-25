@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="./css/home.css" media="screen" type="text/css">
+    <link rel="stylesheet" href="./css/home2.css" media="screen" type="text/css">
+    <link rel="stylesheet" href="./css/home3.css" media="screen" type="text/css">
+    <link rel="stylesheet" href="./css/calender.css">
+    <title>Olive Admin - Flat & Responsive Bootstrap Admin Template</title>
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-left">
+            <div class="header-logo">
+                <div class="nav-icon" onclick="navleft_block()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <a href="#" class="olive">OLIVE</a>
+                <a href="#" class="admin">ADMIN</a>
+            </div>
+            <div class="header-tips">
+                <a href="#" class="book-a" onclick="book()">
+                    <i class="book-icon"></i>
+                    <span class="book-num">7</span>
+                    <div class="book-on" id="bookon" style="display: none">
+                        <ul>
+                            <li>
+                                <p>你有6个待完成的项目</p>
+                            </li>
+                            <li>
+                                <p>仪表盘 v1.3</p>
+                                <div class="book-long">
+                                    <div class="book-short"></div>
+                                    <span>40%</span>
+                                </div>
+                            </li>
+                            <li>
+                                <p>数据库更新</p>
+                                <div class="book-long">
+                                    <div class="book-short" style="width:120px;background-color: #F0AD4E;"></div>
+                                    <span>60%</span>
+                                </div>
+                            </li>
+                            <li>
+                                <p>Iphone 开发</p>
+                                <div class="book-long">
+                                    <div class="book-short" style="width:174px;background-color: #5BC0DE;"></div>
+                                    <span>87%</span>
+                                </div>
+                            </li>
+                            <li>
+                                <p>手机 App</p>
+                                <div class="book-long">
+                                    <div class="book-short" style="width:66px;background-color: #D9534F;"></div>
+                                    <span>33%</span>
+                                </div>
+                            </li>
+                            <li>
+                                <p>仪表盘 v1.3</p>
+                                <div class="book-long">
+                                    <div class="book-short" style="width:90px;background-color: #BAD7DF;"></div>
+                                    <span>45%</span>
+                                </div>
+                            </li>
+                            <li>
+                                <p>查看所有任务</p>
+                            </li>
+                        </ul>
+                        <span class="triangle"></span>
+                    </div>
+                </a>
+                <a href="#" class="email-a" onclick="email()">
+                    <i class="email-icon"></i>
+                    <span class="email-num">8</span>
+                    <div class="email-on" id="emailon" style="display: none">
+                        <ul>
+                            <li>你有8条新消息</li>
+                            <li>
+                                <i></i>
+                                <div class="email-words">
+                                    <p><span>迪亚</span><em>刚刚</em></p>
+                                    <p>你好，这是一个味精的例子</p>
+                                </div>
+                            </li>
+                            <li><i></i>
+                                <div class="email-words">
+                                        <p><span>迪亚</span><em>刚刚</em></p>
+                                        <p>你好，这是一个味精的例子</p>
+                                </div>
+                            </li>
+                            <li><i></i>
+                                <div class="email-words">
+                                        <p><span>迪亚</span><em>刚刚</em></p>
+                                        <p>你好，这是一个味精的例子</p>
+                                </div>
+                            </li>
+                            <li><i></i>
+                                <div class="email-words">
+                                        <p><span>迪亚</span><em>刚刚</em></p>
+                                        <p>你好，这是一个味精的例子</p>
+                                </div>
+                            </li>
+                            <li>查看所有消息</li>
+                        </ul>
+                        <span class="triangle"></span>
+                    </div>
+
+                </a>
+                <a href="#" class="bell-a" onclick="bell()">
+                    <i class="bell-icon"></i>
+                    <span class="bell-num">9</span>
+                    <div class="bell-on" id="bellon" style="display: none">
+                        <ul>
+                            <li>你有8个新通知</li>
+                            <li><i class="fa fa-bolt"></i>服务过载34分钟</li>
+                            <li><i class="fa fa-bell"></i>服务过载34分钟</li>
+                            <li><i class="fa fa-bolt"></i>服务过载34分钟</li>
+                            <li><i class="fa fa-plus"></i>服务过载34分钟</li>
+                            <li><i class="fa fa-bullhorn"></i>服务过载34分钟</li>
+                            <li>查看所有通知</li>
+                        </ul>
+                        <span class="triangle"></span>
+                    </div>
+
+                </a>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="search">
+                <i class="search-icon"></i>
+                <input type="text" placeholder="Search">
+            </div>
+            <div class="user" onclick="user()">
+                <img src="./img/akari.jpg" alt="">
+                <span class="username">Pruthvi</span>
+                <i class="user-triangle"></i>
+                <div class="user-on" id="useron" style="display: none">
+                    <ul>
+                        <li><i class="fa fa-suitcase"></i><span>轮廓</span></li>
+                        <li><i class="fa fa-cog"></i><span>设置</span></li>
+                        <li><i class="fa fa-bell-o"></i><span>通知</span></li>
+                        <li><i class="fa fa-key"></i><span><a href="./sign_in.html" style="color: white">LOG OUT</a></span></li>
+                    </ul>
+                    <span class="triangle"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="nav-left" id="navleft" style="display: block">
+        <ul id="accordion" class="accordion">
+            <li>
+                <div class="link">
+                    <a href="#"><i class="fa fa-dashboard"></i><span>仪表盘</span></a>
+                </div>
+            </li>
+            <li id="accli" onClick="ShowMenu(this,'NO0')">
+                <div class="link">
+                    <a href="#"><i class="fa fa-laptop" id="fa"></i><span id="span-title">布局</span>
+                        <span class="lable-num">4</span>
+                        <span class="add-icon"></span>
+                    </a>
+                </div>
+                <ul class="sub" id="NO0" >
+                    <li ><a href="">盒装页面</a></li>
+                    <li ><a href="">横向菜单表</a></li>
+                    <li ><a href="">语言栏</a></li>
+                    <li ><a href="">电子邮件模版</a></li>
+                </ul>
+            </li>
+            <li id="accli" onClick="ShowMenu(this,'NO1')">
+                <div class="link">
+                    <a href="#"><i class="fa fa-book"></i><span>UI 元素</span>
+                        <span class="lable-num" style="background-color: #8175C7;">7</span>
+                        <span class="add-icon"></span>
+                    </a>
+                </div>
+                <ul class="sub" id="NO1">
+                    <li><a href="">常规</a></li>
+                    <li><a href="">按钮</a></li>
+                    <li><a href="">装饰物</a></li>
+                    <li><a href="">范围滑动棒</a></li>
+                    <li><a href="">可拖动的表项</a></li>
+                    <li><a href="">树视图列表</a></li>
+                    <li><a href="">字体的图标</a></li>
+                </ul>
+            </li>
+            <li id="accli" onClick="ShowMenu(this,'NO2')">
+                <div class="link">
+                    <a href="#"><i class="fa fa-cogs"></i><span>组件</span>
+                        <span class="lable-num" style="background-color: #59ACE2;">5</span>
+                        <span class="add-icon"></span>
+                    </a>
+                </div>
+                <ul class="sub" id="NO2">
+                    <li><a href="">网格</a></li>
+                    <li><a href="">日历</a></li>
+                    <li><a href="">画廊</a></li>
+                    <li><a href="">代办事项列表</a></li>
+                    <li><a href="">可拖动的表项</a></li>
+                </ul>
+            </li>
+            <li id="accli" onClick="ShowMenu(this,'NO3')">
+                <div class="link">
+                    <a href="#"><i class="fa fa-tasks"></i><span>表单控件</span>
+                        <span class="lable-num">7</span>
+                        <span class="add-icon"></span>
+                    </a>
+                </div>
+                <ul class="sub" id="NO3">
+                    <li><a href="">表单组件</a></li>
+                    <li><a href="">先进的组件</a></li>
+                    <li><a href="">表单向导</a></li>
+                    <li><a href="">表单验证</a></li>
+                    <li><a href="">文件上传</a></li>
+                    <li><a href="">行内编辑器</a></li>
+                    <li><a href="">多文件上传</a></li>
+                </ul>
+            </li>
+            <li id="accli" onClick="ShowMenu(this,'NO4')">
+                <div class="link">
+                    <a href="#"><i class="fa fa-th"></i><span>数据表</span>
+                        <span class="lable-num" style="background-color: #344860;">5</span>
+                        <span class="add-icon"></span>
+                    </a>
+                </div>
+                <ul class="sub" id="NO4">
+                    <li><a href="">基本表</a></li>
+                    <li><a href="">响应表</a></li>
+                    <li><a href="">动态表</a></li>
+                    <li><a href="">先进的表</a></li>
+                    <li><a href="">可编辑的表格</a></li>
+                </ul>
+            </li>
+            <li id="accli" onClick="javascript:ShowMenu(this,'NO5')">
+                <div class="link">
+                    <a href="#"><i class=" fa fa-envelope"></i><span>邮件</span>
+                        <span class="lable-num" style="background-color: #FF6C60;">2</span>
+                        <span class="add-icon"></span>
+                    </a>
+                </div>
+                <ul class="sub" id="NO5">
+                    <li><a href="">收件箱</a></li>
+                    <li><a href="">邮箱细节</a></li>
+                </ul>
+            </li>
+            <li id="accli" onClick="javascript:ShowMenu(this,'NO6')">
+                <div class="link">
+                    <a href="#"><i class=" fa fa-bar-chart-o"></i><span>图表</span>
+                        <span class="lable-num" style="background-color: #A9D86E;">4</span>
+                        <span class="add-icon"></span>
+                    </a>
+                </div>
+                <ul class="sub" id="NO6">
+                    <li><a href="">Morris Chart</a></li>
+                    <li><a href="">Chartjs Chart</a></li>
+                    <li><a href="">Flot Charts</a></li>
+                    <li><a href="">xChart</a></li>
+                </ul>
+            </li>
+            <li id="accli" onClick="javascript:ShowMenu(this,'NO7')">
+                <div class="link">
+                    <a href="#"><i class="fa fa-shopping-cart"></i><span>产品</span>
+                        <span class="lable-num" style="background-color: #FCB322;">2</span>
+                        <span class="add-icon"></span>
+                    </a>
+                </div>
+                <ul class="sub" id="NO7">
+                    <li><a href="">列表视图</a></li>
+                    <li><a href="">细节视检</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="link">
+                    <a href="#"><i class="fa fa-map-marker"></i><span>谷歌地图</span>
+                    </a>
+                </div>
+            </li>
+            <li id="accli" onClick="javascript:ShowMenu(this,'NO8')">
+                <div class="link">
+                    <a href="#"><i class="fa fa-glass"></i><span>其他页面</span>
+                        <span class="lable-num" style="background-color: #59ACE2;">10</span>
+                        <span class="add-icon"></span>
+                    </a>
+                </div>
+                <ul class="sub" id="NO8">
+                    <li><a href="">空白页</a></li>
+                    <li><a href="">锁屏</a></li>
+                    <li><a href="">个人主页</a></li>
+                    <li><a href="">账单</a></li>
+                    <li><a href="">搜索结果</a></li>
+                    <li><a href="">定价表</a></li>
+                    <li><a href="">常见问题</a></li>
+                    <li><a href="">时间轴</a></li>
+                    <li><a href="">404 错误页面</a></li>
+                    <li><a href="">500 错误页面</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="link">
+                    <a href="#"><i class="fa fa-user"></i><span>登录页</span>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="link">
+                    <a href="#"><i class="fa fa-sitemap"></i><span>多层次</span>
+                        <span class="add-icon"></span>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="wrap">
+        <div class="behind" id="behind" style="display: block"></div>
+        <div class="contain" id="contain">
+            <div class="change-num">
+                <div class="sale">
+                    <div class="num-p">
+                        <p id="count1">495</p>
+                        <p>总销售</p>
+                    </div>
+                    <div class="fa fa-tags blue"></div>
+                </div>
+                <div class="profit">
+                    <div class="num-p">
+                        <p id="count2">947</p>
+                        <p>总利润</p>
+                    </div>
+                    <div class="fa fa-money red"></div>
+                </div>
+                <div class="newuser">
+                    <div class="num-p">
+                        <p id="count3">328</p>
+                        <p>新用户</p>
+                    </div>
+                    <div class="fa fa-user yellow"></div>
+                </div>
+                <div class="orders">
+                    <div class="num-p">
+                        <p id="count4">10328</p>
+                        <p>新的订单</p>
+                    </div>
+                    <div class="fa fa-shopping-cart purple"></div>
+                </div>
+            </div>
+            <div class="tables">
+                <div class="table-left">
+                    <div class="table-top">
+                        <p>
+                            <span>星期五</span><span>$ 657,00 | 55%</span>
+                        </p>
+                        <div class="table-pic">
+                                <div id="main" style="width: 612px;height:154px;"></div>
+                        </div>
+                        <div class="opacity">
+                            <div class="opa-title">新的收入</div>
+                            <div class="items"><a href="">市场</a> | <a href="">本地</a> | <a href="">线上</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-bottom">
+                        <p>
+                            <span>星期五</span><span>$ 657,00 | 55%</span>
+                        </p>
+                        <div class="table-pic">
+                                <div id="main2" style="width: 612px;height:154px;"></div>
+                        </div>
+                        <div class="opacity">
+                            <div class="opa-title">新的收入</div>
+                            <div class="items">$, 50,23,561</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-mid">
+                    <div class="face-b">
+                        <p class="fa fa-facebook icon-lg-size"></p>
+                        <p>10K 点赞</p>
+                    </div>
+                    <div class="twitte-">
+                        <p class="fa fa-twitter icon-lg-size"></p>
+                        <p>2K 粉丝</p>
+                    </div>
+                </div>
+                <div class="table-right">
+                        <header class="panel-heading">
+                                利润(USD)
+                              </header>
+                              <div class="sc-chart" id="chart3" style="width: 100%;height: 350px;margin-top: -15px;margin-left: 15px;"></div>
+                </div>
+            </div>
+            <div class="second-section">
+                <div class="second-section-left">
+                    <div class="second-title">
+                        <div class="userpic"><img src="./img/akari.jpg" alt=""></div>
+                        <div class="usermessage">
+                            <p>Work Progress</p>
+                            <p>Pruthvi Bardolia</p>
+                        </div>
+                    </div>
+                    <table class="second-table">
+                        <tbody>
+                            <tr class="line1">
+                                <td>1</td>
+                                <td>Target Revenue</td>
+                                <td><span class="precent">75%</span></td>
+                                <td>
+                                    <span class="rank1"></span>
+                                    <span class="rank2"></span>
+                                    <span class="rank3"></span>
+                                    <span class="rank4"></span>
+                                    <span class="rank5"></span>
+                                    <span class="rank6"></span>
+                                    <span class="rank7"></span>
+                                </td>
+                            </tr>
+                            <tr class="line2">
+                                <td>2</td>
+                                <td>Project Larsen</td>
+                                <td><span class="precent">43%</span></td>
+                                <td>
+                                    <span class="rank1"></span>
+                                    <span class="rank2"></span>
+                                    <span class="rank3"></span>
+                                    <span class="rank4"></span>
+                                    <span class="rank5"></span>
+                                    <span class="rank6"></span>
+                                    <span class="rank7"></span>
+                                </td>
+                            </tr>
+                            <tr class="line3">
+                                <td>3</td>
+                                <td>Project Nowbie</td>
+                                <td><span class="precent">15%</span></td>
+                                <td>
+                                    <span class="rank1"></span>
+                                    <span class="rank2"></span>
+                                    <span class="rank3"></span>
+                                    <span class="rank4"></span>
+                                    <span class="rank5"></span>
+                                    <span class="rank6"></span>
+                                    <span class="rank7"></span>
+                                </td>
+                            </tr>
+                            <tr class="line4">
+                                <td>4</td>
+                                <td>Total Sales</td>
+                                <td><span class="precent">67%</span></td>
+                                <td>
+                                    <span class="rank1"></span>
+                                    <span class="rank2"></span>
+                                    <span class="rank3"></span>
+                                    <span class="rank4"></span>
+                                    <span class="rank5"></span>
+                                    <span class="rank6"></span>
+                                    <span class="rank7"></span>
+                                </td>
+                            </tr>
+                            <tr class="line5">
+                                <td>5</td>
+                                <td>Delivery Pending</td>
+                                <td><span class="precent">30%</span></td>
+                                <td>
+                                    <span class="rank1"></span>
+                                    <span class="rank2"></span>
+                                    <span class="rank3"></span>
+                                    <span class="rank4"></span>
+                                    <span class="rank5"></span>
+                                    <span class="rank6"></span>
+                                    <span class="rank7"></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="second-section-right">
+                    <div class="fa fa-twitter"></div>
+                    <p class="twi-p1">We just Launch a New Theme Check it Out at <a
+                            href="http://olivethemes.in">http://olivethemes.in/</a></p>
+                    <p class="twi-p2">4 Days ago</p>
+                </div>
+            </div>
+            <div class="third-section">
+                <div class="third-section-left">
+                    <div class="third-top">
+                        <div><img src="./img/akari.jpg" alt=""></div>
+                        <div class="third-top-word">
+                            <p>Pruthvi Bardolia</p>
+                            <p>Chief-Sarathi</p>
+                            <p>我手工制作美丽的网站和各种设备的应用程序</p>
+                        </div>
+                    </div>
+                    <div class="third-bottom">
+                        <div class="cloud">
+                            <div>
+                                <p class="fa fa-cloud"></p>
+                                <p>新德里</p>
+                            </div>
+                            <p>48°</p>
+                        </div>
+                        <div class="cloud-message">
+                            <div>
+                                <p>湿度</p>
+                                <p>45%</p>
+                            </div>
+                            <div>
+                                <p>风力</p>
+                                <p>5 mph</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="third-section-right">
+                    <!-- <div id="calendar" class="calendar"></div> -->
+
+                    <div id="data">
+                        <p>
+                            <span id="prev">上一月</span>
+                            <span id="nian">2017</span>
+                            <span id="next">下一月</span>
+                        </p>
+                        <h5 id="yue">一月</h5>
+                        <ul id="title">
+                            <li>日</li>
+                            <li>一</li>
+                            <li>二</li>
+                            <li>三</li>
+                            <li>四</li>
+                            <li>五</li>
+                            <li>六</li>
+                        </ul>
+                        <ul id="date">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="forth-section">
+                <div class="project">
+                    <div class="project-top">
+                        <div>
+                            <p>工程 1</p>
+                            <p class="percent-big">
+                                <span class="rank1"></span>
+                                <span class="rank2"></span>
+                                <span class="rank3"></span>
+                                <span class="rank4"></span>
+                                <span class="rank5"></span>
+                                <span class="rank6"></span>
+                                <span class="rank7"></span>
+                            </p>
+                        </div>
+                        <div>
+                            <p>工程 2</p>
+                            <p class="percent-big">
+                                <span class="rank1"></span>
+                                <span class="rank2"></span>
+                                <span class="rank3"></span>
+                                <span class="rank4"></span>
+                                <span class="rank5"></span>
+                                <span class="rank6"></span>
+                                <span class="rank7"></span>
+                            </p>
+                        </div>
+                        <div>
+                            <p>工程 3</p>
+                            <p class="percent-big">
+                                <span class="rank1"></span>
+                                <span class="rank2"></span>
+                                <span class="rank3"></span>
+                                <span class="rank4"></span>
+                                <span class="rank5"></span>
+                                <span class="rank6"></span>
+                                <span class="rank7"></span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="project-bottom">
+                        项目完成 
+                    </div>
+                </div>
+                <div class="circle">
+                    <div>
+                            <div style="width:120px;height:120px;color:#FFF;">
+                                    <input class="knob" data-width="120"  data-fgColor="#F9A3A3" data-thickness=".2" value="75" style="outline: none; border:none;">
+                                </div>
+                        <p style="color: #F9A3A3;">利润</p>
+                    </div>
+                    <div>
+                            <div style="width:120px;height:120px;color:#FFF;">
+                                    <input class="knob" data-width="120"  data-fgColor="#FCCE54" data-thickness=".2" value="38" style="outline: none; border:none;">
+                                </div>
+                        <p style="color: #FCCE54;">扩张</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                2013 © Olive Admin by <a href="">Olive Enterprise</a>
+                <span class="fa fa-angle-up" id="toTop"></span>
+            </div>
+        </div>
+    </div>
+    
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="http://www.jq22.com/jquery/1.7.2/jquery.min.js"></script>
+    <script src="./js/jquery.knob.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./js/echarts.min.js"></script>
+    <script src="./js/general.js"></script>
+
+</body>
+
+</html>
