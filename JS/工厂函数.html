@@ -1,0 +1,40 @@
+<script>
+
+    function creatPeople(name,age,sex){
+        var person = {
+           name:name,
+           age:age,
+           sex:sex,
+           run : function(){
+               console.log(123);
+           }
+        }
+        return person;
+    }
+
+    var a = creatPeople("aa","12","女");
+    var b = creatPeople("bb","15","男");
+
+    console.log(a);
+    console.log(b);
+    console.log(b.run() == a.run());
+alert(a instanceof Object);
+
+
+    // function Day(time){
+    //     this.time = time;
+    //     this.do = function(){
+    //         console.log(123);
+    //     }
+    // }
+    // var day = Day("12:00");
+    // console.log(day);
+    // var LoginAlert = function (text) {
+    // this.content = text
+    // }
+
+    // LoginAlert.prototype.show = function () { 
+    //     userNameAlert.show()
+
+
+</script>

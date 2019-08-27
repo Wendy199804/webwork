@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <header id="head" style="height: 100px;"></header>
+    <form action="">
+        <input type="text" id="input">
+        <button id="btn" type="button">点击</button> 
+    </form>
+    <div id="look" style="height: 100px;"></div>
+    <script>
+        var btn = document.getElementById('btn');
+        var input = document.getElementById('input');
+        var head = document.getElementById('head');
+        var look = document.getElementById('look');
+
+        btn.onclick = function(){
+            look.innerHTML = '<p>' + input.value + '<p>' + look.innerHTML;
+            input.value = '';
+            head.innerHTML = '发布成功';
+        }
+
+    </script>
+</body>
+</html>

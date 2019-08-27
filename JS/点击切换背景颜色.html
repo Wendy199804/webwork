@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button id="btn">click</button>
+    <script>
+    var color = ["red","blue","yellow","white"];
+    var btn = document.getElementById('btn');
+    var body = document.body;
+    num = 0;
+    btn.onclick = function(){
+        body.style.background = color[num];
+        num++;
+        if(num >= color.length){
+            num = 0;
+        } 
+    }
+    </script>
+</body>
+</html>

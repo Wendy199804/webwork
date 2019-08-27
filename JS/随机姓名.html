@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+
+        }
+
+        .wrapper {
+            width: 800px;
+            margin: 10px auto;
+            border: 2px solid #ccc;
+            text-align: center;
+        }
+
+        .lucking {
+            width: 200px;
+            height: 180px;
+            border: 1px solid #000;
+            position: relative;
+        }
+
+        .lucking img {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+
+        .wrapper ul li {
+            width: 100px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            margin: 4px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            /* 不设置float:left的原因
+            1： 浮动不能让父盒子撑开高度 
+            2： display:inline-block 具有行内元素的属性特征，给父盒子加text-align:center 可使其居中
+            */
+            display: inline-block;
+        }
+
+        .wrapper button {
+            margin-top: 20px;
+            width: 80px;
+            height: 40px;
+            border: none;
+            background-color: #ddd;
+            border-radius: 5px;
+            font-weight: 700;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .wrapper .active {
+            background-color: #f1084a;
+            font-weight: 700;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="wrapper" id="_wrapper">
+        <ul id="_ul"></ul>
+        <button class="start">开始点名</button>
+        <button class="stop">停止</button>
+        <div class="lucking" id="_lucking">
+            <p></p>
+            <img src="1.gif" alt="">
+        </div>
+    </div>
+
+    <script>
+        // function change(a){
+        //     var names = ['吴云龙','朱伟祺','时山钧','李彪','吴燚波','付凤云','陈赞','叶胜隆','章辉','闫铮','徐泰彬','吴雄睿','邵挺','姜铭','毛文女',
+        // '严敏','王加晓','谢寅楚','蔡楚宏','谢泽群','郑梦圆','尹娜','周厚新','王子豪','蒋志伟','刘锦哲','周峰','张圣荣','潘宇熙','桂新阳'];
+        //     for(var i = 1; i<=names.length;i++){
+        //         var num = names[i];
+
+
+
+        //     }
+        // }
+        var array = ['吴云龙', '朱伟祺', '时山钧', '李彪', '吴燚波', '付凤云', '陈赞', '叶胜隆', '章辉', '闫铮', '徐泰彬', '吴雄睿', '邵挺', '姜铭', '毛文女',
+            '严敏', '王加晓', '谢寅楚', '蔡楚宏', '谢泽群', '郑梦圆', '尹娜', '周厚新', '王子豪', '蒋志伟', '刘锦哲', '周峰', '张圣荣', '潘宇熙', '桂新阳'];
+        // 获取元素
+        var _wrapper = document.getElementById('_wrapper');
+        var ul = document.getElementById('_ul');;
+        var timer = null;
+        init();
+
+        function init() {
+            // 动态创建li
+            for (var i = 0; i < array.length; i++) {
+                var oli = document.createElement('li');
+                oli.innerHTML = array[i];
+                ul.appendChild(oli);
+            }
+            // 点击
+            click();
+        }
+        function click() {
+            // 获取start按钮
+            var start = _wrapper.getElementsByTagName('button')[0];
+            var stop = _wrapper.getElementsByTagName('button')[1];
+            var lucking = document.getElementById('_lucking');
+            // 定时器
+            start.addEventListener('click', function () {
+                clearInterval(timer);
+                timer = setInterval(function () {
+                    // 获得随机数
+                    var random = Math.floor(Math.random() * array.length);
+                    for (var i = 0; i < array.length; i++) {
+                        ul.children[i].className = '';
+                    }
+                    ul.children[random].className = 'active';
+                }, 50);
+            });
+            stop.addEventListener('click', function () {
+                clearInterval(timer);
+                // 找到此时的元素
+                var active = document.getElementsByClassName('active')[0];
+                lucking.children[0].innerText = "幸运儿：" + active.innerText;
+            })
+        }
+
+
+    </script>
+</body>
+
+</html>

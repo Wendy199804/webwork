@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+            font-family: "幼圆";
+        }
+
+        ul {
+            list-style: none;
+            width: 90%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: -130px;
+            transition: all 0.8S;
+        }
+
+        li {
+            float: left;
+            margin-right: 10px;
+            margin-top: 20px;
+            width: 200px;
+            height: 100px;
+            text-align: center;
+            color: rgb(247, 242, 246);
+            line-height: 100px;
+            border-radius: 15px;
+            background-color: rgba(184, 145, 182, 0.5)
+        }
+
+        button {
+            width: 100px;
+            height: 50px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.4);
+            color: white;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .btn {
+            text-align: center;
+        }
+
+        .active {
+            background-color: white;
+            color: black;
+            font-weight: 700;
+            font-size: 20px;
+            transform: scale(1.2);
+            transition: all 0.3s;
+        }
+
+        #p {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            border: 2px solid white;
+            border-radius: 5px;
+            margin-top: 20px;
+            color: white;
+            text-align: center;
+            line-height: 100px;
+        }
+
+        #tip {
+            width: 300px;
+            height: 100px;
+            margin: 0 auto;
+            border-radius: 5px;
+            margin-top: 20px;
+            color: rgb(250, 11, 158);
+            text-align: center;
+            line-height: 100px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <p id="p"></p>
+    <p id="tip"></p>
+    <ul id="ulul"></ul>
+    <div class="btn">
+        <button id="start">开始</button>
+        <button id="stop">停止</button>
+    </div>
+
+
+
+    <script>
+        var ulul = document.getElementById('ulul');
+        var arr = ['吴云龙', '朱伟祺', '时山钧', '李彪', '吴燚波', '付凤云', '陈赞', '叶胜隆', '章辉', '闫铮', '徐泰彬', '吴雄睿', '邵挺', '姜铭', '毛文女',
+            '严敏', '王加晓', '谢寅楚', '蔡楚宏', '谢泽群', '郑梦圆', '尹娜', '周厚新', '王子豪', '蒋志伟', '刘锦哲', '周峰', '张圣荣', '潘宇熙', '桂新阳'];
+        var color = ['#90BDB8', '#1FCBB4', '#3B4393', '#747CD1', '#9D58C4', '#7403B4', '#E52E8B', '#46172E', '#1ACEAF', '#86C61C', '#E5E50A', '#BCBC79', '#795217', '#E5900D', '#E5C1B9',
+            '#1C50A0', '#033479', '#17BF6C', '#D11AAF', '#120A12', '#9340D3', '#D6D3AD', '#24AAB4', '#0F3436', '#E51579', '#F20539', '#716A6C', '#1A6727', '#EDF058', '#1C17B7'];
+        var tips = ['初吻年龄', '做过最丢人的事', '下辈子投胎想做什么', '今天给你加作业', '请大声喊出：邵挺是猪', '奖励你一个页面', '对华哥唱一首歌', '贡献五元班费', '对你右手边最近的同性说我爱你', '请大声喊出：邵挺是猪', '有裸睡的习惯吗', '中午请你右边第三个人吃饭', '有过几次暗恋经历', '贡献十元班费', '请大声喊出：邵挺是猪', '今晚轮到你分享', '你是单身吗',
+            '公主抱你左手边的人一分钟', '收到过几封情书', '在座最想打谁', '请大声喊出：邵挺是猪', '今天拉屎了吗', '与你对面的人对视30秒', '请大声喊出：邵挺是猪', '邀请一位异性与你对唱情歌', '请表演：铁门槛', '说一下华哥的年龄', '今天内裤什么颜色的', '最近一次通话是和谁', '唱青藏高原最后一句', '做10个俯卧撑', '这个礼拜作业免了', '中午请这个页面的作者吃饭', '说说你的未来理想型'];
+        var start = document.getElementById('start');
+        var stop = document.getElementById('stop');
+        var ul = document.getElementById('ulul');
+        var p = document.getElementById('p');
+        var tip = document.getElementById('tip');
+        var time = null;
+        // var closetime=1000;
+
+        //写入li的内容
+        for (var i = 0; i < arr.length; i++) {
+            var lili = document.createElement('li');
+            lili.innerHTML = arr[i];
+            ulul.appendChild(lili);
+        }
+        //点击start触发函数
+       start.addEventListener('click', function () {
+        
+
+            clearInterval(time);
+            
+            p.innerText = '';
+            tip.innerText = '';
+            time = setInterval(function choose() {
+                var random = Math.floor(Math.random() * arr.length);
+                for (var i = 0; i < arr.length; i++) {
+                    ul.children[i].className = '';
+                    for (var j = 0; j < i; j++) {
+                        var randomcolor = Math.floor(Math.random() * color.length);
+                        ul.children[randomcolor].style.background = color[j];
+                    }
+                }
+                ul.children[random].className = 'active';
+                
+            }, 100);
+            // closetime= closetime-100;
+            setTimeout(alert(1),5000);
+        });
+    //    function timeclose(){
+    //        window.setTimeout('timeclose()',2000);
+    //        if(closetime<0){
+    //         stop();
+    //        }
+    //    }
+    //    , 10000 );
+        //点击stop触发函数
+        // if(closetime == 0){
+        //     stop();
+        // }
+       
+       function stop() {
+            clearInterval(time);
+            var active = document.getElementsByClassName('active')[0];
+            p.innerText = active.innerText;
+            var randomtip = Math.floor(Math.random() * tips.length);
+            tip.innerText = tips[randomtip];
+            ulul.style.marginTop=0;
+        };
+    </script>
+</body>
+
+</html>
