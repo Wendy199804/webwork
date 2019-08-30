@@ -1,0 +1,22 @@
+<script>
+ function Parent(name, money){
+            this.name = name;
+            this.money = money;
+            this.info = function(){
+                alert('姓名： '+this.name+' 钱： '+ this.money);
+            }
+        }
+        //定义孩子类
+        function Children(name,money){
+            Parent.call(this, name,money); //继承 姓名属性，不要钱。  
+            this.info = function(){
+                alert('姓名： '+this.name+this.money);
+            }
+        }
+        //实例化类
+        var per = new Parent('parent', 800000000000);
+        var chi = new Children('child',200);
+        
+        per.info();
+        chi.info();
+</script>

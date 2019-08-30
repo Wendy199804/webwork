@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        div {
+            width: 600px;
+            height: 500px;
+            border: 1px solid tomato;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        ul {
+            width: 100%;
+            height: 50px;
+            display: flex;
+            justify-content: space-around;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: tomato;
+        }
+
+        li {
+            text-align: center;
+            height: 50px;
+            line-height: 50px;
+            color: aliceblue;
+            cursor: pointer;
+            width: 25%;
+        }
+        p{
+            position: absolute;
+            top:50px;
+            left: 0;
+        }
+
+        .active {
+            background-color: rgb(219, 182, 157);
+            color: black;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div">
+        <ul id="ul">
+
+        </ul>
+        <p id="p"></p>
+    </div>
+
+    <script>
+        var div = document.getElementById('div');
+        var ul = document.getElementById('ul');
+        var p = document.getElementById('p');
+        var liword = ["新闻", "美女", "美食", "广厦"];
+        var pword = ["新闻", "美女", "美食", "广厦"];
+        var li = [];
+      
+        for (var i = 0; i < liword.length; i++) {
+         
+            li[i] = document.createElement('li');//创建Li数组
+            li[i].innerHTML = liword[i];
+            ul.appendChild(li[i]);
+            li[i].in = i;//给li数组中的每一个对象添加属性 in , 并赋值 i -----→ li[0].in=0 li[1].in=1 li[2].in=2 li[3].in=3
+           // console.log(li[i]);   //for循环立即执行 li[]里已经有四个对象
+            li[i].onclick = function () {
+                var now = this.in; //now=li[0].in=0   now=li[1].in=1   now=li[2].in=2   now=li[3].in=3
+                // console.log(i, now);
+                for (var j = 0; j < liword.length; j++) {
+                    li[j].className = "";    //for循环立即执行 设置每个Li的className=""
+                }
+                li[now].className = "active";//...
+                p.innerText = pword[now];
+               // console.log(pword[now]);
+            };
+        }
+        li[0].className = "active";
+        p.innerText = pword[0];
+
+    </script>
+</body>
+
+</html>

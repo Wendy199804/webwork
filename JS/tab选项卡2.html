@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        div {
+            width: 600px;
+            height: 500px;
+            border: 1px solid tomato;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        ul {
+            width: 100%;
+            height: 50px;
+            display: flex;
+            justify-content: space-around;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: tomato;
+        }
+
+        li {
+            text-align: center;
+            height: 50px;
+            line-height: 50px;
+            color: aliceblue;
+            cursor: pointer;
+            width: 25%;
+        }
+
+        p {
+            position: absolute;
+            top: 50px;
+            left: 0;
+        }
+
+        .active {
+            background-color: rgb(219, 182, 157);
+            color: black;
+        }
+
+        .divblock {
+            display: block;
+        }
+
+        .divnone {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="divw">
+        <ul id="ul">
+
+        </ul>
+        <p id="p"></p>
+
+    </div>
+
+    <script>
+        var ul = document.getElementById('ul');
+        var p = document.getElementById('p');
+        var liword = ["新闻", "美女", "美食", "广厦"];
+        var pword = ["新闻", "美女", "美食", "广厦"];
+        var li = [];
+
+        for (var i = 0; i < liword.length; i++) {  
+            li[i] = document.createElement('li');
+            li[i].innerHTML = liword[i];
+            ul.appendChild(li[i]);
+            li[i].in = i;
+            li[i].onclick = function () {
+                prev.className = "";
+                this.className = "active";
+                  prev = this;
+                console.log(pword[i]);         
+                p.innerText = pword[this.in];
+            };
+        }
+        var prev = li[0];
+        p.innerText = pword[0];
+        li[0].className = "active";
+
+
+    </script>
+</body>
+
+</html>

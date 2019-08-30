@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        img{
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 50;;
+        }
+        div {
+            width: 800px;
+            height: 100px;
+            background-color:black;
+            opacity: 0.6;
+            position: absolute;
+            left: 0;
+            top:500px;
+            z-index: 100;
+            text-align: center;
+            line-height: 100px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <img src="1.jpg" alt="" id="pic" width="800px;" height="600px;">
+    <div id="word">1</div>
+    <script>
+        var i = 0;
+        var img = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg", "9.jpg"];
+        var words = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+        var word = document.getElementById('word');
+        var pic = document.getElementById('pic');
+        var j = 0;
+        pic.onclick = function () {
+            j++;
+            if (j > 8) {
+                j = 0
+            }
+            pic.src = img[j]
+            word.innerText = words[j];
+            console.log(pic.src);
+        }
+    </script>
+</body>
+
+</html>

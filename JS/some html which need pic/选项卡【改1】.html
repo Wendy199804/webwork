@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮播图</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #divv {
+            width: 600px;
+            height: 500px;
+            border: 1px solid tomato;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        ul {
+            width: 100%;
+            height: 50px;
+            display: flex;
+            justify-content: space-around;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: tomato;
+        }
+
+        li {
+            text-align: center;
+            height: 50px;
+            line-height: 50px;
+            color: aliceblue;
+            cursor: pointer;
+            width: 25%;
+        }
+
+        #divv>#ul>div {
+            /* position: absolute;
+            top: 50px;
+            left: 0; */
+            width: 800px;
+            height: 400px;
+            float: left;
+        }
+
+        .active {
+            background-color: rgb(219, 182, 157);
+            color: black;
+        }
+
+        img {
+            width: 600px;
+            height: 400px;
+            margin-top: 50px;
+
+        }
+
+        #span1,
+        #span2 {
+            /* display: block; */
+            height: 35px;
+            width: 35px;
+            position: absolute;
+            top: 50%;
+            background-color: black;
+            color: aliceblue;
+            line-height: 35px;
+            text-align: center;
+            opacity: 0.6;
+            display: none;
+            cursor: pointer;
+        }
+
+        #span1 {
+            left: 0;
+        }
+
+        #span2 {
+            right: 0;
+        }
+        .circle{
+            display: block;
+            width: 15px;
+            height: 15px;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+        #cir{
+            width: 100px;
+            height: 15px;
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom:60px;
+        }
+        .circle-on{
+            background-color: tomato !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="divv">
+        <ul id="ul"></ul>
+        <span id="span1">
+            <</span> <span id="span2">>
+        </span>
+        <div id="cir">
+
+        </div>
+    </div>
+    
+    
+
+    <script>
+        var divv = document.getElementById('divv');
+        var ul = document.getElementById('ul');
+        var span1 = document.getElementById('span1');
+        var span2 = document.getElementById('span2');
+        var liword = ["新闻", "美女", "美食", "广厦"];
+        var pword = ["新闻", "美女", "美食", "广厦"];
+        var cir = document.getElementById('cir');
+        var li = [];
+        var div = [];
+        var img = [];
+        var p = [];
+        var circle = [];
+        var pic = ["1.jpg", "2.jpg", "3.jpg", "4.jpg"];
+
+        for (var i = 0; i < liword.length; i++) {
+            li[i] = document.createElement('li');//创建Li数组
+            li[i].innerHTML = liword[i];
+            ul.appendChild(li[i]);
+            div[i] = document.createElement('div');//创建div数组
+            divv.appendChild(div[i]);
+            img[i] = document.createElement('img');//创建img数组
+            div[i].appendChild(img[i]);
+            p[i] = document.createElement('p');//创建p数组
+            div[i].appendChild(p[i]);
+            circle[i] = document.createElement('span');//创建span数组
+            cir.appendChild(circle[i]);
+            circle[i].className = "circle";
+            p[i].innerHTML = pword[i];
+            img[i].src = pic[i];
+            // console.log(img[i].src);
+            div[i].style.display = "none"
+            img[i].style.display = "none"
+            p[i].style.display = "none"
+            li[i].in = i;//给li数组中的每一个对象添加属性 in , 并赋值 i -----→ li[0].in=0 li[1].in=1 li[2].in=2 li[3].in=3
+            //    console.log(li[i]);   //for循环立即执行 li[]里已经有四个对象
+            li[i].onclick = function () {
+                var now = this.in; //now=li[0].in=0   now=li[1].in=1   now=li[2].in=2   now=li[3].in=3
+                // console.log(i, now);
+                for (var j = 0; j < liword.length; j++) {
+                    li[j].className = "";  //for循环立即执行 设置每个Li的className=""
+                    div[j].style.display = "none";
+                    img[j].style.display = "none";
+                    p[j].style.display = "none";
+                    circle[j].className = "circle";
+                }
+                li[now].className = "active";//...
+                div[now].style.display = "block";
+                img[now].style.display = "block";
+                p[now].style.display = "block";
+                circle[now].className = "circle circle-on";
+            };
+            var num = 0;
+            span1.onclick = function () {
+                console.log(num);
+                num--;
+                if (num < 0) {
+                    num = 3;
+                }
+                console.log(num);
+                for (var z = 0; z < liword.length; z++) {
+                    li[z].className = "";
+                    div[z].style.display = "none";
+                    img[z].style.display = "none";
+                    p[z].style.display = "none";
+                    circle[z].className = " circle";
+                }
+                li[num].className = "active";
+                div[num].style.display = "block";
+                img[num].style.display = "block";
+                p[num].style.display = "block";
+                circle[num].className = "circle circle-on";
+            }
+            span2.onclick = function s() {
+                console.log(num);
+                num++;
+                if (num > 3) {
+                    num = 0;
+                }
+                console.log(num);
+                for (var z = 0; z < liword.length; z++) {
+                    li[z].className = "";
+                    div[z].style.display = "none";
+                    img[z].style.display = "none";
+                    p[z].style.display = "none";
+                    circle[z].className = "circle";
+                }
+                li[num].className = "active";
+                div[num].style.display = "block";
+                img[num].style.display = "block";
+                p[num].style.display = "block";
+                circle[num].className = "circle circle-on";
+            }
+            function act() {
+                console.log(num);
+                num++;
+                if (num > 3) {
+                    num = 0;
+                }
+                console.log(num);
+                for (var z = 0; z < liword.length; z++) {
+                    li[z].className = "";
+                    div[z].style.display = "none";
+                    img[z].style.display = "none";
+                    p[z].style.display = "none";
+                    circle[z].className = "circle";
+                }
+                li[num].className = "active";
+                div[num].style.display = "block";
+                img[num].style.display = "block";
+                p[num].style.display = "block";
+                circle[num].className = "circle circle-on";
+            }
+        }
+        li[0].className = "active";
+        div[0].style.display = "block";
+        img[0].style.display = "block";
+        p[0].style.display = "block";
+        circle[0].className = "circle circle-on";
+        var time;
+        divv.onmouseover = function () {
+            span1.style.display = "block";
+            span2.style.display = "block";
+            clearInterval(time);/// clearInterval(setInterval("act()", 2000)); ???
+        }
+        divv.onmouseout = function () {
+            span1.style.display = "none";
+            span2.style.display = "none";
+            time = setInterval("act()", 2000);  /// setInterval("s()", 2000);  ???
+        }
+
+
+    </script>
+</body>
+
+</html>

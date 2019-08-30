@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="ull">
+        <li>nodeList</li>
+        <li>nodeList</li>
+        <li>nodeList</li>
+        <li>nodeList</li>
+        <li>nodeList</li>
+        <li>nodeList</li>
+        <li>nodeList</li>
+        <li>nodeList</li>
+        <li>nodeList</li>
+        <li>nodeList10</li>
+    </ul>
+
+    <script>
+
+        var uls = document.getElementById("ull"); 
+        var eles = uls.getElementsByTagName("li");
+        for (vari = 0; i < eles.length; i++) 
+        { eles.item(i).parentNode.removeChild(eles.item(i)); }
+    </script>
+</body>
+
+</html>

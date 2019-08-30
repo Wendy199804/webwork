@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div id="p">1111</div>
+    <div id="p"></div>
     <script>
         // for(var i=1;i<=9;i++){
         //     document.write('<br>');
@@ -18,20 +18,20 @@
         //     }
         // }
         // var a="";
-        // var a = '';
-        // for(var i=1;i<=9;i++){
-        //     document.getElementById('p').innerHTML+="<br>";
-        //     for(var j=1;j<=i;j++){
+        var a = '';
+        for(var i=1;i<=9;i++){
+            document.getElementById('p').innerHTML+="<br>";
+            for(var j=1;j<=i;j++){
 
-        //         // document.getElementById('p').innerHTML=i+'*'+j+'='+(i*j)+"\n";//这种写法只能返回一个值
-        //        //  document.getElementById('p').innerHTML+=i+'*'+j+'='+(i*j)+"\n";//这种写法可以返回整个99乘法表
-        //         a+= i+'*'+j+'='+(i*j)+"<br />"; //可以把document.getElementById('p').innerHTML看成一个变量，比如a
-        //         document.getElementById('p').innerHTML=a;
-        //     }
-        // }
-     //   alert(a);
+                // document.getElementById('p').innerHTML=i+'*'+j+'='+(i*j)+"\n";//这种写法只能返回一个值
+                 document.getElementById('p').innerHTML+=i+'*'+j+'='+(i*j)+"\n";//这种写法可以返回整个99乘法表
+               // a+= i+'*'+j+'='+(i*j); //可以把document.getElementById('p').innerHTML看成一个变量，比如a
+              //  document.getElementById('p').innerHTML=a;
+            }
+        }
        
-console.log(document.getElementById('p').innerHTML +=  123)
+       
+//console.log(document.getElementById('p').innerHTML +=  123)
 
     </script>
 </body>

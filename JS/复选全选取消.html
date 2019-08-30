@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button type="button" id="btn1">全选</button>
+    <button type="button" id="btn2">取消</button>
+    <button type="button" id="btn3">反选</button>
+
+    <label><input type="checkbox" name="check" id="input1">1</label>
+    <label><input type="checkbox" name="check">2</label>
+    <label><input type="checkbox" name="check">3</label>
+    <label><input type="checkbox" name="check">4</label>
+    <label><input type="checkbox" name="check">5</label>
+    <label><input type="checkbox" name="check">6</label>
+    <label><input type="checkbox" name="check">7</label>
+    <script>
+
+        // var input = document.getElementById('input1');
+        // var check = input.attributes.getNamedItem('name').textContent;
+        // console.log(check);
+        var btn1 = document.getElementById('btn1');
+        var btn2 = document.getElementById('btn2');
+        var input = document.getElementsByName('check');//获取的是一个数组
+        console.log(input);
+
+        btn1.onclick = function(){
+            for(var i = 0;i<input.length;i++){
+                 input[i].checked = true;
+            }          
+        }
+        // btn1.onclick = function(){
+        //     input.forEach(input){
+        //         input[i].checked = true;
+        //     }
+        // }
+
+        btn2.onclick = function(){
+            for(var i = 0;i<input.length;i++){
+                input[i].checked = false;
+            }          
+        }
+
+        btn3.onclick = function(){
+            for(var i = 0;i<input.length;i++){
+                if(input[i].checked == false){
+                    input[i].checked = true;
+                }else{
+                    input[i].checked = false;
+                }
+            }          
+        }
+        
+    </script>
+
+</body>
+
+</html>

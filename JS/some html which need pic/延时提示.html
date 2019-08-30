@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>延时提示</title>
+    <style>
+        p {
+            width: 500px;
+            background-color: burlywood;
+            position: absolute;
+            top: 50px;
+            left: 500px;
+            opacity: 0;
+            transition: left 0.8s;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="1.jpg" alt="" id="img" width="700px;" height="560px;">
+    <p id="p">
+        现在的互联网发展迅速，每一个人的生活也离不开智能手机，我们已经惯了指尖上的社交聊天、网上购物、快捷支付等各种新的方式，原来傻大笨重的台式电脑使用率越来越低。但是手机社交虽然比较方便，对于我们的工作可能就是两种不同的论断。我们出门办公，手机能处理的事情非常有限，笔者平时使用的一些Office软件、PhotoShop、Adobe
+        Premiere等手机根本无法完成。即使有一些文件可以在手机上操作，但处理起来显得非常笨重和不便，办公效率也大打折扣。这应该也是苹果、华为、小米等持续推出笔记本的一大原因。
+    </p>
+
+    <script>
+        var img = document.getElementById('img');
+        var p = document.getElementById('p');
+        // img.onmouseover = function(){
+        //     p.style.transform="translateX(1050px)";
+        //     p.style.opacity=1;
+        //     p.style.backgroundColor="burlywood";
+        // }
+        // img.onmouseout = function(){
+        //     p.style.transform="translateX(500px)";
+        //     p.style.opacity=0;
+        //     p.style.backgroundColor="transparent";
+        // }
+        img.onmouseover = function () {
+            p.style.backgroundColor = "burlywood";
+            if (p.style.opacity == 0) {
+                var speed = speed || 30;
+                var num = 0;
+                var st = setInterval(function () {
+                    num++;
+                    p.style.opacity = num / 10;
+                    p.style.left = 850 + 'px';
+                    if (num >= 10) { clearInterval(st); }
+                }, speed);
+            } else {
+                console.log('wrong  fadeIn');
+            }
+
+        }
+
+        img.onmouseout = function () {
+            p.style.backgroundColor = "transparent";
+            if (p.style.opacity == 1) {
+                var speed = speed || 30;
+                var num = 10;
+                var st = setInterval(function () {
+                    num--;
+                    p.style.opacity = num / 10;
+                    p.style.left = 200 + 'px';
+                    if (num <= 0) { clearInterval(st); }
+                }, speed);
+            } else {
+                console.log('wrong  fadeOut');
+            }
+        }
+
+    </script>
+</body>
+
+</html>

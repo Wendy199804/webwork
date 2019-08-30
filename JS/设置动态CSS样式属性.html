@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            height: 300px;
+            width: 300px;
+            border: 1px solid black;
+        }
+        .aa{
+            height:100px;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <input type="text" id="input1">
+        <input type="text" id="input2">
+        <button type="button" id="btn">提交</button>
+        <button type="button" id="btn2">删除</button>
+    </form>
+    <div id="box"></div>
+    <script>
+        var input1 = document.getElementById("input1");
+        var input2 = document.getElementById("input2");
+        var btn = document.getElementById('btn');
+        var btn2 = document.getElementById('btn2');
+        var box = document.getElementById('box');
+
+        // *********************** 1
+        // btn.onclick = function () {
+        //     box.style.setProperty(input[0].value, input[1].value);
+        // }
+        // btn2.onclick = function () {    //删除样式
+        //     box.style.removeProperty(input[0].value);
+        // }
+
+
+        //     ************************* 2
+        // var a = input1.value;
+        // btn.onclick = function () {
+        //     box.style.a = 'input2.value';
+        // }
+
+
+        //     *********************** 3
+        // btn.onclick = function () {
+        //     box.setAttribute('style', 'height:100px');
+        // }
+
+        btn.onclick = function(){
+            
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
