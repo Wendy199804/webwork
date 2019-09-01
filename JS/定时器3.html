@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box"></div>
+
+    <script>
+        time = setInterval(function () {
+            var box = document.getElementById('box');
+            var oDate = new Date();
+            var strGetFullYear = oDate.getFullYear(); //年
+            var strGetMonth = toDou(oDate.getMonth() + 1); //月
+            var strGetDate = toDou(oDate.getDate()); //月
+            var strGetHours = toDou(oDate.getHours());
+            var strGetMinutes = toDou(oDate.getMinutes());
+            var strGetSeconds = toDou(oDate.getSeconds());
+            var strGetDay = oDate.getDay();//周
+            function toDou(n) {
+                if (n < 10) {
+                    return '0' + n;
+                } else {
+                    return '' + n;
+                }
+            }
+            box.innerHTML = '<p><span>' + strGetFullYear + '-</span><span>'
+            + strGetMonth + '-</span><span>' + strGetDate + '</span><b>   </b><span>'
+            + strGetHours + ':</span><span>' + strGetMinutes + ':</span><span>'
+            + strGetSeconds + '</span><span> 星期 ' + strGetDay + '</span></p>';
+        }, 1000);
+
+      
+
+    </script>
+</body>
+
+</html>

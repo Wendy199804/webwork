@@ -76,7 +76,6 @@
         }
         var imgwidth = img[0].offsetWidth;
         left.onclick = function move() {
-
             // if (index < pic.length) {
             //     wrapp.style.left = -imgwidth * index + 'px';
             // }
@@ -91,7 +90,6 @@
             animate(wrapp, -imgwidth * index);
         }
         right.onclick = function () {
-
             //  if (index==-1) {
             //      index = pic.length-2;
             //     wrapp.style.left = -imgwidth * index + 'px';
@@ -114,7 +112,6 @@
         wrap.onmouseout = function () {   //鼠标移出继续播放
             time = setInterval("left.onclick()", 2000);
         }
-
         function animate(element, distance) {   //平移函数（要平移的元素，应该平移的距离）
             clearInterval(element.time)
             element.time = setInterval(function () {

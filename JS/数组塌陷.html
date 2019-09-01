@@ -10,24 +10,44 @@
 
 <body>
     <ul id="ull">
-        <li>nodeList</li>
-        <li>nodeList</li>
-        <li>nodeList</li>
-        <li>nodeList</li>
-        <li>nodeList</li>
-        <li>nodeList</li>
-        <li>nodeList</li>
-        <li>nodeList</li>
-        <li>nodeList</li>
-        <li>nodeList10</li>
+        <li>nodeList0</li>
+        <li>nodeList1</li>
+        <li>nodeList2</li>
+        <li>nodeList3</li>
+        <li>nodeList4</li>
+        <li>nodeList5</li>
+        <li>nodeList6</li>
+        <li>nodeList7</li>
+        <li>nodeList8</li>
+        <li>nodeList9</li>
     </ul>
 
     <script>
 
-        var uls = document.getElementById("ull"); 
+        var uls = document.getElementById("ull");
         var eles = uls.getElementsByTagName("li");
-        for (vari = 0; i < eles.length; i++) 
-        { eles.item(i).parentNode.removeChild(eles.item(i)); }
+        // 问题 ： 使用for 循环遍历 eles , 当i=0的时候 , 我们删除了
+        //位置为0的元素, 此时,位置为1的元素接替了位置 0 , 但同时 i 也累加 了,
+        // 下次执行 删除 操作的时候 i 变为1 , 再次执行删除操作,其实是删除了/
+        // 现在位置为1 的元素 , 中间跳过了, 所以 最后的结果 只 删除了一半
+        
+        // for (var i = 0; i < eles.length; i++) {
+        //     eles.item(i).parentNode.removeChild(eles.item(i));
+        //     console.log('删除了' + i);
+        // }
+
+        //解决方案 1 
+        // for (var i = eles.length - 1; i >= 0; i--){
+        //     eles.item(i).parentNode.removeChild(eles.item(i));
+        //     console.log('删除了' + i)
+        // }
+
+        //解决方案 2
+        for (var i = 0; i < eles.length; i++){
+            eles.item(i).parentNode.removeChild(eles.item(i));
+            console.log('删除了' + i);
+            i--;
+        }
     </script>
 </body>
 

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="test" name="div_name" style="color:red;" onclick="onc()">示例DIV</div>
+
+    <script>
+        var div = document.getElementById("test");
+      function onc(){
+            div.innerHTML = "changed";
+        }
+        div.mm = "maowennv";
+        div.setAttribute("mmm","mwn");
+        var arr = div.attributes;
+        var arrr = Array.prototype.slice.call(arr);
+        console.log(div.getAttribute("onclick"));
+        console.log(div.onclick);
+       // console.log(div.getAttribute(mm));
+        console.log(arrr);
+
+
+    </script>
+</body>
+</html>
