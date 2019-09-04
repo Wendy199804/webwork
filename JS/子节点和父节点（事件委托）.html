@@ -15,10 +15,9 @@
         <li>5<a href="#">隐藏</a></li>
     </ul>
     <script>
-        document.getElementById("ul").addEventListener("click",
-        function(e){    
-        var event = e || window.event;
-        var target = event.target || event.srcElement;
+        document.getElementById("ul").addEventListener("click",function(e){    
+        var event = e || window.event;  //为了兼容IE
+        var target = event.target || event.srcElement;   //为了兼容IE
         if(target.tagName=="A"){
             target.parentNode.style.display="none"
         }

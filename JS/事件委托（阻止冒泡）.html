@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #out {
+            width: 300px;
+            height: 300px;
+            background-color: blue;
+        }
+
+        #mid {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(255, 0, 242);
+
+        }
+
+        #in {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(179, 255, 0);
+        }
+
+
+        #ul {
+            width: 300px;
+            border: 1px solid tomato;
+            display: none;
+        }
+
+        #ul>li {
+            width: 100%;
+            padding: 5px 10px;
+            border: 1px solid black;
+            list-style: none;
+            font-size: 18px;
+            box-sizing: border-box;
+        }
+
+        #ul-p {
+            background-color: cornflowerblue;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="father">
+        <div id="out">
+            <div id="mid">
+                <div id="in"></div>
+            </div>
+        </div>
+    </div>
+    <div id="ul-div">
+        <p id="ul-p">点击</p>
+        <ul id="ul">
+            <li>123</li>
+            <li>123</li>
+            <li>123</li>
+            <li>123</li>
+            <li>456</li>
+            <li>677</li>
+        </ul>
+    </div>
+
+
+    <script>
+        // function divin(){
+        //     console.log("你点击了最里面的盒子");
+        // }
+        // function divmid(){
+        //     console.log("你点击了中间的盒子");
+        // }
+        // function divout(){
+        //     console.log("你点击了最外面的盒子");
+        // }
+        // document.getElementById('father').addEventListener('click',function(event){
+        //     var tar = event.target;
+        //     if (tar.id == 'in') {
+        //         divin();
+        //     }else if(tar.id == 'mid'){
+        //         divmid();
+        //     }else if(tar.id == 'out'){
+        //         divout();
+        //     }
+        // });
+//一般用到for循环遍历节点添加事件的时候都可以用事件委托来做，可以提高性能。
+//event.currentTarget.我觉得他和this 的作用是差不多的，始终返回的是绑定事件的元素
+//
+
+        function divin(event) {
+            // 阻止冒泡
+            // event.stopPropagation();
+            console.log('你点击了最里面的盒子');
+        }
+        function divmid(event) {
+            // 阻止冒泡
+            event.stopPropagation(); 
+            console.log('你点击了中间的盒子');
+        }
+        function divout(event) {
+            // 阻止冒泡
+            // event.stopPropagation();
+            console.log('你点击了最外面的盒子');
+
+        }
+        document.getElementById('in').addEventListener('click', divin, false);
+        document.getElementById('mid').addEventListener('click', divmid, false);
+        document.getElementById('out').addEventListener('click', divout, false);
+
+        var ulp = document.getElementById('ul-p');
+        var ul = document.getElementById('ul');
+        let num = 0;
+        function ulpclick(event) {
+            event.stopPropagation();
+            //冒泡：点击P的时候，也点击了BODY。因为P在BODY里面。冒泡事件会从当前事件一级一级往上传递，
+            //到document为止。这里的P点击后往上寻找，触发了body的点击事件。body的点击事件里写了display：none，
+            //所以子菜单一直显示不出来。阻止冒泡就是阻止在点击了P以后往上寻找事件，所以不会触发body的点击事件，
+            //相当于把P以内圈起来，独立了。
+            if (num % 2 == 0) {
+                ul.style.display = "block";
+                ulp.innerText = "点击空白处消失"
+            } else if (num % 2 == 1) {
+                ul.style.display = "none";
+                ulp.innerText = "点击"
+            }
+            num++;
+            console.log("你点击了p");
+        }
+
+        ulp.addEventListener('click', ulpclick, false);
+        document.body.onclick = function () {
+            ul.style.display = "none";
+            ulp.innerText = "点击"
+            console.log("你点击了body");
+        }
+    </script>
+</body>
+
+</html>

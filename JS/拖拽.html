@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .kong {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            font-size: 32px;
+            border-radius: 50%;
+            text-align: center;
+            position: relative;
+            top: 100px;
+            left: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="kong" id="test"></div>
+    <script>
+        //拖拽事件
+        var ele = document.getElementById("test");
+        ele.onmousedown = function (ev) {
+            var mousedownX, mousedownY, boxX, boxY, click, mousemoveX, mousemoveY
+            var ev = ev || event;
+            mousedownX = ev.clientX;//按下时的鼠标的坐标
+            mousedownY = ev.clientY;
+            boxX = ele.offsetLeft;//元素的初始位置
+            boxY = ele.offsetTop;
+            click = true; //确认已经按下
+            console.log(mousedownX + '+' + mousedownY + '+' + boxX + '+' + boxY);
+            document.onmousemove = function (ev) {
+                var ev = ev || event;
+
+                if (click) { // if (true) 如果已经按下
+                    mousemoveX = ev.clientX;//移动后的鼠标的坐标
+                    mousemoveY = ev.clientY;
+                    ele.style.left = parseInt(mousemoveX) - parseInt(mousedownX) + parseInt(boxX) + 'px';
+                    ele.style.top = parseInt(mousemoveY) - parseInt(mousedownY) + parseInt(boxY) + 'px';
+                    // 移动后元素的坐标为 ： 鼠标按移动后的坐标 - 鼠标按下的坐标 + 元素的初始坐标
+                }
+            };
+            document.onmouseup = function (ev) {
+               click = false;  // 标识松开鼠标
+            };
+            return false; ////火狐下，空div会有bug.加上false则无。
+        };
+    </script>
+</body>
+
+</html>

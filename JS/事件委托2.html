@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+     li{
+         cursor: pointer;
+     }
+    </style>
+</head>
+
+
+<body>
+    <ul id="ul">
+        <li id="li1">1</li>
+        <li id="li2">2</li>
+        <li id="li3">3</li>
+    </ul>
+    <script>
+        function clickLi1() {
+            alert('你点击了li1');
+        }
+        function clickLi2() {
+            alert('你点击了li2');
+        }
+        function clickLi3() {
+            alert('你点击了li3');
+        }
+        document.getElementById('ul').addEventListener('click', function (event) {
+            // 每一个函数内都有一个event事件对象，它有一个target属性，指向事件源
+            var src = event.target;
+            // 我们判断如果target事件源的节点名字是li，那就执行这个函数
+            // target里面的属性是非常多的，id名、class名、节点名等等都可以取到
+            if (src.id == 'li1') {
+                clickLi1();
+            }else if(src.id == 'li2'){
+                clickLi2();
+            }else if(src.id == 'li3'){
+                clickLi3();
+            }
+        });   //通过监听一个父元素，来给不同的子元素绑定事件
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style type="text/css">
+    #box1 { width: 300px; height: 300px; background: blueviolet; }
+    #box2 { width: 200px; height: 200px; background: aquamarine; }
+    #box3 { width: 100px; height: 100px; background: tomato; }
+    div { overflow: hidden; margin: 50px auto; }
+</style>
+<body>
+    <div id="box1">
+        <div id="box2">
+            <div id="box3"></div>
+        </div>
+    </div>
+    <script>
+        function sayBox3() {
+            console.log('你点了最里面的box');
+        }
+        function sayBox2() {
+            console.log('你点了最中间的box');
+        }
+        function sayBox1() {
+            console.log('你点了最外面的box');
+        }
+        // 事件监听，第三个参数是布尔值，默认false，false是事件冒泡，true是事件捕获
+        //false事件冒泡会从当前触发的事件目标一级一级往上传递，依次触发，直到document根文档为止。
+        //true事件捕获会从document开始触发，一级一级往下传递，依次触发，直到真正事件目标为止。
+        document.getElementById('box3').addEventListener('click', sayBox3, true);
+        document.getElementById('box2').addEventListener('click', sayBox2, true);
+        document.getElementById('box1').addEventListener('click', sayBox1, true);
+
+    </script>
+</body>
+</html>

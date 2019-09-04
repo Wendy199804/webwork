@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="div">
+        <ul class="ul-wrap" id="ul-wrap">
+            <li class="li-main" id="li1">
+                <a href="#" id="cd1">菜单一</a>
+                <ul class="ul-in" id="ul1">
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">1</a></li>
+                </ul>
+            </li>
+            <li class="li-main"><a href="#" id="cd2">菜单二</a>
+                <ul class="ul-in" id="ul2">
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                </ul>
+            </li>
+            <li class="li-main"><a href="#" id="cd3">菜单三</a>
+                <ul class="ul-in">
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                </ul>
+            </li>
+            <li class="li-main"><a href="#" id="cd4">菜单四</a>
+                <ul class="ul-in">
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                </ul>
+            </li>
+            <li class="li-main"><a href="#" id="cd5">菜单五</a>
+                <ul class="ul-in">
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                </ul>
+            </li>
+            <li class="li-main"><a href="#" id="cd6">菜单六</a>
+                <ul class="ul-in">
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                </ul>
+            </li>
+            <li class="li-main"><a href="#" id="cd7">菜单七</a>
+                <ul class="ul-in">
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                </ul>
+            </li>
+            <li class="li-main" id="li-main"><a href="#" id="cd8">菜单八</a>
+                <ul class="ul-in" id="ulin">
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var ulin = document.getElementsByClassName('ul-in');
+        var limain = document.getElementsByClassName('li-main');
+        var cd1 = document.getElementById('cd1');
+        var cd2 = document.getElementById('cd2');
+        var cd3 = document.getElementById('cd3');
+        var cd4 = document.getElementById('cd4');
+        var cd5 = document.getElementById('cd5');
+        var cd6 = document.getElementById('cd6');
+        var cd7 = document.getElementById('cd7');
+        var cd8 = document.getElementById('cd8');
+        var ulout = document.getElementById('ul-wrap');
+        var ulin_height = [];
+        for (var i = 0; i < ulin.length; i++) {
+            ulin_height[i] = ulin[i].offsetHeight; //获取每一个子菜单的高度，存入 ulin_height数组
+            ulin[i].style.height = 0;//设置原始高度为 0
+        }
+        var li_collection = ulout.children
+        
+        var num=0;
+      
+     ulout.addEventListener("click",function(event){
+        var tar = event.target;
+        if(tar.id== 'cd1' && num%2==0){
+            console.log("展开1"); 
+            cd1.nextElementSibling.style.height = ulin_height[0] + 'px';
+        }else if (tar.id== 'cd2' && num%2==0){
+            console.log("展开2"); 
+            cd2.nextElementSibling.style.height = ulin_height[1] + 'px';
+        }else if (tar.id== 'cd3' && num%2==0){
+            console.log("展开3"); 
+            cd3.nextElementSibling.style.height = ulin_height[2] + 'px';
+        }else if (tar.id== 'cd4' && num%2==0){
+            console.log("展开4"); 
+            cd4.nextElementSibling.style.height = ulin_height[3] + 'px';
+        }else if (tar.id== 'cd5' && num%2==0){
+            console.log("展开5");
+            cd5.nextElementSibling.style.height = ulin_height[4] + 'px';
+        }else if (tar.id== 'cd6' && num%2==0){
+            console.log("展开6");
+            cd6.nextElementSibling.style.height = ulin_height[5] + 'px';
+        }else if (tar.id== 'cd7' && num%2==0){
+            console.log("展开7");
+            cd7.nextElementSibling.style.height = ulin_height[6] + 'px';
+        }else if (tar.id== 'cd8' && num%2==0){
+            console.log("展开8");
+            cd8.nextElementSibling.style.height = ulin_height[7] + 'px';
+        }
+        else if(tar.nodeName == "A" && num%2==1){
+            cd1.nextElementSibling.style.height = 0 + 'px';
+            cd2.nextElementSibling.style.height = 0 + 'px';
+            cd3.nextElementSibling.style.height = 0 + 'px';
+            cd4.nextElementSibling.style.height = 0 + 'px';
+            cd5.nextElementSibling.style.height = 0 + 'px';
+            cd6.nextElementSibling.style.height = 0 + 'px';
+            cd7.nextElementSibling.style.height = 0 + 'px';
+            cd8.nextElementSibling.style.height = 0 + 'px';
+
+            console.log("收");
+        }
+
+        
+        num++;
+     });
+
+
+    </script>
+</body>
+
+</html>

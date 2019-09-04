@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="div">
+        <ul class="ul-wrap" id="ul-wrap">
+            <li class="li-main" id="li1">
+                <a href="#" id="cd1">菜单一</a>
+                <ul class="ul-in" id="ul1">
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">1</a></li>
+                </ul>
+            </li>
+            <li class="li-main"><a href="#" id="cd2">菜单二</a>
+                <ul class="ul-in" id="ul2">
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                </ul>
+            </li>
+            <li class="li-main"><a href="#" id="cd3">菜单三</a>
+                <ul class="ul-in">
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                </ul>
+            </li>
+            <li class="li-main"><a href="#" id="cd4">菜单四</a>
+                <ul class="ul-in">
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                </ul>
+            </li>
+            <li class="li-main"><a href="#" id="cd5">菜单五</a>
+                <ul class="ul-in">
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                </ul>
+            </li>
+            <li class="li-main"><a href="#" id="cd6">菜单六</a>
+                <ul class="ul-in">
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                </ul>
+            </li>
+            <li class="li-main"><a href="#" id="cd7">菜单七</a>
+                <ul class="ul-in">
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+                </ul>
+            </li>
+            <li class="li-main"><a href="#" id="cd8">菜单八</a>
+                <ul class="ul-in">
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">1</a></li>
+
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var ulin = document.getElementsByClassName('ul-in');
+        var limain = document.getElementsByClassName('li-main');
+        var cd1 = document.getElementById('cd1');
+        var cd2 = document.getElementById('cd2');
+        var cd3 = document.getElementById('cd3');
+        var cd4 = document.getElementById('cd4');
+        var cd5 = document.getElementById('cd5');
+        var cd6 = document.getElementById('cd6');
+        var cd7 = document.getElementById('cd7');
+        var cd8 = document.getElementById('cd8');
+        var ulout = document.getElementById('ul-wrap');
+        var ulin_height = [];
+        for (var i = 0; i < ulin.length; i++) {
+            ulin_height[i] = ulin[i].offsetHeight; //获取每一个子菜单的高度，存入 ulin_height数组
+            ulin[i].style.height = 0;//设置原始高度为 0
+        }
+
+        function cd1click(event) {
+            event.stopPropagation();
+            if (ulin[0].style.height != 0 + "px") {
+                ulin[0].style.height = 0 + "px";
+                ulin[1].style.zIndex = 2;
+            } else  {
+                ulin[1].style.height = 0 + "px";
+                ulin[0].style.height = ulin_height[0] + "px";
+                ulin[2].style.height = 0 + "px";
+                ulin[3].style.height = 0 + "px";
+                ulin[4].style.height = 0 + "px";
+                ulin[5].style.height = 0 + "px";
+                ulin[6].style.height = 0 + "px"; 
+                ulin[7].style.height = 0 + "px";
+            }
+        }
+        function ul1click(event) {
+            event.stopPropagation();
+            console.log("你点击了子菜单1");
+        }
+        ul1.addEventListener('click', ul1click, false);
+        cd1.addEventListener('click', cd1click, false);
+        // ulout.onclick = function () {
+        //     ulin[0].style.height = 0 + "px"; //点击导航外收起菜单
+        //     console.log("222");
+        // }
+        cd2.onclick = function () {
+            if (ulin[1].style.height != 0 + "px") {
+                ulin[1].style.height = 0 + "px";
+                ulin[2].style.zIndex = 2;
+            } else  {
+                ulin[1].style.height = ulin_height[1] + "px";
+                ulin[0].style.height = 0 + "px";
+                ulin[2].style.height = 0 + "px";
+                ulin[3].style.height = 0 + "px";
+                ulin[4].style.height = 0 + "px";
+                ulin[5].style.height = 0 + "px";
+                ulin[6].style.height = 0 + "px";
+                ulin[7].style.height = 0 + "px";
+            }
+           
+        }
+        cd3.onclick = function () {
+            
+            if (ulin[2].style.height != 0 +'px') {
+                ulin[2].style.height = 0 + "px";
+                ulin[3].style.zIndex = 2;
+            } else  {
+                ulin[2].style.height = ulin_height[2] + "px";
+                ulin[0].style.height = 0 + "px";
+                ulin[1].style.height = 0 + "px";
+                ulin[3].style.height = 0 + "px";
+                ulin[4].style.height = 0 + "px";
+                ulin[5].style.height = 0 + "px";
+                ulin[6].style.height = 0 + "px";
+                ulin[7].style.height = 0 + "px";
+            }
+           
+        }
+        cd4.onclick = function () {
+           
+            if (ulin[3].style.height != 0 + "px" ) {
+                ulin[3].style.height = 0 + "px";
+                ulin[4].style.zIndex = 2;
+            } else {
+                ulin[3].style.height = ulin_height[3] + "px";
+                ulin[0].style.height = 0 + "px";
+                ulin[1].style.height = 0 + "px";
+                ulin[2].style.height = 0 + "px";
+                ulin[4].style.height = 0 + "px";
+                ulin[5].style.height = 0 + "px";
+                ulin[6].style.height = 0 + "px";
+                ulin[7].style.height = 0 + "px";
+            }
+           
+        }
+        cd5.onclick = function () {
+           
+            if (ulin[4].style.height != 0 + "px") {
+                ulin[4].style.height = 0 + "px";
+                ulin[5].style.zIndex = 2;
+            } else {
+                ulin[4].style.height = ulin_height[4] + "px";
+                ulin[0].style.height = 0 + "px";
+                ulin[1].style.height = 0 + "px";
+                ulin[2].style.height = 0 + "px";
+                ulin[3].style.height = 0 + "px";
+                ulin[5].style.height = 0 + "px";
+                ulin[6].style.height = 0 + "px";
+                ulin[7].style.height = 0 + "px";
+            }
+           
+        }
+        cd6.onclick = function () {
+          
+            if (ulin[5].style.height != 0 + "px") {
+                ulin[5].style.height = 0 + "px";
+                ulin[6].style.zIndex = 2;
+            } else {
+                ulin[5].style.height = ulin_height[5] + "px";
+                ulin[0].style.height = 0 + "px";
+                ulin[1].style.height = 0 + "px";
+                ulin[2].style.height = 0 + "px";
+                ulin[3].style.height = 0 + "px";
+                ulin[4].style.height = 0 + "px";
+                ulin[6].style.height = 0 + "px";
+                ulin[7].style.height = 0 + "px";
+            }
+          
+        }
+        cd7.onclick = function () {
+           
+            if (ulin[6].style.height != 0 + "px") {
+                ulin[6].style.height = 0 + "px";
+                ulin[7].style.zIndex = 2;
+            } else  {
+                ulin[6].style.height = ulin_height[6] + "px";
+                ulin[0].style.height = 0 + "px";
+                ulin[1].style.height = 0 + "px";
+                ulin[2].style.height = 0 + "px";
+                ulin[3].style.height = 0 + "px";
+                ulin[4].style.height = 0 + "px";
+                ulin[5].style.height = 0 + "px";
+                ulin[7].style.height = 0 + "px";
+            }
+            
+        }
+        cd8.onclick = function () {
+           
+            if (ulin[7].style.height != 0 + "px") {
+                ulin[7].style.height = 0 + "px";
+                ulin[8].style.zIndex = 2;
+            } else  {
+                ulin[7].style.height = ulin_height[7] + "px";
+                ulin[0].style.height = 0 + "px";
+                ulin[1].style.height = 0 + "px";
+                ulin[2].style.height = 0 + "px";
+                ulin[3].style.height = 0 + "px";
+                ulin[4].style.height = 0 + "px";
+                ulin[5].style.height = 0 + "px";
+                ulin[6].style.height = 0 + "px";
+            }
+           
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
