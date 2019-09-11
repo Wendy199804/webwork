@@ -73,7 +73,7 @@
         <p id="p"></p>
 
     </div>
-
+    <input type="text" id="input">
     <script>
         var ul = document.getElementById('ul');
         var p = document.getElementById('p');
@@ -87,7 +87,7 @@
             ul.appendChild(li[i]);
             li[i].in = i;
             li[i].onclick = function () {
-                prev.className = "";
+                prev.className = ""
                 this.className = "active";
                   prev = this;
                 console.log(pword[i]);         

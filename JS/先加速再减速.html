@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: brown;
+            margin-top: 20px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <input id="input1"></input>
+    <input id="input2"></input>
+    <button id="btn">click</button>
+    <div id="box"></div>
+    <script>
+        var input1 = document.getElementById('input1');
+        var input2 = document.getElementById('input2');
+        var btn = document.getElementById('btn');
+        var box = document.getElementById('box');
+
+        btn.onclick = function () {
+            var step = 0;//步长
+            var cur;//当前位置
+            var index = -1; //计时器运行次数
+            var target = 1000;  //目标位置
+            var time; //计时器
+            // if (parseInt(box.style.marginLeft) >=1000) {   // box.style.marginLeft是string类型   要用parseInt
+            //     clearInterval(time)
+            // }
+            time = setInterval(function () {
+                index++;
+                if (index == 200) {
+                    index = 0;
+                }
+                cur = box.offsetLeft;
+                if (cur < 500) {
+                    step = step + 2;
+                } else {
+                    step = step - 2;
+                }
+                if ((cur + step - target) * step >= 0) {
+                    step = target - cur;
+                }
+                if (step == target - cur) {
+                    clearInterval(time);
+                }
+                // if (step == 0) {
+
+                //     clearInterval(time);
+                //     console.log("????");
+                // }
+                box.style.marginLeft = cur + step + 'px';
+                input1.value = '速度：' + step;
+                input2.value = '移动距离：' + box.style.marginLeft;
+                console.log(step);
+            }, 50)
+
+        }
+    </script>
+</body>
+
+</html>

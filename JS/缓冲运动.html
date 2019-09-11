@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+       *{
+          margin: 0;
+          padding: 0;
+       }
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: brown;
+            margin-top: 20px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <input id="input1"></input>
+    <input id="input2"></input>
+    <button id="btn">click</button>
+    <div id="box"></div>
+    <script>
+        var input1 = document.getElementById('input1');
+        var input2 = document.getElementById('input2');
+        var btn = document.getElementById('btn');
+        var box = document.getElementById('box');
+
+        btn.onclick = function () {
+            var target = 500;
+            var time; //计时器
+            clearInterval(time);
+            time = setInterval(function () {
+              let speed = (target - box.offsetLeft)/8;
+               speed = speed>0 ? Math.ceil(speed) : Math.floor(speed); 
+                box.style.marginLeft = box.offsetLeft + speed + 'px';
+                input1.value = '速度：' + speed;
+                input2.value = '移动距离：' + box.offsetLeft
+                console.log(speed);
+            }, 50)
+
+        }
+    </script>
+</body>
+
+</html>

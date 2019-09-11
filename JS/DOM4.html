@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ol id="ul1">
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+        <li>444</li>
+        <li>555</li>
+    </ol>
+    <input type="button" value="移动" id="button" />
+    <ol id="ul2">
+
+    </ol>
+
+
+    <script>
+        var ul1 = document.getElementById('ul1');
+        var ul2 = document.getElementById('ul2');
+        var button = document.getElementById('button');
+
+        button.onclick = function () {
+             var li =ul1.children[0];  //移动第一个子节点
+           // var li = ul1.lastElementChild;   //移动最后一个子节点
+           // ul2.appendChild(li);
+           ul1.appendChild(li);  //移动当前ul下的第一个li到最后一个
+        }
+    </script>
+</body>
+
+</html>

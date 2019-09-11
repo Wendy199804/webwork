@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM1</title>
+</head>
+
+<body>
+    <ul id="ul">
+        <li>1<a href="javascript:;">隐藏</a></li>
+        <li>2<a href="javascript:;">隐藏</a></li>
+        <li>3<a href="javascript:;">隐藏</a></li>
+        <li>4<a href="javascript:;">隐藏</a></li>
+        <li>5<a href="javascript:;">隐藏</a></li>
+    </ul>
+    <script>
+
+        var ul = document.getElementById('ul');
+        var a = document.getElementsByTagName('a');
+        var li = document.getElementsByTagName('li');
+        console.log(ul.childNodes);  //包括空格  为文本节点 text
+        //NodeList(11) [text, li, text, li, text, li, text, li, text, li, text]
+
+        console.log(ul.children);  //不包括空格,返回一个数组
+        //HTMLCollection(5) [li, li, li, li, li]
+
+        console.log(ul.childElementCount);  //5 (子节点数量)
+
+        console.log(ul.firstElementChild); // 整个Li,解决获取第一个子节点时会被空白符 / 回车符干扰的问题,在IE6 7 8中是没有这个方法d 
+
+        console.log(ul.firstChild) // text 空格
+
+        console.log(ul.children[0].nextElementSibling);
+
+        console.log(li[0].offsetParent);
+        //offsetParent就是距离该子元素最近的进行过定位的父元素,如果其父元素中不存在定位则offsetParent为：body元素
+
+        ul.children[0].nextElementSibling.style.background = "red"
+
+
+        // for (let i = 0; i < ul.children.length; i++) {
+        //     //      ul.children[i].style.display = 'none';
+        //     a[i].onclick = function () {
+        //         console.log(a[i].parentNode);
+        //         a[i].parentNode.style.display = 'none'
+        //     }
+        // }
+        // ul.children[1].onclick = function () {
+        //     console.log("1");//函数不会触发。因为“隐藏”两个字不是ul的子节点
+        // }
+
+
+        ///
+        // ul.addEventListener('click',function(e){
+        //     let ev = e.target;
+        //     if(ev.nodeName==='A'){
+        //         ev.parentNode.style.display='none';
+        //     }
+        // })
+        let newli = document.createElement('li');
+        ul.insertBefore(newli, li[2]);    //指定位置插入节点
+
+
+        for(let i=0;i<a.length;i++){
+            console.log(a[i].parentNode);
+            a[i].onclick = function(){
+                ul.removeChild(this.parentNode);
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

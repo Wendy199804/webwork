@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+   
+    </style>
+</head>
+<body>
+    <ul id="box">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li class="red"></li>
+		<li class="red"></li>
+	</ul>
+
+
+    <script>
+              
+         function getByClass(parent,className){
+             let aResult=[];//设置一个空数组
+     
+            let aElement=parent.getElementsByTagName('*');
+            // console.log(aElement);
+             for (let i =0; i < aElement.length ; i++) {
+             	  
+             	  if (aElement[i].className==className) {  
+                         aResult.push(aElement[i]);
+             	  }
+                   //console.log(aElement[i].className);
+             }
+           return aResult;
+        }
+      let list =  getByClass(box,'red');
+      for (let i=0;i<list.length;i++){
+          list[i].style.background='red'
+      }
+
+        </script>
+</body>
+</html>

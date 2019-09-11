@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+
+        #nav {
+            width: 200px;
+            height: 500px;
+            position: relative;
+            background-color: #5AD4E6;
+            left: -200px;
+        }
+
+        #span {
+            position: absolute;
+            left: 200px;
+            top: 100px;
+            display: block;
+            background-color: #D45579;
+            color: white;
+            border-radius: 0px 5px 5px 0px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="nav">
+        <span id="span">有</br>惊</br>喜</span>
+    </div>
+
+
+    <script>
+        (function () {
+            var time = null;
+            var nav = document.getElementById('nav');
+            var span = document.getElementById('span');
+
+            function Move(target) {
+                clearInterval(time);
+                time = setInterval(function () {
+                    let speed = (target - nav.offsetLeft) / 10;
+                    speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                    if (parseInt(nav.offsetLeft) >= Math.abs(target) ) {
+                        clearInterval(time);
+                    } else {
+                        nav.style.left = nav.offsetLeft + speed + 'px';
+                        console.log(speed);
+                    }
+                }, 30);
+            }
+
+            nav.onmouseover = function () {
+                Move(0);
+            } 
+            nav.onmouseout = function () {
+                Move(-200);
+                console.log(nav.style.left);
+                console.log(nav.offsetLeft);
+            }
+        })();
+
+
+    </script>
+</body>
+
+</html>

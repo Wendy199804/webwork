@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #circle {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        #nav {
+            width: 200px;
+            height: 500px;
+            position: relative;
+            background-color: darkgrey;
+            left: -200px;
+        }
+
+        #span {
+            position: absolute;
+            left: 200px;
+            display: block;
+            background-color: darkgray
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn"> click </button>
+    <div id="circle"></div>
+    <div id="nav">
+        <span id="span">有</br>惊</br>喜</span>
+    </div>
+
+
+    <script>
+        var time = null;
+        var btn = document.getElementById('btn');
+        var circle = document.getElementById('circle');
+        var nav = document.getElementById('nav');
+        var span = document.getElementById('span');
+        btn.onclick = function () {
+            let num = 0;
+            time = setInterval(function () {
+                num = num + 10;
+                circle.style.marginLeft = num + 'px';
+                if (num == 600) {
+                    clearInterval(time)
+                }
+            }, 20)
+        }
+        nav.onmouseover = function () {
+             clearInterval(time)
+            let num = -200;
+            time = setInterval(function () {
+                num = num + 10;
+                nav.style.left = num + 'px';
+                if (num == 0) {
+                    clearInterval(time)
+                }
+            }, 20);
+        }
+
+   //     clearInterval(time);
+            nav.onmouseout = function () {
+                clearInterval(time)
+                let num = 0;
+                time = setInterval(function () {
+                    num = num - 10;
+                    nav.style.left = num + 'px';
+                    if (num == -200) {
+                        clearInterval(time);
+                    }
+                }, 20);
+            }
+
+    </script>
+</body>
+
+</html>
