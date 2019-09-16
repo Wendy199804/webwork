@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/play.css" />
+		<script src="js/rem.js"></script>
+
+	</head>
+	<body>
+		<div class="choose-wrap">
+			<header class="top-nav">
+				<div id="" class="back-icon"> </div>
+				<div id="" class="nav-span">
+					<span class="nav-span1"></span>
+					<span class="nav-span2"></span>
+					<span class="nav-span3"></span>
+				</div>
+			</header>
+
+			<div id="ranking" style="background-color: #A2C2B5;width: 11rem;">
+				<h2 style="color: black;text-align: center;">前三名</h2>
+				<div id="" >
+					<table>
+					<tbody >
+						<tr>
+							<td class="title-td">第一名</td>
+							<td id="champion" class="content-td" style="color: tomato;">--</td>
+							<td class="title-td">得分</td>
+							<td id="c_score" class="content-td" style="color: tomato;">--</td>
+						</tr>
+						<tr>
+							<td class="title-td">第二名</td>
+							<td id="runner_up" class="content-td" style="color: tomato;">--</td>
+							<td class="title-td">得分</td>
+							<td id="r_score" class="content-td" style="color: tomato;">--</td>
+						</tr>
+						<tr>
+							<td class="title-td">第三名</td>
+							<td id="third_winner" class="content-td" style="color: tomato;">--</td>
+							<td class="title-td">得分</td>
+							<td id="t_score" class="content-td" style="color: tomato;">--</td>
+						</tr>
+					</tbody>
+				</table>
+				</div>
+				
+			</div>
+			<div id="" class="game-level-bg">
+				<div id="" class="game-level">
+					<h2>选择难度</h2>
+					<div id="pall">
+						<p id="easy" class="easy">简单：<strong> 6</strong>只地鼠</p>
+						<p id="general" class="general">普通：<strong> 8</strong>只地鼠</p>
+						<p id="morehard" class="morehard">较难：<strong>10</strong>只地鼠</p>
+						<p id="mosthard" class="mosthard">困难：<strong>12</strong>只地鼠</p>
+					</div>
+
+					<button type="button" id="choosebtn">开始游戏</button>
+				</div>
+			</div>
+
+			<p class="username" id="username"></p>
+		</div>
+
+
+		<script src="js/mice.js"></script>
+		<script type="text/javascript">
+			document.addEventListener('plusready', function() {
+				var $mice = $.getItem('mice');
+				$.logplayer = $mice.logplayer;
+				// = $user
+				// $people = $.getItem('people');
+				// console.log(JSON.stringify($.log));
+				// console.log(JSON.stringify($.login[0].name))
+				$.getId('username').innerText = "你好，尊敬的" + $mice.player.name;
+				var nowUser = $.getId('username').innerText;
+				let prev = $.getId('pall').children[0];
+				$.getId('pall').addEventListener('touchend', function(e) {
+					let tar = e.target;
+					if (tar.nodeName === 'P') {
+						$.setBg(prev, '#BECB8B')
+						$.setBg(tar, '#F0E89F')
+						prev = tar;
+						alert(tar.children[0].innerHTML);
+						var micenum = tar.children[0].innerHTML;
+						$.setItem('micenum', micenum);
+
+					}
+				})
+				//排列记录中的名次(排行榜)
+				console.log(JSON.stringify($.logplayer))
+				$.logplayer.sort(function(a, b) {
+					if (a.score < b.score) {
+						return 1;
+					} else if (a.score > b.score) {
+						return -1;
+					}
+					return 0;
+				})
+				console.log(JSON.stringify($.logplayer))
+				$.getId('champion').innerHTML = $.logplayer[0].name;
+				$.getId('runner_up').innerHTML = $.logplayer[1].name;
+				$.getId('third_winner').innerHTML = $.logplayer[2].name;
+				$.getId('c_score').innerHTML = $.logplayer[0].score;
+				$.getId('r_score').innerHTML = $.logplayer[1].score;
+				$.getId('t_score').innerHTML = $.logplayer[2].score;
+				//
+				$.getId('choosebtn').ontouchend = function() {
+
+					$.open('33.html');
+				}
+				$.back()
+			});
+		</script>
+	</body>
+</html>

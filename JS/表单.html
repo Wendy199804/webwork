@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a href="http://s.jf3q.com">click here</a>
+		<form οnsubmit="testform()" novalidate="true">
+			<label for="email"> 邮箱：</label>
+			<input type="email" id="email" name="email"/>
+			<input type="submit" value="提交">
+		</form>
+        <script>
+            function testform(){
+                var email=document.getElementById('email');
+                if(email.value==''){
+                    alert('请输入email！');
+                    return false;
+                }else if(!email.checkValidity()){
+                    alert('email的格式不正确！');
+                    return false;
+                }
+            }
+            </script>
+      
+</body>
+</html>

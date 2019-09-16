@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title></title>
+    
+</head>
+<body>
+	<input type="text" id="username"><br>
+		<input type="passowrd" id="password"><br>
+		<button id="login">登录</button>
+		<button id="regist">注册</button>
+	
+	
+	<script type="text/javascript">
+    	
+   		document.addEventListener('plusready', function(){
+   			//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+   			if(window.localStorage.userArr){//判断是否存在
+   					var array = JSON.parse(window.localStorage.userArr);
+   				}else{
+   					array = [];//创建一个新数组
+   				}
+   			//登录
+   				document.getElementById('login').onclick = function(){
+   					var username = document.getElementById('username').value;
+   					var password = document.getElementById('password').value;
+   					var isHad = false;//定义一个开关变量
+   					var index = 0 ; //定义一个下标确定用户
+   					//遍历数组进行匹配
+   					for(var i =0;i<array.length;i++){
+   						if(username==array[i].username){//有这个账号
+   							isHad=true;
+   							index=i;
+   			 
+   						}
+   					}
+   					if(isHad){//如果存在
+   						if(password==array[index].password){
+   							alert("登录成功");
+   						}else{
+   							alert("密码错误");
+   						}
+   					}else{//账号不存在或输入错误
+   						alert('账号不存在或输入错误');
+   					}
+   				}
+   		//注册
+   			document.getElementById('regist').onclick = function(){
+   				var username = document.getElementById('username').value;
+   				var password = document.getElementById('password').value;
+   				//遍历数组进行匹配
+   				for(var i =0;i<array.length;i++){
+   					//判断是否有相同账号
+   					if(username==array[i].username){
+   						alert("该账号已存在");
+   						return;
+   					}
+   				}
+   				//创建对象
+   				var obj = {username:username,password:password,score:0}
+   				array.push(obj);
+   				window.localStorage.userArr=JSON.stringify(array);
+   				alert("用户创建成功");
+   		 
+   			}
+   		
+   		
+   		});
+   		
+    </script>
+</body>
+</html>

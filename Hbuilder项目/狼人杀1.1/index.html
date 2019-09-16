@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/all.css" />
+		<title></title>
+
+	</head>
+	<body style="background-image: url(img/bg1.jpg);background-size: cover;background-repeat: no-repeat;height: 100vh;">
+		<div id="" class="choose-wrap" >
+			<img src="img/200.webp">
+			<form class="choose-form">
+				<p><label style="position: relative;color: #872217;font-size: 1.3rem;">总人数：<input type="number" name="" id="num_input" class="num_input" min="6" max="20" />
+						<span class="false" id="people_false"></span></label></p>
+				<span class="cut-line"></span>
+				<p><label style="position: relative;background: url(img/wlangr.png) no-repeat left top;background-size: 38%;" >&nbsp &nbsp &nbsp &nbsp &nbsp <input type="number" name="" id="werwolf_num" class="werwolf_num" />
+						<span class="false" id="werwolf_num_false"></span></label></p>
+				<p><label style="background: url(img/wpm.png) no-repeat left top;background-size: 60%;">&nbsp &nbsp &nbsp <span id="civilian" class="civilian"></span></label></p>
+
+				<div id="check">
+					<p style="color: #872217;">选择需要的神职：</p>
+					<input type="checkbox" name="identity[]" id="y" value="" class="check" /><label for="y" style="background: url(img/wyyj.png) no-repeat right top;background-size: 100%;">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </label>
+					<input type="checkbox" name="identity[]" id="n" value="" class="check" /><label for="n" style="background: url(img/wnw.png) no-repeat right top;background-size: 100%;">&nbsp &nbsp &nbsp &nbsp &nbsp</label>
+					<input type="checkbox" name="identity[]" id="l" value="" class="check" /><label for="l" style="background: url(img/wlr.png) no-repeat right top;background-size: 100%;">&nbsp &nbsp &nbsp &nbsp &nbsp</label>
+					<input type="checkbox" name="identity[]" id="s" value="" class="check" /><label for="s" style="background: url(img/wsw.png) no-repeat right top;background-size: 100%;">&nbsp &nbsp &nbsp &nbsp &nbsp</label>
+					<input type="checkbox" name="identity[]" id="b" value="" class="check" /><label for="b" style="background: url(img/wbc.png) no-repeat right top;background-size: 100%;">&nbsp &nbsp &nbsp &nbsp &nbsp</label>
+					<!-- <p><input type="checkbox" name="identity[]" id="" value="" class="check" style="display: none;" /><label>确认修改</label></p> -->
+				</div>
+
+			</form>
+			<p style="text-align: center;"><img src="img/begin.png" id="create_btn" style="width: 10rem;margin-top: 0.6rem;"></p>
+		</div>
+		<script src="js/wolf.js"></script>
+		<script type="text/javascript">
+			document.addEventListener('plusready', function() {
+				//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+				var civilian_num = $.getId('civilian');
+				var check_counts = 3;
+				var checkboxname = $.getName('identity[]');
+				// input框失去焦点事件
+				$.getId('num_input').onblur = function() {
+					if ($.getId('num_input').value == 0) {
+						$.getId('people_false').style.display = 'inline-block';
+					} else {
+						$.getId('people_false').style.display = 'none';
+					} //总人数不能为零
+					if ($.getId('num_input').value <= 7) {
+						check_counts = 3;
+						for (let i = 0; i < check_counts; i++) {
+							checkboxname[i].checked = true;
+						}
+						for (let i = check_counts; i < 5; i++) {
+							checkboxname[i].checked = false;
+						}
+						$.getId('werwolf_num').value = 1;
+						civilian_num.innerText = $.getId('num_input').value - $.getId('werwolf_num').value - check_counts;
+					} //人数小于等于7时,默认选择三位神职
+					if ($.getId('num_input').value == 9 || $.getId('num_input').value == 8) {
+						check_counts = 4;
+						for (let i = 0; i < check_counts; i++) {
+							checkboxname[i].checked = true;
+						}
+						for (let i = check_counts; i < 5; i++) {
+							checkboxname[i].checked = false;
+						}
+						$.getId('werwolf_num').value = 2;
+						civilian_num.innerText = $.getId('num_input').value - $.getId('werwolf_num').value - check_counts;
+					} //人数等于8或9时,默认选择四位神职
+					if ($.getId('num_input').value >= 10) {
+						check_counts = 5;
+						for (let i = 0; i < check_counts; i++) {
+							checkboxname[i].checked = true;
+						}
+						for (let i = check_counts; i < 5; i++) {
+							checkboxname[i].checked = false;
+						}
+						$.getId('werwolf_num').value = 3;
+						civilian_num.innerText = $.getId('num_input').value - $.getId('werwolf_num').value - check_counts;
+					} //人数大于等于10时,默认选择五位神职
+					if ($.getId('num_input').value >= 12) {
+						$.getId('werwolf_num').value = 3;
+						civilian_num.innerText = $.getId('num_input').value - $.getId('werwolf_num').value - check_counts;
+					}
+					if ($.getId('num_input').value >= 16) {
+						$.getId('werwolf_num').value = 4;
+						civilian_num.innerText = $.getId('num_input').value - $.getId('werwolf_num').value - check_counts;
+					}
+					if ($.getId('num_input').value == 20) {
+						$.getId('werwolf_num').value = 5;
+						civilian_num.innerText = $.getId('num_input').value - $.getId('werwolf_num').value - check_counts;
+					}
+				}
+				//input框失去焦点事件
+				$.getId('werwolf_num').onblur = function() {
+					civilian_num.innerText = $.getId('num_input').value - $.getId('werwolf_num').value - check_counts;
+					if ($.getId('werwolf_num').value == 0) {
+						$.getId('werwolf_num_false').style.display = 'inline-block';
+					} else {
+						$.getId('werwolf_num_false').style.display = 'none';
+					}
+					// $.characters_num.pm = civilian_num.innerText; //暂存平民人数
+					// $.characters_num.langr = $.getId('werwolf_num').value; //暂存狼人人数
+
+				}
+
+				$.getId('check').addEventListener('change', function(e) {
+					self = e.target;
+
+					if (e.target.name == 'identity[]') {
+						if (this.checked == true) {
+							this.checked = false;
+						} else {
+							this.checked = true;
+						}
+						
+					}
+					var count = 0;
+					for (var i = 0; i < 5; i++) {
+					
+						if (checkboxname[i].checked == true) {
+							count++;
+						}
+					}
+					console.log("-------------------")
+					console.log(count)
+					console.log(civilian_num.innerText)
+					console.log(checkboxname[0].checked)
+					console.log(checkboxname[1].checked)
+					console.log(checkboxname[2].checked)
+					console.log(checkboxname[3].checked)
+					console.log(checkboxname[4].checked)
+					civilian_num.innerText = $.getId('num_input').value - $.getId('werwolf_num').value - count;
+
+
+
+					// location.reload() //刷新当前页面
+
+
+
+
+					// return false;
+				})
+
+				$.getId('create_btn').addEventListener('touchend', function() {
+					$.characters_num.pm = civilian_num.innerText; //暂存平民人数
+					$.characters_num.langr = $.getId('werwolf_num').value; //暂存狼人人数
+					if (checkboxname[0].checked == true) {
+						$.characters_num.yyj = 1;
+					}
+					if (checkboxname[1].checked == true) {
+						$.characters_num.nw = 1;
+					}
+					if (checkboxname[2].checked == true) {
+						$.characters_num.lier = 1;
+					}
+					if (checkboxname[3].checked == true) {
+						$.characters_num.sw = 1;
+					}
+					if (checkboxname[4].checked == true) {
+						$.characters_num.bc = 1;
+					}
+					console.log(JSON.stringify($.characters_num));
+					alert(JSON.stringify($.characters_num))
+					$.setItem($)
+					$.open('22.html')
+				})
+
+
+
+			});
+		</script>
+
+	</body>
+</html>

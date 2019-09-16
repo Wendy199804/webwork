@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	
+		<title>Document</title>
+		<style type="text/css">
+			#portrait {
+			        width: 79px;  //限制所选图片的大小 以防图片过大手机显示不下
+			        height: auto;
+			}
+			.submitImg {
+			        margin: 50px auto;
+			        display: block;
+			}
+			            
+			.child {
+			        position: relative;
+			        display: inline-block;
+			}
+			            
+			#file {
+			        position: absolute;
+			        left: 0px;
+			        top: 0px;
+			        opacity: 0;
+			        height: 100%;
+			        width: 100%;
+			}
+			#upload-img{
+				width: 150px;
+				height:150px;
+				border-radius: 50%;
+			}
+			.prev-img{
+				width: 100px;
+				height:100px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="choose">
+			<ul class="number" id="number">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+			</ul>
+		</div>
+		
+		
+		<!-- <div class="parent">
+		            <img src="" id="portrait" /> //显示用户所选到的图片，即预览
+		            <div class="child">  //点击区域     
+		                 <svg class="icon" aria-hidden="true">
+		                     <use xlink:href="#icon-shangchuantupiananniu_moren"></use>
+		                  </svg>
+		                   <input type="file" id="file" accept="image/*"  multiple="multiple"/><br />  //文件上传控件
+		             </div>
+		       </div>
+		       <input type="hidden" value="" id="baseImg" />  //保存转成abse64的图片
+		       <button class="submitImg mui-btn-blue" type="button">上传</button>  //上传按钮 -->
+			   <input type="file" name="image" accept=“image/*” onchange='handleInputChange' id="upload-img">
+			   <img src="" class="prev-img">
+			   
+<script src="js/all.js"></script>
+<script type="text/javascript">
+	// //图片上传
+	// mui('#wrap').on('change', '#file', function() {
+	//         var obj = this.files[0];
+	//         var fr = new FileReader();
+	//         fr.onload = function() {
+	//             mui("#portrait")[0].setAttribute('src', this.result);
+	//             mui('#baseImg')[0].value = this.result;
+	//         };
+	//         fr.readAsDataURL(obj);
+	// 
+	// })()
+	export default class Uploader {
+	  constructor() {
+	
+	  }
+	
+	  /**
+	   * 把base64格式转化成Blob格式
+	   * @param  {[type]} urlData [description]
+	   * @return {[type]}         [description]
+	   */
+	  convertBase64UrlToBlob(urlData) {
+	    var arr = urlData.split(','),
+	      mime = arr[0].match(/:(.*?);/)[1],
+	      bstr = atob(arr[1]),
+	      n = bstr.length,
+	      u8arr = new Uint8Array(n);
+	    while (n--) {
+	      u8arr[n] = bstr.charCodeAt(n);
+	    }
+	    return new Blob([u8arr], {
+	      type: mime
+	    });
+	  }
+	
+	  /**
+	   * 外部调用的方法 完成图片的压缩
+	   * @param  {[type]}   file     需要处理的file对象
+	   * @param  {[type]}   obj      传入的配置 quality 压缩的质量
+	   * @param  {Function} callback 完成压缩之后的回调函数
+	   * @return {[type]}            [description]
+	   */
+	  photoCompress(file, obj, callback) {
+	    // 使用HTML5的FileReader开始读取File对象中的内容
+	    let setting = obj;
+	    var ready = new FileReader();
+	    ready.readAsDataURL(file);
+	    var that = this;
+	    // 判断图片需不需要压缩
+	    if (file.size / 1024 < 500) {
+	      setting.quality = .9;
+	    } else {
+	      setting.quality = .5;
+	    }
+	    
+	    // 获取图片源信息 判断照片方向
+	    ready.onload = function () {
+	      var _this2 = this;
+	      that.getOrientation(file).then(function(o){
+	      // setting.orientation = EXIF.getTag(file, "Orientation");
+	      setting.orientation = o;
+	      var re = _this2.result;
+	      that.canvasDataURL(re, setting, callback, file)
+	      })
+	    }
+	    
+	
+	
+	  }
+	
+	  /**
+	   * canvas绘制
+	   * @param  {[type]}   result     [description]
+	   * @param  {[type]}   obj      [description]
+	   * @param  {Function} callback [description]
+	   * @return {[type]}            [description]
+	   */
+	  canvasDataURL(result, obj, callback, file) {
+	    var img = new Image();
+	    img.src = result;
+	    var _this = this;
+	    img.onload = function() {
+	      var that = this;
+	      var w, h, scale, quality;
+	      scale = that.width / that.height;
+	      if (that.width > 1200) {
+	        w = 1200;
+	        h = w / scale;
+	      } else {
+	        w = that.width;
+	        h = that.height;
+	      }
+	      //生成canvas
+	      var canvas = document.createElement('canvas');
+	      var ctx = canvas.getContext('2d');
+	      // 创建属性节点
+	      var anw = document.createAttribute("width");
+	      anw.nodeValue = w;
+	      var anh = document.createAttribute("height");
+	      anh.nodeValue = h;
+	      canvas.setAttributeNode(anw);
+	      canvas.setAttributeNode(anh);
+	      // 调整图片方向
+	      // console.log(obj.orientation)
+	      if (obj.orientation && obj.orientation != "" && obj.orientation != 1) {
+	        switch (obj.orientation) {
+	          case 6: //需要顺时针（向左）90度旋转
+	            _this.rotateImg(that, w, h, 'left', canvas, ctx);
+	            break;
+	          case 8: //需要逆时针（向右）90度旋转
+	            _this.rotateImg(that, w, h, 'right', canvas, ctx);
+	            break;
+	          case 3: //需要180度旋转
+	            _this.rotateImg(that, w, h, 'right', canvas, ctx); //转两次
+	            _this.rotateImg(that, w, h, 'right', canvas, ctx);
+	            break;
+	        }
+	      } else {
+	        ctx.drawImage(that, 0, 0, w, h);
+	      }
+	      // 压缩图像质量
+	      var base64 = canvas.toDataURL('image/jpeg', obj.quality);
+	      // 回调函数返回base64的值
+	      callback(base64);
+	    }
+	
+	  }
+	
+	  getObjectURL(file) {
+	    var url = null;
+	    if (window.createObjectURL != undefined) {
+	      url = window.createObjectURL(file);
+	    } else if (window.URL != undefined) { // mozilla(firefox)
+	      url = window.URL.createObjectURL(file);
+	    } else if (window.webkitURL != undefined) { // webkit or chrome
+	      url = window.webkitURL.createObjectURL(file);
+	    }
+	    return url;
+	  }
+	
+	
+	  rotateImg(img, w, h, direction, canvas, ctx) {
+	    //最小与最大旋转方向，图片旋转4次后回到原方向
+	    var min_step = 0;
+	    var max_step = 3;
+	    //var img = document.getElementById(pid);
+	    if (img == null) return;
+	    //img的高度和宽度不能在img元素隐藏后获取，否则会出错
+	    var height = h;
+	    var width = w;
+	    //var step = img.getAttribute('step');
+	    var step = 2;
+	    if (step == null) {
+	      step = min_step;
+	    }
+	    if (direction == 'right') {
+	      step++;
+	      //旋转到原位置，即超过最大值
+	      step > max_step && (step = min_step);
+	    } else {
+	      step--;
+	      step < min_step && (step = max_step);
+	    }
+	    //旋转角度以弧度值为参数
+	    var degree = step * 90 * Math.PI / 180;
+	    // var ctx = canvas.getContext('2d');
+	    // alert(h)
+	    switch (step) {
+	      case 0:
+	        canvas.width = width;
+	        canvas.height = height;
+	        ctx.drawImage(img, 0, 0);
+	        break;
+	      case 1:
+	        canvas.width = height;
+	        canvas.height = width;
+	        ctx.rotate(degree);
+	        ctx.drawImage(img, 0, -height,w,h);
+	        break;
+	      case 2:
+	        canvas.width = width;
+	        canvas.height = height;
+	        ctx.rotate(degree);
+	        ctx.drawImage(img, -width, -height,w,h);
+	        break;
+	      case 3:
+	        canvas.width = height;
+	        canvas.height = width;
+	        ctx.rotate(degree);
+	        ctx.drawImage(img, -width, 0,w,h);
+	        break;
+	    }
+	  }
+	
+	  ajaxThen(data) {
+	    return new Promise((resolve, reject) => {
+	      var form = new FormData();
+	      form.append('image', data);
+	      // console.log(data,form)
+	      $.ajax({
+	        url: '/img',
+	        data: form,
+	        method: 'post',
+	        dataType: 'json',
+	        contentType: false,
+	        processData: false,
+	        mimeType: "multipart/form-data",
+	        success: function(res) {
+	          resolve(res)
+	        }
+	      })
+	    })
+	
+	  }
+	
+	  getOrientation(file) {
+	    return new Promise((resolve, reject) => {
+	      EXIF.getData(file, () => {
+	        let o = EXIF.getTag(file, "Orientation");
+	        resolve(o);
+	        reject(o);
+	      })
+	    })
+	  }
+	}
+</script>
+	</body>
+</html>

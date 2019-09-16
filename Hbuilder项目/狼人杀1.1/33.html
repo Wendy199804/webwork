@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/all.css" />
+		<title></title>
+	</head>
+	<body style="background-image: url(img/bg2.jpg);background-size: cover;background-repeat: no-repeat;height: 100vh;background-attachment:fixed;padding: 0; padding-top: 0.1px;">
+		<p style="position:fixed;display: flex;justify-content: space-between;width: 100%;"><img src="img/200.webp"><span id="day_count" class="day_count"></span></p>
+		<div id="" class="wrap">
+			<div id="play">
+				<ul id="status_list" class="status_list"></ul>
+			</div>
+		</div>
+		
+		<script src="js/wolf.js"></script>
+		<script type="text/javascript">
+			document.addEventListener('plusready', function() {
+				//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+				var $wer = $.getItem('wer');
+				var ul = $.getId('status_list');
+				var day_count = $.getId('day_count');
+				console.log(JSON.stringify($wer.players))
+				day_count.innerHTML='第'+$wer.day+'天';
+				
+		function create_li(){
+			for(let i=0;i<$wer.players.length;i++){
+				var li = document.createElement('li');//ul下有li元素
+				ul.appendChild(li);
+				var divLeft = document.createElement('div'); //每个Li下面有左右两个div
+				var divRight = document.createElement('div');
+				li.appendChild(divLeft);
+				li.appendChild(divRight);
+				divLeft.className='divLeft';
+				divRight.className='divRight';
+				var img = document.createElement('img');//左边div下是一张图片
+				divLeft.appendChild(img);
+				img.src=$wer.players[i].bg;
+				divRight.innerHTML='<P>'+$wer.players[i].index+'号玩家</p><p>身份：'+$wer.players[i].status+'</p><p>是否还活着：'+$wer.players[i].exist+'</p><P>是否被毒死：'+$wer.players[i].isPoison+'</p>'
+			
+			}
+		}
+		create_li()
+		
+		});
+		</script>
+	</body>
+</html>

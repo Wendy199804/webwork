@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/play.css" />
+		<script src="js/rem.js"></script>
+
+	</head>
+	<body>
+		<div class="choose-wrap">
+			<header class="top-nav">
+				<div id="" class="back-icon"> </div>
+				<div id="rank_btn" class="nav-span">
+					<span class="nav-span1"></span>
+					<span class="nav-span2"></span>
+					<span class="nav-span3"></span>
+				</div>
+			</header>
+			<div style="display: none;">
+				地鼠停留时间：<input id="stay" type="text" size="5" value="1000" />毫秒<br />
+				地鼠出现间隔：<input id="interval" type="text" size="5" value="1000" />毫秒<br />
+			</div>
+
+			游戏-时长：<input id="duration" class="duration" type="text" size="5px" value="30" style="color: ghostwhite;font-size: 20px;text-shadow: 2px 2px 5px #666666;" />秒<br />
+			倒计时：<span id="count" style="color: tomato;font-size: 20px;text-shadow: 2px 2px 5px #666666;display: inline-block;width: 2rem;"></span>秒<br />
+			<p class="score">你的成绩：<span id="score"></span><br /></p>
+			<div id="progress_bar_bg" class="progress-bar-bg">
+				<div id="progress_bar" class="progress-bar"></div>
+			</div>
+			<p id="game_level"></p>
+			<div class="buttons">
+				<button id="startBtn">开始游戏</button>
+				<button id="pauseBtn">暂停游戏</button>
+				<button id="stopBtn">停止游戏</button>
+			</div>
+
+			<hr />
+			<!--游戏区域-->
+			<div id="game_div">
+				<div id="pause_div"></div>
+
+				<ul id="ul">
+
+				</ul>
+			</div>
+			<p class="ch">最高分：<span id="ch" style="color: tomato;font-size: 1.5rem;">--</span></p>
+			<p class="username" id="username"></p>
+			<div id="rank">
+				<h3>排行榜</h3>
+				<div id="ranks">
+
+				</div>
+			</div>
+
+		</div>
+
+
+		<script src="js/mice.js"></script>
+		<script>
+			document.addEventListener('plusready', function() {
+				var stay, interval, duration, count_span, score_span, startBtn, pauseBtn, stopBtn;
+				var imgs;
+				var timeCount, timeInterval, timeStay, timePlay; //计时器
+				var isStart; //判断是否开始，游戏开始为true，游戏暂停为false
+				var pause = false; //是否为暂停
+				var count_data; //倒计时的时间
+				var jxGame_duration; //继续游戏的总时长
+				var isOneStart = true; //判断是否为第一次开始
+				var hit = 0; //打中的
+				var miss = 0; //没打中的
+				var score = 0; //得分
+				var progress_bar;
+				var level;
+				var u = [];
+				var scorelog = [];
+
+				var $mice = $.getItem('mice');
+				$.player = $mice.player;
+				$.logplayer = $mice.logplayer;
+				$.players = $mice.players;
+
+
+				stay = $.getId("stay");
+				interval = $.getId("interval");
+				duration = $.getId("duration");
+				count_span = $.getId("count");
+				score_span = $.getId("score");
+				startBtn = $.getId("startBtn");
+				pauseBtn = $.getId("pauseBtn");
+				stopBtn = $.getId("stopBtn");
+				imgs = $.getTagName($.getId('ul'), 'img');
+				pause_div = $.getId("pause_div");
+				ul = $.getId('ul');
+				progress_bar = $.getId('progress_bar');
+				level = $.getId('game_level');
+				//	$.login = $.getItem('user');
+
+				ul.addEventListener("touchend", function(e) {
+					self = e.target;
+					if (self.nodeName === 'IMG') {
+						count_data += 5;
+						if (count_data > duration.value) {
+							count_data = duration.value;
+						}
+						console.log('？？：' + count_data)
+						play(self);
+					}
+				})
+				count_span.innerHTML = " --- ";
+				//显示玩家昵称
+				$.getId('username').innerText = "你好，尊敬的" + $mice.player.name;
+				//
+				var micenum = $.getItem('micenum');
+				//创建LI 和 IMG 节点
+				for (var i = 0; i < micenum; i++) {
+					var li = document.createElement('li');
+					ul.appendChild(li);
+					var img = document.createElement('img');
+					li.appendChild(img);
+					img.src = "img/00.jpg"
+				}
+				//显示当前模式
+				if (micenum == 6) {
+					stay.value = 1000;
+					interval.value = 1000;
+					level.innerHTML = "简单模式";
+				} else if (micenum == 8) {
+					stay.value = 1000;
+					interval.value = 800;
+					level.innerHTML = "普通模式";
+				} else if (micenum == 10) {
+					stay.value = 800;
+					interval.value = 700;
+					level.innerHTML = "较难模式";
+				} else if (micenum == 12) {
+					stay.value = 800;
+					interval.value = 400;
+					level.innerHTML = "困难模式";
+				}
+
+				function forbid() {
+					if (isStart) {
+						stay.disabled = true;
+						interval.disabled = true;
+						duration.disabled = true;
+						startBtn.disabled = true;
+					} else {
+						stay.disabled = false;
+						interval.disabled = false;
+						duration.disabled = false;
+						startBtn.disabled = false;
+					}
+				}
+
+				function timecount() {
+					var game_time = new Date(); //游戏开始的时间  //每隔一秒记录一次，
+					count_data = duration_time - parseInt((game_time - start_Time) / 1000);
+					for (let i = 0; i < imgs.length; i++) {
+						//console.log(imgs[i].src);
+						let name = imgs[i].src.substr(imgs[i].src.length - 5, 1);
+						if (name == 2) {
+							duration_time++;
+							console.log(duration_time);
+						}
+					}
+					console.log('实际时间' + duration_time);
+					count_span.innerHTML = count_data;
+					lengthbg = $.getId('progress_bar_bg').offsetWidth;
+					var percent = count_data / duration_time * lengthbg;
+					var isLog = false;
+					//	progress_bar.innerHTML= parseInt(count_data / duration_time *100 )+'%' ;
+					progress_bar.style.width = percent + 'px';
+					//progress_bar.style.cssText="transition: all 1s";
+					if (count_data <= -1) {
+						alert("游戏结束");
+						//保存玩家最高分(前提是没有退出登录）↓
+						$mice.player.score = score; //获取分数
+						scorelog.push(score); //把每次游戏成绩放入数组
+						console.log(scorelog);
+						scorelog.sort(function(value1, value2) { //升序排列该数组
+							return value2 - value1;
+						});
+						console.log(scorelog);
+						$.getId('ch').innerHTML = scorelog[0]; //输出当前最高纪录
+						$mice.player.score = scorelog[0]; //保存最高分
+						//更新玩家的最高分历史记录 ↓
+						let tf = false;
+						let index = 0;
+						for (let i = 0; i < $mice.logplayer.length; i++) { //遍历历史记录
+							if ($.player.name == $mice.logplayer[i].name) { //如果在历史记录里找到了当前玩家的记录,tf返回true
+								// score>$mice.logplayer[i].score
+								tf = true;
+								index = i;
+							}
+						}
+						if (tf) { //在找到记录的前提下 
+							if (score > $mice.logplayer[index].score) { //如果本次游戏分数比记录里的高
+								$.player.score = $mice.player.score; //给当前player添加分数
+								console.log(JSON.stringify($.player)); //显示当前player信息
+								$.logplayer.splice(index, 1); //删除原来的历史记录
+								console.log($.logplayer.length); //显示当前历史记录的项数
+								$.logplayer.push($.player); //把当前player信息添加到历史记录
+								$.setItem($)
+								$.alert("恭喜！新纪录！")
+							} else {
+								$.alert("本次游戏分数将不被记录")
+							}
+
+						} else { //在没有找到记录的前提下,   添加新记录
+							$.player.score = $mice.player.score; //给当前player添加分数
+							console.log(JSON.stringify($.player)); //显示当前player信息
+							var lenx = $.logplayer.length - 1; //获得最后一项历史记录的索引
+							console.log('最后一项：' + lenx);
+							$.logplayer.splice(lenx, 1); //删除历史记录的最后一项
+							console.log($.logplayer.length); //显示当前历史记录的项数
+							$.logplayer.push($.player); //把当前player信息添加到历史记录			
+							$.setItem($);
+						}
+						//
+						game_over();
+						forbid();
+						return;
+					}
+					timeCount = setTimeout(timecount, 1000);
+				}
+
+
+
+				function game_pause() {
+					clearTimeout(timeCount);
+					clearTimeout(timeInterval);
+					clearTimeout(timeStay);
+					if (!isOneStart) {
+						clearTimeout(timeContinue);
+					}
+					pause_div.style.display = "block";
+					pauseBtn.textContent = "继续游戏";
+					pause = true;
+					jxGame_duration = count_data;
+				}
+
+				function game_continue() {
+					var jxGame_timming = new Date();
+					count_data = jxGame_duration - parseInt((jxGame_timming - jxGame_startTime) / 1000);
+					for (let i = 0; i < imgs.length; i++) {
+						//console.log(imgs[i].src);
+						let name = imgs[i].src.substr(imgs[i].src.length - 5, 1);
+						if (name == 2) {
+							duration_time++;
+							console.log(duration_time);
+						}
+					}
+					console.log('实际时间' + duration_time);
+					count_span.innerHTML = count_data;
+					lengthbg = $.getId('progress_bar_bg').offsetWidth;
+					percent = count_data / jxGame_duration * lengthbg;
+					progress_bar.style.width = percent + 'px';
+					if (count_data <= -1) {
+						alert("游戏结束");
+						game_over();
+						forbid();
+						return;
+					}
+					timeContinue = setTimeout(game_continue, 1000);
+				}
+
+				function game_over() {
+					clearTimeout(timeStay);
+					clearTimeout(timeInterval);
+					clearTimeout(timeCount);
+					clearTimeout(timePlay);
+					if (!isOneStart) {
+						clearTimeout(timeContinue);
+					}
+					isStart = false;
+					count_span.innerHTML = " --- ";
+					hit = 0;
+					score = 0;
+					miss = 0;
+					score_span.innerHTML = "打中" + hit + "只，漏掉" + miss + "只，得分" + score;
+					pause_div.style.display = "none";
+					mice_restore();
+
+				}
+
+				function mice_restore() {
+					for (var i = 0; i < imgs.length; i++) {
+						imgs[i].src = "img/00.jpg";
+					}
+				}
+
+				function mouse_show() { //每隔interval_time 地鼠随机出现
+					var index = parseInt(Math.random() * imgs.length);
+					imgs[index].src = "img/01.jpg";
+					imgs[index].style.top = 0 + 'px'; //记录出现的地鼠的位置
+					timeInterval = setTimeout(mouse_show, interval_time);
+					setTimeout(function() { //一段时间以后消失
+						mouse_hide(index) //传递这个位置
+					}, stay_time)
+				}
+
+				function mouse_hide(i) {
+					var name = imgs[i].src.substr(imgs[i].src.length - 5, 1);
+					if (name == 1) {
+						imgs[i].src = "img/00.jpg";
+						imgs[i].style.top = 200 + 'px';
+						miss++;
+						score -= 2;
+						if (score <= 0) {
+							score = 0;
+						}
+						score_span.innerHTML = "击中：" + hit + "只，未击中：" + miss + "，得分" + score;
+					}
+				}
+
+				function play(objj) {
+					var name = objj.src.substr(objj.src.length - 5, 1);
+					if (name == 1) {
+						objj.src = "img/02.jpg";
+						hit++;
+						score += 5;
+						// count_data ++;
+						// if (count_data >30){ count_data = 30}
+						// console.log(count_data)
+						//	alert(count_data);
+
+						// var b = count_span.innerHTML;
+						// b++;count_span.innerHTML = b;
+						score_span.innerHTML = "击中：" + hit + "，未击中：" + miss + "，得分" + score;
+						timePlay = setTimeout(function() {
+							objj.src = "img/00.jpg";
+						}, 300);
+
+					}
+				}
+
+
+				startBtn.ontouchend = function() {
+					stay_time = parseInt(stay.value); //停留时间
+					interval_time = parseInt(interval.value); //间隔时间
+					duration_time = parseInt(duration.value); //游戏时长
+					isOneStart = true;
+					start_Time = new Date();
+					timecount();
+					mouse_show();
+					isStart = true;
+					forbid();
+					score_span.innerHTML = "打中" + hit + "只，漏掉" + miss + "只，得分" + score;
+				}
+				pauseBtn.ontouchend = function() {
+					if (pause) {
+						isOneStart = false;
+						pause_div.style.display = "none";
+						pauseBtn.textContent = "暂停游戏";
+						pause = false;
+						jxGame_startTime = new Date();
+						game_continue();
+						mice_restore();
+						mouse_show();
+						forbid();
+					} else {
+						game_pause();
+					}
+				}
+				stopBtn.ontouchend = function() {
+					game_over();
+					forbid();
+				}
+				//排列记录中的名次(排行榜)
+				console.log(JSON.stringify($.logplayer))
+				$.logplayer.sort(function(a, b) {
+					if (a.score < b.score) {
+						return 1;
+					} else if (a.score > b.score) {
+						return -1;
+					}
+					return 0;
+				})
+				console.log(JSON.stringify($.logplayer));
+				console.log("??")
+
+				for (var i = 0; i < $.logplayer.length; i++) {
+					let _i = i;
+					$.getId('ranks').innerHTML += '<table><tbody><tr><td>第' + (i + 1) + '名</td><td>' + $.logplayer[_i].name +
+						'</td><td>得分</td><td>' + $.logplayer[_i].score + '</td></tr></tbody></table>'
+				}
+				//排行榜点击出现
+
+				let num = 0;
+				$.getId('rank_btn').addEventListener('touchend', function() {
+
+					if (num % 2 == 0) {
+						$.getId('rank').style.left = '50%';
+						$.getId('rank').style.opacity = 1;
+					}
+					if (num % 2 == 1) {
+						$.getId('rank').style.left = -150 + 'px';
+						$.getId('rank').style.opacity = 0;
+					}
+					num++;
+					console.log(num);
+
+				})
+
+				$.setItem($);
+				$.back()
+			});
+		</script>
+	</body>
+</html>

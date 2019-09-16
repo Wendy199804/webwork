@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+.number {
+	list-style: none;
+	display: flex;
+	justify-content: space-between;
+	width: 500px;
+}
+
+.number li {
+	width: 100px;
+	height: 100px;
+	background-color: chocolate;
+}

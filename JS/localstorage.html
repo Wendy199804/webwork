@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+     
+
+
+    //    localStorage.setItem('user'); //
+        var arr = []; //准备一个空数组
+        name = "小明";
+        age = '22';  //获取到值
+        var obj = {
+            name: name,
+            age: age,
+            sex: "女"
+        }    //拥有一个存值的对象
+        arr.push(obj); //把对象放入数组
+        console.log(arr);
+        
+        localStorage.setItem('people',JSON.stringify(arr));
+        //localStorage.setItem('people',arr);   //这样存的是一个对象 object
+
+
+    </script>
+</body>
+
+</html>

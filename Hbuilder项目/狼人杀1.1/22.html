@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/all.css" />
+		<title></title>
+	</head>
+	<body style="background-image: url(img/bg3.jpg);background-size: cover;background-repeat: no-repeat;height: 100vh;background-attachment:fixed;">
+		<img src="img/200.webp">
+		<div id="sc" class="sc">
+			<h2>生成卡牌……</h2>
+			<ul id="ul" class="show-ul"></ul>
+		</div>
+		<div id="shuffle_cards" class="cj">
+			<p><button type="button" id="shuffle" class="shuffle">洗牌</button></p>
+			<ul id="ul2" class="show-ul2"></ul>
+			<p><button type="button" id="next_page" class="shuffle">创建角色</button></p>
+		</div>
+		
+
+
+		<script src="js/wolf.js"></script>
+		<script type="text/javascript">
+			document.addEventListener('plusready', function() {
+				//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+
+				var $wer = $.getItem('wer');
+				var ul = $.getId('ul');
+
+				function create_li() {
+					$.setElementLi($wer.characters_num.pm, "li_pm");
+					$.setElementLi($wer.characters_num.langr, 'li_langr');
+					$.setElementLi($wer.characters_num.yyj, 'li_yyj');
+					$.setElementLi($wer.characters_num.nw, 'li_nw');
+					$.setElementLi($wer.characters_num.lier, 'li_lier');
+					$.setElementLi($wer.characters_num.sw, 'li_sw');
+					$.setElementLi($wer.characters_num.bc, 'li_bc');
+				}
+				create_li();
+
+				function random_num() {
+					var arr = new Array;
+					var newarr = new Array;
+					for (let i = 0; i < ul.children.length; i++) {
+						arr[i] = i + 1;
+					}
+					for (let i = 0; i < ul.children.length; i++) {
+						let index = Math.floor(Math.random() * arr.length); //产生随机下标
+						let num = arr[index]; // 产生数组内的随机数 
+						newarr.push(num)
+						arr.splice(index, 1);
+
+					}
+
+
+					for (let i = 0; i < $wer.characters_num.pm; i++) {
+						$wer.character = {
+							index: 0, // 玩家编号
+							status: name,
+							exist: true, //活着
+							isPoison: false, // 被毒死
+							bg: null
+						};
+						$wer.character.status = '平民';
+						$wer.character.index = newarr[i];
+						$wer.character.bg = 'img/pm.jpg';
+						$wer.players.push($wer.character);
+					}
+					var pl = Number($wer.characters_num.pm) + Number($wer.characters_num.langr)
+					for (let i = $wer.characters_num.pm; i < pl; i++) {
+						$wer.character = {
+							index: 0, // 玩家编号
+							status: name,
+							exist: true, //活着
+							isPoison: false, // 被毒死
+							bg: null
+						};
+						$wer.character.status = '狼人';
+						$wer.character.index = newarr[i];
+						$wer.character.bg = 'img/langr.jpg';
+						$wer.players.push($wer.character);
+					}
+					var ply = pl + Number($wer.characters_num.yyj)
+					for (let i = pl; i < ply; i++) {
+						$wer.character = {
+							index: 0, // 玩家编号
+							status: name,
+							exist: true, //活着
+							isPoison: false, // 被毒死
+							bg: null
+						};
+						$wer.character.status = '预言家';
+						$wer.character.index = newarr[i];
+						$wer.character.bg = 'img/yyj.jpg';
+						$wer.players.push($wer.character);
+					}
+					var plyn = ply + Number($wer.characters_num.nw)
+					for (let i = ply; i < plyn; i++) {
+						$wer.character = {
+							index: 0, // 玩家编号
+							status: name,
+							exist: true, //活着
+							isPoison: false, // 被毒死
+							bg: null
+						};
+						$wer.character.status = '女巫';
+						$wer.character.index = newarr[i];
+						$wer.character.bg = 'img/nw.jpg';
+						$wer.players.push($wer.character);
+					}
+					var plynl = plyn + Number($wer.characters_num.nw)
+					for (let i = plyn; i < plynl; i++) {
+						$wer.character = {
+							index: 0, // 玩家编号
+							status: name,
+							exist: true, //活着
+							isPoison: false, // 被毒死
+							bg: null
+						};
+						$wer.character.status = '猎人';
+						$wer.character.index = newarr[i];
+						$wer.character.bg = 'img/lier.jpg';
+						if ($wer.characters_num.lier != 0) {
+							$wer.players.push($wer.character);
+						}
+					}
+					var plynls = plynl + Number($wer.characters_num.nw)
+					for (let i = plynl; i < plynls; i++) {
+						$wer.character = {
+							index: 0, // 玩家编号
+							status: name,
+							exist: true, //活着
+							isPoison: false, // 被毒死
+							bg: null
+						};
+						$wer.character.status = '守卫';
+						$wer.character.index = newarr[i];
+						$wer.character.bg = 'img/sw.jpg';
+						if ($wer.characters_num.sw != 0) {
+							$wer.players.push($wer.character);
+						}
+					}
+					var plynlsb = plynls + Number($wer.characters_num.nw)
+					for (let i = plynls; i < plynlsb; i++) {
+						$wer.character = {
+							index: 0, // 玩家编号
+							status: name,
+							exist: true, //活着
+							isPoison: false, // 被毒死
+							bg: null
+						};
+						$wer.character.status = '白痴';
+						$wer.character.index = newarr[i];
+						$wer.character.bg = 'img/bc.jpg';
+						if ($wer.characters_num.bc != 0) {
+							$wer.players.push($wer.character);
+						}
+					}
+
+
+
+				}
+				//     !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+				if ($wer.players.length == 0) { //!!!
+					random_num(); //!!!
+				} //!!!
+				//     !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+				function list_status() { //根据编号排列players
+					$wer.players.sort(function(a, b) {
+						if (a.index < b.index) {
+							return -1;
+						} else if (a.index > b.index) {
+							return 1;
+						}
+						return 0;
+					})
+				}
+				list_status()
+
+				$.getId('shuffle').addEventListener('touchend', function() {
+					if($.getId('ul2').children.length==0){
+						show_list();
+						$.getId('sc').style.display='none'
+					}
+					
+				})
+
+				function show_list() {
+					var ul2 = $.getId('ul2');
+					for (let i = 0; i < $wer.players.length; i++) {
+
+						var li2 = document.createElement('li');
+						ul2.appendChild(li2);
+						var img = document.createElement('img');
+						li2.appendChild(img);
+						var p = document.createElement('p');
+						li2.appendChild(p);
+						var div = document.createElement('div');
+						li2.appendChild(div);
+						// img.setAttribute('src', '$wer.players[i].bg');//为什么没有效果？？？
+						img.src = $wer.players[i].bg
+
+						p.innerHTML = $wer.players[i].index + '号玩家';
+					}
+				}
+				var a = 0;
+				$.getId('shuffle_cards').addEventListener('touchend',function(e){
+					self = e.target;
+					if (self.nodeName === 'DIV' && a%2==1) {
+						self.style.zIndex=0;
+						
+					}
+					if(self.nodeName === 'IMG' && a%2==0){
+						self.parentNode.children[2].style.zIndex=10;
+					}
+					a++;
+				})
+				
+
+
+
+				$.players = $wer.players;//已经排好序的对象数组
+				$.character = $wer.character;
+				$.characters_num = $wer.characters_num;//用于存角色人数的对象
+				$.setItem($);
+
+				$.getId('next_page').ontouchend = function() {
+					$.open('33.html')
+				}
+			});
+		</script>
+	</body>
+</html>

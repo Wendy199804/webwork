@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/play.css" />
+		<script src="js/rem.js"></script>
+	</head>
+	<body>
+		<div style="width: 100%;height: 100vh;">
+
+
+			<div class="homewrap" id="homewrap">
+				<ul id="tab_title">
+					<li class="tab-title-li" id="tli1">登录</li>
+					<li id="tli2">注册</li>
+				</ul>
+
+				<form id="sign_in">
+					<div id="pic">
+						<img src="" id="via" style="border-radius: 50%;">
+					</div>
+					<div class="in-name">
+						<label for="" class="input-label">昵称:</label>
+						<input class="input" type="text" id="getname" placeholder="请输入你的昵称..." />
+					</div>
+					<div class="in-psw">
+						<label for="" class="input-label">密码:</label>
+						<input class="input" type="password" id="getpsw" placeholder="请输入你的密码..." />
+					</div>
+
+					<button type="button" class="sign-button" id="inbtn" style="background-color: #FFEF5E;">登录</button>
+				</form>
+				<form id="sign_up" class="sign_up">
+					<div class="upload">
+						<img src="" id="upimg" style="border-radius: 50%;">
+						<button type="button" id="up_pic">选择头像</button>
+					</div>
+					<div class="in-name">
+						<label for="" class="input-label">昵称:</label>
+						<input class="input" type="text" name="" id="setname" placeholder="随便写一个昵称..." />
+					</div>
+					<div class="in-psw">
+						<label for="" class="input-label">密码:</label>
+						<input class="input" type="password" name="" id="setpsw" placeholder="随便写一个密码..." />
+					</div>
+					<button type="button" class="sign-button" id="upbtn" style="background-color: #CB815A;">注册</button>
+				</form>
+			</div>
+
+		</div>
+		<script src="js/mice.js"></script>
+		<script type="text/javascript">
+			document.addEventListener('plusready', function() {
+				const tabul = $.getId('tab_title');
+				const wrap = $.getId('homewrap');
+				const signin = $.getId('sign_in');
+				const signup = $.getId('sign_up');
+				let prev = tabul.children[0];
+				var img = ["img/head1.jpg", "img/head2.jpg", "img/head3.jpg", "img/head4.jpg", "img/head5.jpg", "img/head6.jpg",
+					"img/head7.jpg", "img/head8.jpg", "img/head9.jpg", "img/head10.jpg"
+				];
+				//选项卡
+				wrap.addEventListener('touchend', function(e) {
+					var tar = e.target;
+					if (tar.id === 'tli1') {
+						tar.className = 'tab-title-li';
+						$.getId('tli2').className = ""
+						$.getId('sign_in').className = 'block';
+						$.getId('sign_up').className = 'none';
+					} else if (tar.id === 'tli2') {
+						tar.className = 'tab-title-li2';
+						$.getId('tli1').className = "";
+						$.getId('sign_up').className = 'block';
+						$.getId('sign_in').className = 'none';
+					}
+				})
+
+				//登录
+
+				$.getId('getname').onblur = function() { //当前对象失去焦点执行
+					var $mice = $.getItem('mice')
+					$.player.name = $.getId('getname').value;
+					for (let i = 0; i < $mice.players.length; i++) {
+						if ($.player.name == $mice.players[i].name) {
+							var picc = $mice.players[i].headimg;
+						}
+					}
+					$.getId('via').setAttribute('src', picc);
+				}
+
+				$.getId('inbtn').addEventListener('touchend', function() {
+					$.player.name = $.getId('getname').value;
+					$.player.password = $.getId('getpsw').value;
+					var index = 0;
+					var isHad = false;
+					var isLog = false;
+					var innlog = 0;
+					var $mice = $.getItem('mice');
+					if ($mice.players.length == 0) {
+						$.alert('账号不存在或输入错误');
+					} else {
+						for (let i = 0; i < $mice.players.length; i++) {
+							if ($.player.name == $mice.players[i].name) { //有这个账号  
+								isHad = true;
+								index = i;
+								console.log("已匹配帐号");
+							}
+						}
+					}
+
+					if (isHad) { //如果存在
+						if ($.player.name == $mice.players[index].name && $.player.password == $mice.players[index].password) {
+							var log = $mice.logplayer; //取出所有已登陆过的用户信息
+							for (let j = 0; j < $mice.logplayer.length; j++) {
+								if ($.player.name == $mice.logplayer[j].name) { //有这个账号 
+									isLog = true;
+									innlog = j;
+									// console.log("该帐号曾经登录过");
+								}
+							}
+							if (isLog == false) { // false 如果该帐号没有登录过
+								log.push($.player); //把当前登录的用户信息存入已登录数组
+								console.log($.player)
+								$mice.logplayer = log; //把改数组更新给历史用户信息
+								$.logplayer = $mice.logplayer; //放入本地存储
+								$.players = $mice.players;
+								$.setItem($);
+								for (let i = 0; i < $.players.length; i++) {
+									if ($mice.player.name == $.players[i].name) {
+										var picc = $.players[i].headimg;
+									}
+								}
+								$.getId('via').setAttribute('src', picc);
+								//console.log($.player.headimg)
+								alert("登录成功！")
+								$.open('choose.html');
+							} else { //如果该账号登录过
+								$.logplayer = log;
+								$.players = $mice.players;
+								//	$.player = $mice.player;
+								$.setItem($);
+
+								for (let i = 0; i < $.players.length; i++) {
+									if ($mice.player.name == $.players[i].name) {
+										var picc = $.players[i].headimg;
+									}
+								}
+								$.getId('via').setAttribute('src', picc);
+								$.alert("登录成功！")
+								$.open('choose.html');
+							}
+
+						} else {
+							$.alert("帐号或密码错误！")
+						}
+
+					} else { //账号不存在或输入错误
+						$.alert('账号不存在或输入错误');
+					}
+
+
+				})
+				//注册
+				$.getId('setname').onblur = function() { //当前对象失去焦点执行
+					var reg1 = /^[\u4E00-\u9FA5A-Za-z0-9]+$/;
+					if ($.getId('setname').value.length > 6) {
+						alert("昵称名称不得超过6个字符")
+					} else if (!reg1.test($.getId('setname').value)) {
+						alert('昵称中不得含有非法字符')
+					}
+				}
+				
+				$.getId('upbtn').addEventListener('touchend', function() {
+					$.player.name = $.getId('setname').value;
+					$.player.password = $.getId('setpsw').value;
+					if (!localStorage.mice) {
+						var $mice = $;
+					} else {
+						// alert("非空")
+						var $mice = $.getItem('mice');
+					}
+					var index = 0;
+					var isHad = false;
+					var headpic_last = $.getId('upimg').src.substr($.getId('upimg').src.length - 1, 1); //获取原图的路径的最后一个字符
+					var reg2 = /^[\\u4E00-\\u9FA5]+$/;
+					var reg1 = /[\u4E00-\u9FA5A-Za-z0-9]+$/;
+					if ($.player.name != '' && $.player.password != '' && headpic_last != 'l') {
+						if ($.getId('setname').value.length > 6) {
+							alert("昵称名称不得超过6个字符")
+						} else if (!reg1.test($.getId('setname').value)) {
+							alert('昵称中不得含有非法字符')
+						} else if ($.getId('setpsw').value.length > 12||$.getId('setpsw').value.length < 6) {
+							alert("密码长度不得小于6个字符或超过12个字符")
+						} else if (!reg1.test($.getId('setpsw').value)) {
+							alert('密码中不得含有非法字符')
+						}else if (!reg2.test($.getId('setpsw').value)) {
+							alert('密码中不得含有中文');
+						} else {
+							for (let i = 0; i < $mice.players.length; i++) {
+								if ($.player.name == $mice.players[i].name) { //有这个账号 
+									isHad = true;
+									index = i;
+								}
+							}
+							if (isHad) {
+								alert("帐号已存在！");
+							} else {
+								$mice.players.push($.player);
+								$.players = $mice.players;
+								$.logplayer = $mice.logplayer;
+								$.setItem($);
+								alert("注册成功");
+							}
+						}
+					} else {
+						alert("帐号或密码或头像不能为空!");
+					}
+				})
+
+				//	点击切换头像
+				var num = 1;
+				var im;
+				$.getId('up_pic').ontouchend = function() {
+					$.getId('upimg').setAttribute('src', img[num])
+					num++;
+					if (num == 10) {
+						num = 0;
+					}
+					var head = $.getId('upimg').src;
+					var headpic = head.substr(head.length - 13, 13); //
+					if ($.players.length == 0) {
+						var $mice = $;
+
+					} else {
+						// alert("非空")
+						var $mice = $.getItem('mice');
+					}
+					//var $mice = $.getItem('mice');
+					$mice.player.headimg = headpic;
+					$.player.headimg = $mice.player.headimg;
+				}
+			});
+		</script>
+	</body>
+</html>

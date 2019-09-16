@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #game_div {
+            position: absolute;
+        }
+
+        #pause_div {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0px;
+            left: 0px;
+            background-color: #eeeeee;
+            z-index: 100;
+            opacity: 0.6;
+            display: none;
+        }
+
+        ul {
+            width: 600px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        li {
+            width: 33%;
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+            background-color: #C5DD4B;
+            list-style: none;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 200px;
+            transition: top 0.3s;
+        }
+
+        .progress-bar-bg {
+            width: 600px;
+            height: 15px;
+            border: none;
+            background-color: black;
+            position: relative;
+        }
+
+        .progress-bar {
+            width: 600px;
+            height: 15px;
+            border: none;
+            background-color: rgb(131, 48, 117);
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    地鼠停留时间：<input id="stay" type="text" size="5" value="1000" />毫秒<br />
+    地鼠出现间隔：<input id="interval" type="text" size="5" value="1000" />毫秒<br />
+    游戏时长：<input id="duration" type="text" size="5px" value="30" />秒<br />
+    游戏倒计时：<span id="count"></span>秒<br />
+    游戏得分：<span id="score"></span><br />
+    <div id="progress_bar_bg" class="progress-bar-bg">
+        <div id="progress_bar" class="progress-bar"></div>
+    </div>
+
+
+
+    <button id="startBtn">开始游戏</button>
+    <button id="pauseBtn">暂停游戏</button>
+    <button id="stopBtn">停止游戏</button>
+
+    <hr />
+    <!--游戏区域-->
+    <div id="game_div">
+        <div id="pause_div"></div>
+
+        <ul id="ul">
+            <li><img src="img/00.jpg" alt=""></li>
+            <li><img src="img/00.jpg" alt=""></li>
+            <li><img src="img/00.jpg" alt=""></li>
+            <li><img src="img/00.jpg" alt=""></li>
+            <li><img src="img/00.jpg" alt=""></li>
+            <li><img src="img/00.jpg" alt=""></li>
+        </ul>
+    </div>
+
+    <span id="str"></span>
+
+    <script>
+
+        var stay, interval, duration, count_span, score_span, startBtn, pauseBtn, stopBtn;
+        var imgs;
+        var timeCount, timeInterval, timeStay, timePlay; //计时器
+        var isStart;//判断是否开始，游戏开始为true，游戏暂停为false
+        var pause = false;//是否为暂停
+        var count_data;//倒计时的时间
+        var jxGame_duration;//继续游戏的总时长
+        var isOneStart = true;//判断是否为第一次开始
+        var hit = 0;//打中的
+        var miss = 0;//没打中的
+        var score = 0;//得分
+        var progress_bar;
+        var inn;
+        window.onload = function () {
+            //获取HTML元素
+            stay = document.getElementById("stay");
+            interval = document.getElementById("interval");
+            duration = document.getElementById("duration");
+            count_span = document.getElementById("count");
+            score_span = document.getElementById("score");
+            startBtn = document.getElementById("startBtn");
+            pauseBtn = document.getElementById("pauseBtn");
+            stopBtn = document.getElementById("stopBtn");
+            imgs = document.getElementById('ul').getElementsByTagName('img');
+            pause_div = document.getElementById("pause_div");
+            ul = document.getElementById('ul');
+            progress_bar = document.getElementById('progress_bar');
+
+            ul.addEventListener("click", function (e) {
+                self = e.target;
+                if (self.nodeName === 'IMG') {
+                    play(self);
+                    // inn+=5;
+                    // count_data+=5;
+                    // console.log(count_data)
+                }
+            })
+            //游戏开始事件
+            startBtn.onclick = function () {
+                stay_time = parseInt(stay.value);//停留时间
+                interval_time = parseInt(interval.value);//间隔时间
+                duration_time = parseInt(duration.value);//游戏时长
+
+                //设置第一次开始游戏
+                isOneStart = true;
+
+                //记录游戏开始时间
+                start_Time = new Date();
+                //     console.log("start_Time :" + start_Time);
+                //执行倒计时方法  开始倒计时
+                count();
+                //执行地鼠出现的方法
+                mouse_show();
+
+                //禁止用户操作输入框
+                isStart = true;
+                forbid();
+                score_span.innerHTML = "打中" + hit + "只，漏掉" + miss + "只，得分" + score;
+            }
+
+            //游戏暂停事件
+            pauseBtn.onclick = function () {
+                if (pause) {
+                    //继续游戏
+                    isOneStart = false;
+                    pause_div.style.display = "none";
+                    pauseBtn.textContent = "暂停游戏";
+                    pause = false;
+
+                    //继续游戏时刻 的时间
+                    jxGame_startTime = new Date();
+                    game_continue();
+                    //执行地鼠出现的方法
+                    mice_restore();
+                    mouse_show();
+
+                    //禁止用户操作输入框
+                    forbid();
+
+                } else {
+                    //暂停游戏
+
+                    game_pause();
+                }
+
+
+            }
+
+
+            //游戏结束事件
+            stopBtn.onclick = function () {
+
+                game_over();
+                forbid();
+            }
+
+        }
+
+        //倒计时方法
+        function count() {
+            var dt = duration_time
+            //实时记录游戏时间
+            var game_time = new Date();  //游戏开始的时间  //每隔一秒记录一次，
+            //    console.log("game_time:"+ game_time);
+            //计算倒计时
+            count_data = duration_time - parseInt((game_time - start_Time) / 1000); 
+            //所剩时间 = 游戏总秒数 - 游戏开始了几秒
+            //设置的value：1分钟 *60=60秒      /1000：毫秒转化为秒     
+            //parseInt((game_time-start_Time)/1000)：实时记录游戏开始了几秒
+            //  console.log("game_time-start_Time：" + parseInt((game_time-start_Time)/1000));
+            //显示倒计时
+            count_span.innerHTML = count_data;
+            if(duration_time > 30){
+                        duration_time =30;
+                        console.log("??????????")
+                    }
+            percent = count_data/duration_time * 600;
+            // percent = count_span.innerHTML / duration_time * 600;
+
+            progress_bar.style.width = percent + 'px';
+
+            if(count_data <=-1 ){
+            // if (count_span.innerHTML <= -1) {
+                alert("游戏结束");
+                game_over();
+                forbid();
+                return;
+            }
+            //倒计时的计时器
+            timeCount = setTimeout("count()", 1000);
+        }
+
+        //游戏暂停方法
+        function game_pause() {
+            clearTimeout(timeCount);
+            clearTimeout(timeInterval);
+            clearTimeout(timeStay);
+            if (!isOneStart) {
+                clearTimeout(timeContinue);
+            }
+            pause_div.style.display = "block";
+            pauseBtn.textContent = "继续游戏";
+            pause = true;
+
+            //获取倒计时，作为继续游戏的总时长
+            jxGame_duration = count_data;
+
+        }
+
+        //游戏继续方法
+        function game_continue() {
+
+            //获取继续游戏开始的时间
+            var jxGame_timming = new Date();
+
+            //重新计算倒计时  //以暂停时的倒计时显示的数字  作为继续游戏的总时长
+            count_data = jxGame_duration - parseInt((jxGame_timming - jxGame_startTime) / 1000);
+            //所剩时长 = 上一次暂停时的倒计时显示时间 - （继续游戏开始的时长 - 继续游戏开始的时刻）
+            if (imgs.src == "img/02.jpg") {
+                count_data++;
+            }
+            count_span.innerHTML = count_data;
+
+            // percent = count_data/jxGame_duration * 600;
+            percent = count_span.innerHTML / jxGame_duration * 600;
+
+            progress_bar.style.width = percent + 'px';
+            // if(count_data <=-1 ){
+            if (count_span.innerHTML <= -1) {
+
+                alert("游戏结束");
+                game_over();
+                forbid();
+                return;
+            }
+            timeContinue = setTimeout("game_continue()", 1000);
+        }
+
+        //游戏结束
+        function game_over() {
+            clearTimeout(timeStay);
+            clearTimeout(timeInterval);
+            clearTimeout(timeCount);
+            clearTimeout(timePlay);
+            if (!isOneStart) {
+                clearTimeout(timeContinue);
+            }                               //结束所有的计时器
+            isStart = false;
+            count_span.innerHTML = 0;
+            //   score_span.innerHTML = "";
+            hit = 0; score = 0; miss = 0;
+            score_span.innerHTML = "打中" + hit + "只，漏掉" + miss + "只，得分" + score;
+            //  hit=0;score=0;miss=0;
+            //恢复游戏场地
+            pause_div.style.display = "none";
+
+            //地鼠清场
+            mice_restore();
+
+        }
+
+        //地鼠清场
+        function mice_restore() {
+            for (var i = 0; i < imgs.length; i++) {
+                imgs[i].src = "img/00.jpg";
+            }
+        }
+
+        //地鼠出现方法
+        function mouse_show() {
+            //生成随机的数组下标
+            var index = parseInt(Math.random() * imgs.length);   //包含0不包含imgs.length
+            //随机改变图片
+            imgs[index].src = "img/01.jpg";
+            imgs[index].style.top = 0 + 'px';
+
+            //地鼠出现间隔
+            //   time_number = parseInt(interval_time*1000) ;
+            timeInterval = setTimeout("mouse_show()", interval_time);
+            //地鼠停留时间
+            //   time_stay =parseInt(stay_time*1000) ;
+            timeStay = setTimeout("mouse_hide(" + index + ")", stay_time);
+
+        }
+
+        //地鼠消失，没打中
+        function mouse_hide(i) {
+            var name = imgs[i].src.substr(imgs[i].src.length - 5, 1); //取到 img/00.jpg 中的第五个字符 “ 1 ”
+
+            if (name == 1) {
+                imgs[i].src = "img/00.jpg";
+                imgs[i].style.top = 200 + 'px';
+
+                //计分
+                miss++;
+                score--;
+                if (score <= 0) {
+                    score = 0;
+                }
+                score_span.innerHTML = "打中" + hit + "只，漏掉" + miss + "只，得分" + score;
+            }
+
+
+
+        }
+
+        //打中地鼠
+        function play(obj) {
+            //获取图片的名称
+            var name = obj.src.substr(obj.src.length - 5, 1);
+            // console.log(name);
+            if (name == 1) {
+                obj.src = "img/02.jpg";
+
+                //计分
+                hit++;
+                score += 5;
+                score_span.innerHTML = "打中" + hit + "只，漏掉" + miss + "只，得分" + score;
+
+                //打中后地鼠在屏幕上停留的时间
+                timePlay = setTimeout(function () {
+                    obj.src = "img/00.jpg";
+                    //                      clearTimeout(tl_id);
+                }, 300);
+
+            }
+
+        }
+
+        //禁止用户操作方法
+        function forbid() {
+            if (isStart) {
+                stay.disabled = true;
+                interval.disabled = true;
+                duration.disabled = true;
+                startBtn.disabled = true;
+            } else {
+                stay.disabled = false;
+                interval.disabled = false;
+                duration.disabled = false;
+                startBtn.disabled = false;
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
